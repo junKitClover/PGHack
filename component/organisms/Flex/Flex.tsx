@@ -83,6 +83,7 @@ export const Flex = ({
   alignItem,
   wrap,
   border,
+  className,
   ...restProps
 }: FlexProps) => {
   const listStyles: Array<string> = generateSpaceListBaseOnCommonInterface({
@@ -99,6 +100,7 @@ export const Flex = ({
     <div
       {...restProps}
       className={classnames(
+        className,
         styles.flexBase,
         listStyles,
         generateDirectionStyleList(direction),

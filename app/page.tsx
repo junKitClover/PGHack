@@ -3,7 +3,7 @@ import { Box,Text } from "component/atoms";
 import { Button } from "component/molecules";
 
 const SideBar = () => (
-  <Box backgroundColor="greyLighter" paddingBlock={3} paddingInline={2}>
+  <Box paddingBlock={3} paddingInline={2}>
     <Stack gap={3}>
       <Button type="text" isFloat>project 1</Button>
       <Button type="text" isFloat>project 2</Button>
@@ -49,6 +49,6 @@ const LeadCard = () => (
 
 const Page = () => (<Grid col={[1,"1by6"]} gap={3}>
   <SideBar/>
-  <Grid col={[1,3,4]} gap={[3,5,6]} paddingBlock={5} paddingInline={3}><LeadCard/></Grid></Grid>);
+  <Grid col={[1,2,3]} gap={[3,5,6]} paddingBlock={5} paddingInline={3}><LeadCard/><LeadCard/><LeadCard/><LeadCard/><LeadCard/><LeadCard/><LeadCard/><LeadCard/><LeadCard/><LeadCard/><LeadCard/></Grid></Grid>);
 
 export default Page;
