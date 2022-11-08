@@ -1,6 +1,5 @@
 import { Box, Text } from "component/atoms";
 import { Stack, Grid, Flex } from "component/organisms";
-import { LeadCard } from "component/molecules";
 
 export interface InfoCardProps {
   title: string;

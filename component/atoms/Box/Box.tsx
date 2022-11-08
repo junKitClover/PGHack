@@ -22,9 +22,9 @@ export const Box = ({
   paddingBlock,
   paddingInline,
   margin,
-  
   marginBlock,
   marginInline,
+  className,
   ...restProps
 }: SpaceProps) => {
   const listStyles: Array<string> = generateSpaceListBaseOnCommonInterface({
@@ -38,7 +38,7 @@ export const Box = ({
 
   return (
     <div
-      className={classnames(listStyles, styleBgColor(backgroundColor), styleColor(color), {
+      className={classnames(className, listStyles, styleBgColor(backgroundColor), styleColor(color), {
         [styles.boxBorder]: border,
         [styles.rounded]: rounded,
       })}
