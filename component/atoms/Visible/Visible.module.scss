@@ -1,0 +1,20 @@
+@use 'mixin/cssGenerator.modules.scss';
+
+$displayList:
+'show' inline-block,
+'hidden' none;
+
+.display {
+  @include cssGenerator.scriptGenerator($displayList, 'display');
+
+  &_print_show{
+    @media print {
+      visibility: visible;
+    }
+  }
+  &_print_hidden{
+    @media print {
+      visibility: hidden;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+@mixin helm {
+  [data-theme-name='helm'] & {
+    @content;
+  }
+}
+
+@mixin tacklit {
+  [data-theme-name='tacklit'] & {
+    @content;
+  }
+}

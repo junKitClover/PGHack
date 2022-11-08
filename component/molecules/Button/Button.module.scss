@@ -1,0 +1,198 @@
+$button-border: var(--button-border, 1px solid #3f52ff);
+$button-disable-border: var(--button-disable-border, 1px solid #D8DAE8);
+$button-disable: var(--primary-button-disable, #94969D);
+$button-border-radius: var(--button-border-radius, 4px);
+$button-width: fit-content;
+$font-weight: 400;
+$font-family: var(--font-family, 'Nunito');
+
+$button-color: var(--primary-button, #ffffff);
+$button-bg-color: var(--primary-button-bg, #3f52ff);
+$button-bg-hover-color: var(--primary-button-hover-bg, #8c97ff);
+$button-bg-press-color: var(--primary-button-press-bg, #6575ff);
+$button-bg-disable-color: var(--primary-button-disable-bg, #d8dae8);
+
+$button-outline-color: var(--primary-button-bg, #3f52ff);
+$button-outline-bg-color: var(--primary-button, #ffffff);
+$button-outline-hover-color: var(--primary-button-bg, #3f52ff);
+$button-outline-bg-hover-color: var(--primary-button-outline-bg, #D9DCFF);
+$button-outline-press-color: var(--primary-button, #ffffff);
+$button-outline-bg-press-color: var(--primary-button-press-bg, #3f52ff);
+$button-outline-disable-color: var(--primary-button-disable-bg, #d8dae8);
+$button-outline-bg-disable-color: var(--primary-button, #ffffff);
+
+.buttonIconFontSize {
+  &_small {
+    font-size: 18px;
+    line-height: 18px;
+  }
+  &_medium {
+    font-size: 20px;
+    line-height: 21px;
+  }
+  &_large {
+    font-size: 24px;
+    line-height: 24px;
+  }
+}
+
+.buttonPadding{
+  &_iconOnly{
+    &_small {
+      padding: 8px;
+    }
+    &_medium {
+      padding: 10px;
+    }
+    &_large {
+      padding: 14px;
+    }
+
+  }
+  &_words{
+    &_small {
+      padding-block: 8px;
+      padding-inline: 12px;
+    }
+    &_medium {
+      padding-block: 10px;
+      padding-inline: 14px;
+    }
+    &_large {
+      padding-block: 12px;
+      padding-inline: 16px;
+    }
+  }
+}
+
+@mixin buttonBase {
+  font-family: $font-family;
+  font-weight: $font-weight;
+  width: $button-width;
+}
+
+@mixin buttonSize {
+  &_small {
+    font-size: 12px;
+    line-height: 18px;
+  }
+  &_medium {
+    font-size: 14px;
+    line-height: 21px;
+  }
+  &_large {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+.float {
+  border-radius: 90px;
+}
+.notFloat {
+  border-radius: $button-border-radius;
+}
+.buttonIcon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  
+  &_left {
+    flex-direction: reverse;
+  }
+  &_right {
+    flex-direction: row-reverse;
+  }
+} 
+
+.contained {
+  @include buttonBase;
+  border: 0px;
+  color: $button-color;
+
+  &_simulate_hover {
+    background-color: $button-bg-hover-color;
+  }
+  &_simulate_press {
+    background-color: $button-bg-press-color;
+  }
+  @include buttonSize;
+  &_button {
+    background-color: $button-bg-color;
+    &:hover {
+      background-color: $button-bg-hover-color;
+    }
+    &:active {
+      background-color: $button-bg-press-color;
+    }
+    &:disabled {
+      background-color: $button-bg-disable-color;
+    }
+  }
+}
+
+.outline {
+  @include buttonBase;
+  border: $button-border;
+
+  &_simulate_hover {
+    background-color: $button-outline-bg-hover-color;
+    color: $button-outline-hover-color;
+  }
+  &_simulate_press {
+    background-color: $button-outline-bg-press-color;
+    color: $button-outline-press-color;
+  }
+
+  &_button{
+    color: $button-outline-color;
+    background-color: $button-outline-bg-color;
+    &:hover {
+      background-color: $button-outline-bg-hover-color;
+      color: $button-outline-hover-color;
+    }
+    &:active {
+      background-color: $button-outline-bg-press-color;
+      color: $button-outline-press-color;
+    }
+    &:disabled {
+      background-color: $button-outline-bg-disable-color;
+      color: $button-outline-disable-color;
+      border: $button-disable-border;
+    }
+  }
+
+  @include buttonSize;
+}
+
+.text {
+  @include buttonBase;
+  @include buttonSize;
+  border: 0px;
+
+  &_simulate_hover {
+    background-color: $button-outline-bg-hover-color;
+    color: $button-outline-hover-color;
+  }
+  &_simulate_press {
+    background-color: $button-outline-bg-press-color;
+    color: $button-outline-press-color;
+  }
+
+  &_button{
+    color: $button-outline-color;
+    background-color: $button-outline-bg-color;
+    &:hover {
+      background-color: $button-outline-bg-hover-color;
+      color: $button-outline-hover-color;
+    }
+    &:active {
+      background-color: $button-outline-bg-press-color;
+      color: $button-outline-press-color;
+    }
+    &:disabled {
+      background-color: $button-outline-bg-disable-color;
+      color: $button-outline-disable-color;
+    }
+  }
+}

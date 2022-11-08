@@ -1,0 +1,54 @@
+@use 'mixin/cssGenerator.modules.scss';
+
+$colorList: 
+  'informationLighter' var(--information-color-lighter, #80d6ff),
+  'informationLight' var(--information-color-light, #42a5f5),
+  'information' var(--information-color, #5472d3),
+  'informationDark' var(--information-color-dark, #0d47a1),
+  'informationDarker' var(--information-color-darker, #002171),
+  'warningLighter' var(--warning-color-lighter, #ffffcf),
+  'warningLight' var(--warning-color-light, #fff59d),
+  'warning' var(--warning-color, #ffff72),
+  'warningDark' var(--warning-color-dark, #ffeb3b),
+  'warningDarker' var(--warning-color-darker, #c8b900),
+  'errorLighter' var(--error-color-lighter, #ffcccb),
+  'errorLight' var(--error-color-light, #ef9a9a),
+  'error' var(--error-color, #f05545),
+  'errorDark' var(--error-color-dark, #b71c1c),
+  'errorDarker' var(--error-color-darker, #7f0000),
+  'successLighter' var(--success-color-lighter, #e1ffb1),
+  'successLight' var(--success-color-light, #aed581),
+  'success' var(--success-color, #629749),
+  'successDark' var(--success-color-dark, #33691e),
+  'successDarker' var(--success-color-darker, #003d00),
+  'greyLighter' var(--grey-color-lighter, #c1d5e0),
+  'greyLight' var(--grey-color-light, #90a4ae),
+  'grey' var(--grey-color, #819ca9),
+  'greyDark' var(--grey-color-dark, #546e7a),
+  'greyDarker' var(--grey-color-darker, #29434e),
+  'primaryLighter' var(--primary-color-lighter, #3f57b9),
+  'primaryLight' var(--primary-color-light, #344795),
+  'primary' var(--primary-color, #243062),
+  'primaryDark' var(--primary-color-dark, #121830),
+  'primaryDarker' var(--primary-color-darker, #000000),
+  'secondaryLighter' var(--secondary-color-lighter, #79cbda),
+  'secondaryLight' var(--secondary-color-light, #2aaac1),
+  'secondary' var(--secondary-color, #238698),
+  'secondaryDark' var(--secondary-color-dark, #115864),
+  'secondaryDarker' var(--secondary-color-darker, #043f49),
+  'white' #ffffff,
+  'black' #000000,
+;
+
+.color{
+  @include cssGenerator.loopingObject($colorList, color);
+}
+.backgroundColor{
+  @include cssGenerator.loopingObject($colorList, background-color);
+}
+.fill{
+  @include cssGenerator.loopingObject($colorList, fill);
+}
+.stroke{
+  @include cssGenerator.loopingObject($colorList, stroke);
+}

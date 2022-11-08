@@ -1,0 +1,30 @@
+@use 'mixin/breakpoint.modules.scss';
+@use 'styles/variables.modules.scss';
+
+
+.pageLayout{
+  width: 100%;
+  max-width: 100%;
+  margin: 0px;
+
+  &_item{
+    max-width: var(--max-width, 1000px);
+  }
+
+  @include breakpoint.mobile {
+    padding-block: variables.$base-space * 4;
+    padding-inline: variables.$base-space * 2;
+  }
+  @include breakpoint.tablet {
+    padding-block: variables.$base-space * 8;
+    padding-inline: variables.$base-space * 4;
+  }
+  @include breakpoint.laptop {
+    padding-block: variables.$base-space * 12;
+    padding-inline: variables.$base-space * 8;
+  }
+  @include breakpoint.desktop {
+    padding-block: variables.$base-space * 16;
+    padding-inline: variables.$base-space * 10;
+  }
+}

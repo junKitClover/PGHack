@@ -1,0 +1,60 @@
+@use 'mixin/cssGenerator.modules.scss';
+
+$gridColumnStyleList:
+'col1' repeat(1, 1fr),
+'col2' repeat(2, 1fr),
+'col3' repeat(3, 1fr),
+'col4' repeat(4, 1fr),
+'col5' repeat(5, 1fr),
+'col6' repeat(6, 1fr),
+'col7' repeat(7, 1fr),
+'col8' repeat(8, 1fr),
+;
+
+$gird2ColumnStyleList: 
+'col1by2' '1fr 2fr',
+'col1by3' '1fr 3fr',
+'col1by4' '1fr 4fr',
+'col1by5' '1fr 5fr',
+'col1by6' '1fr 6fr',
+'col2by1' '2fr 1fr',
+'col2by3' '2fr 3fr',
+'col2by4' '2fr 4fr',
+'col2by5' '2fr 5fr',
+'col2by6' '2fr 6fr',
+'col3by1' '3fr 1fr',
+'col3by2' '3fr 2fr',
+'col3by4' '3fr 4fr',
+'col3by5' '3fr 5fr',
+'col3by6' '3fr 6fr',
+'col4by1' '4fr 1fr',
+'col4by2' '4fr 2fr',
+'col4by3' '4fr 3fr',
+'col4by5' '4fr 5fr',
+'col4by6' '4fr 6fr',
+'col5by1' '5fr 1fr',
+'col5by2' '5fr 2fr',
+'col5by3' '5fr 3fr',
+'col5by4' '5fr 4fr',
+'col5by6' '5fr 6fr',
+'col6by1' '6fr 1fr',
+'col6by2' '6fr 2fr',
+'col6by3' '6fr 3fr',
+'col6by4' '6fr 4fr',
+'col6by5' '6fr 5fr',
+;
+
+.gridBase {
+  display: grid;
+}
+
+.gridBorder {
+  border: 1px solid #e4e4e4;
+}
+
+.grid {
+  &_col {
+    @include cssGenerator.scriptGenerator($gridColumnStyleList, 'grid-template-columns');
+    @include cssGenerator.scriptGenerator($gird2ColumnStyleList, 'grid-template-columns');
+  }
+}

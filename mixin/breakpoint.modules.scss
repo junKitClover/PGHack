@@ -1,0 +1,75 @@
+@use './theme.modules.scss';
+
+$mobile-size: 600px;
+$tablet-size: 820px;
+$tacklit-laptop-size: 1280px;
+$helm-laptop-size: 1440px;
+
+@mixin mobile {
+  @media (max-width: $mobile-size) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: $mobile-size) and (max-width: $tablet-size) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @include theme.helm {
+    @media (min-width: $tablet-size) and (max-width: $helm-laptop-size) {
+      @content;
+    }
+  }
+  @include theme.tacklit {
+    @media (min-width: $tablet-size) and (max-width: $tacklit-laptop-size) {
+      @content;
+    }
+  }
+}
+
+@mixin desktop {
+  @include theme.helm {
+    @media (min-width: $helm-laptop-size) {
+      @content;
+    }
+  }
+  @include theme.tacklit {
+    @media (min-width: $tacklit-laptop-size) {
+      @content;
+    }
+  }
+}
+
+@mixin tillTablet {
+  @media (max-width: $tablet-size) {
+    @content;
+  }
+}
+
+@mixin tillLaptop {
+  @include theme.helm {
+    @media (max-width: $helm-laptop-size) {
+      @content;
+    }
+  }
+  @include theme.tacklit {
+    @media (max-width: $tacklit-laptop-size) {
+      @content;
+    }
+  }
+}
+
+@mixin aboveTablet {
+  @media (min-width: $mobile-size) {
+    @content;
+  }
+}
+
+@mixin aboveLaptop {
+  @media (min-width: $tablet-size) {
+    @content;
+  }
+}

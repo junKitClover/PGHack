@@ -1,0 +1,29 @@
+@use 'mixin/cssGenerator.modules.scss';
+@use 'mixin/breakpoint.modules.scss';
+
+$text-base: 4px;
+
+$textSizeList: 
+  'xSmall' $text-base * 3,
+  'small' $text-base * 4,
+  'medium' $text-base * 5,
+  'large' $text-base * 6,
+  'xLarge' $text-base * 8,
+  'xxLarge' $text-base * 10,
+;
+
+$textWeightList: 
+  'thin' 300,
+  'normal' 400,
+  'semiBold' 600,
+  'bold' 800,
+;
+
+.text_size{
+  @include cssGenerator.scriptGenerator($textSizeList, font-size);
+
+}
+
+.text_weight{
+  @include cssGenerator.scriptGenerator($textWeightList, font-weight);
+}

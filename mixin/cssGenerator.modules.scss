@@ -1,0 +1,28 @@
+@use './breakpoint.modules.scss';
+
+@mixin loopingObject($object, $key) {
+  @each $name, $value in $object {
+    &_#{$name} {
+      #{$key} : #{$value};
+    }
+  }
+}
+
+@mixin scriptGenerator($object, $key) {
+  @include loopingObject($object, $key);
+  &_mobile{
+    @include breakpoint.mobile{
+      @include loopingObject($object, $key);
+    }
+  }
+  &_tablet{
+    @include breakpoint.tablet{
+      @include loopingObject($object, $key);
+    }
+  }
+  &_laptop{
+    @include breakpoint.aboveLaptop{
+      @include loopingObject($object, $key);
+    }
+  }
+}
