@@ -1,6 +1,6 @@
-import { Flex, Grid, Stack } from "component/organisms";
-import { Box, Text } from "component/atoms";
-import { Button } from "component/molecules";
+import { Box, Text } from 'component/atoms';
+import { Stack, Flex } from 'component/organisms';
+import { Button } from 'component/molecules';
 
 const LeadCard = () => (
   <Box border rounded>
@@ -55,20 +55,4 @@ const LeadCard = () => (
   </Box>
 );
 
-const Page = () => (
-  <Grid col={[1, 2, 3]} gap={[3, 5, 6]} paddingBlock={5} paddingInline={3}>
-    <LeadCard />
-    <LeadCard />
-    <LeadCard />
-    <LeadCard />
-    <LeadCard />
-    <LeadCard />
-    <LeadCard />
-    <LeadCard />
-    <LeadCard />
-    <LeadCard />
-    <LeadCard />
-  </Grid>
-);
-
-export default Page;
+export default LeadCard;
