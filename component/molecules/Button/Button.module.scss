@@ -1,23 +1,24 @@
-$button-border: var(--button-border, 1px solid #3f52ff);
+$button-border: var(--button-border, 1px solid #E03C31);
 $button-disable-border: var(--button-disable-border, 1px solid #D8DAE8);
 $button-disable: var(--primary-button-disable, #94969D);
 $button-border-radius: var(--button-border-radius, 4px);
 $button-width: fit-content;
+$button-height: fit-content;
 $font-weight: 400;
 $font-family: var(--font-family, 'Nunito');
 
 $button-color: var(--primary-button, #ffffff);
-$button-bg-color: var(--primary-button-bg, #3f52ff);
-$button-bg-hover-color: var(--primary-button-hover-bg, #8c97ff);
-$button-bg-press-color: var(--primary-button-press-bg, #6575ff);
+$button-bg-color: var(--primary-button-bg, #E03C31);
+$button-bg-hover-color: var(--primary-button-hover-bg, #ffcbd1);
+$button-bg-press-color: var(--primary-button-press-bg, #ee6b6e);
 $button-bg-disable-color: var(--primary-button-disable-bg, #d8dae8);
 
-$button-outline-color: var(--primary-button-bg, #3f52ff);
+$button-outline-color: var(--primary-button-bg, #E03C31);
 $button-outline-bg-color: var(--primary-button, #ffffff);
-$button-outline-hover-color: var(--primary-button-bg, #3f52ff);
-$button-outline-bg-hover-color: var(--primary-button-outline-bg, #D9DCFF);
+$button-outline-hover-color: var(--primary-button-bg, #E03C31);
+$button-outline-bg-hover-color: var(--primary-button-outline-bg, #ffcbd1);
 $button-outline-press-color: var(--primary-button, #ffffff);
-$button-outline-bg-press-color: var(--primary-button-press-bg, #3f52ff);
+$button-outline-bg-press-color: var(--primary-button-press-bg, #E03C31);
 $button-outline-disable-color: var(--primary-button-disable-bg, #d8dae8);
 $button-outline-bg-disable-color: var(--primary-button, #ffffff);
 
@@ -69,6 +70,7 @@ $button-outline-bg-disable-color: var(--primary-button, #ffffff);
   font-family: $font-family;
   font-weight: $font-weight;
   width: $button-width;
+  height: $button-height;
 }
 
 @mixin buttonSize {
@@ -181,7 +183,7 @@ $button-outline-bg-disable-color: var(--primary-button, #ffffff);
 
   &_button{
     color: $button-outline-color;
-    background-color: $button-outline-bg-color;
+    background-color: transparent;
     &:hover {
       background-color: $button-outline-bg-hover-color;
       color: $button-outline-hover-color;
