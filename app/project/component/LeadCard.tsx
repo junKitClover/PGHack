@@ -165,6 +165,14 @@ const LeadCard = ({
                 </a>
               </Flex>
             </Visible>
+            <Visible visible={hideContact}>
+              <Flex gap={3} alignItem="center">
+                <Icon iconName="lock" size="small" color={ColorMapping[leadScore].color}/>
+                <Text type="tooltips" color={ColorMapping[leadScore].color}>
+                  Please contact your Account Manager to unlock
+                </Text>
+              </Flex>
+            </Visible>
           </Stack>
           {loginUserType !== "NORMAL" && (
             <div className={styles.leadScore}>
@@ -217,7 +225,13 @@ const LeadCard = ({
             </Flex>
           </Stack>
           <Flex gap={4} justifyContent="spaceBetween" paddingTop={5}>
-            <Button type={"outline"} iconName={disableShowMore?'lock':''} disabled={disableShowMore}>Show More</Button>
+            <Button
+              type={"outline"}
+              iconName={disableShowMore ? "lock" : ""}
+              disabled={disableShowMore}
+            >
+              Show More
+            </Button>
             <Button iconName="chat" size="small" isFloat type="outline" />
           </Flex>
         </Box>

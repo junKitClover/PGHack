@@ -13,6 +13,9 @@ import Link from "next/link";
 import Router from "next/router";
 import styles from "./page.module.scss";
 import classnames from "classnames";
+import PGFilter from "./component/PGFilter";
+import LockManualFilter from "./component/LockManualFilter";
+import ManualFilter from "./component/ManualFilter";
 
 const Page = ({ params: { projectName } }: any) => {
   const { name, detailList } = projectInfo[projectName];
@@ -21,11 +24,13 @@ const Page = ({ params: { projectName } }: any) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setIsLoading(false);
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
+    if (isLoading) {
+      const interval = setInterval(() => {
+        setIsLoading(false);
+      }, 1000);
+      return () => clearInterval(interval);
+    }
+  }, [isLoading]);
 
   useEffect(() => {
     const localStorageUser = localStorage.getItem("userName") || "";
@@ -62,29 +67,10 @@ const Page = ({ params: { projectName } }: any) => {
           })}
           onClick={() => {
             setConfig("PG");
+            setIsLoading(true);
           }}
         >
-          <Grid paddingBlock={3} paddingInline={2} gap={3}>
-            <Text as="label">PG Default filter will be base on: </Text>
-            <ul>
-              <li className={styles.listStyle}>
-                <Icon iconName="done" size="small" color="success"/><Text>Location</Text>
-              </li>
-              <li className={styles.listStyle}>
-                <Icon iconName="done" size="small" color="success"/><Text>Property type</Text>
-              </li>
-              <li className={styles.listStyle}>
-                <Icon iconName="done" size="small" color="success"/><Text>Purpose</Text>
-              </li>
-              <li className={styles.listStyle}>
-                <Icon iconName="done" size="small" color="success"/><Text>Budget Range</Text>
-              </li>
-              <li className={styles.listStyle}>
-                <Icon iconName="done" size="small" color="success"/><Text>Submission Date</Text>
-              </li>
-            </ul>
-            
-          </Grid>
+          <PGFilter />
         </div>
         <div
           className={classnames({
@@ -95,23 +81,25 @@ const Page = ({ params: { projectName } }: any) => {
           onClick={() => {
             if (loginUserType === "SUPER") {
               setConfig("MANUAL");
+              setIsLoading(true);
             }
           }}
         >
-          <Grid paddingBlock={3} paddingInline={2} gap={3}>
-            <Text as="label">Manual Config</Text>
-            <Flex justifyContent="center" alignItem="center" direction="column" gap={3} paddingBlock={2}>
-              <Icon iconName="lock" size="large" color="information"/>
-              <Text as="label">Please contact your Account Manager to unlock</Text>
-            </Flex>
-          </Grid>
+          {loginUserType === "SUPER" ? <ManualFilter /> : <LockManualFilter />}
         </div>
       </Grid>
       <LeadQuality />
       <Grid col={[1, 2, 3]} gap={[3, 5, 6]} paddingBlock={5} paddingInline={3}>
         {leadInfo.map((prop, i) => {
           if (isLoading) return <LeadCardShimmer key={i} />;
-          return <LeadCard {...prop} key={i} hideContact={loginUserType !== "SUPER"} disableShowMore={loginUserType !== "SUPER"}/>;
+          return (
+            <LeadCard
+              {...prop}
+              key={i}
+              hideContact={loginUserType !== "SUPER"}
+              disableShowMore={loginUserType !== "SUPER"}
+            />
+          );
         })}
       </Grid>
     </Stack>

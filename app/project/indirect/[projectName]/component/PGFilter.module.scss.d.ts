@@ -1,7 +1,5 @@
 export type Styles = {
-  'section': string;
-  'sectionDisable': string;
-  'selectedSection': string;
+  'listStyle': string;
 };
 
 export type ClassNames = keyof Styles;
