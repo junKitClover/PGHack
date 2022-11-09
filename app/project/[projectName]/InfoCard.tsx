@@ -9,8 +9,8 @@ export interface InfoCardProps {
 const InfoCard = ({ title, contain }: InfoCardProps) => (
   <Box border rounded paddingBlock={3} paddingInline={4}>
     <Flex gap={3} direction="column" alignItem="center">
-      <Text size="medium">{title}</Text>
-      <Text size="xLarge" weight="bold">
+      <Text size={['xSmall','small','medium']} weight={['thin', ,'normal']}>{title}</Text>
+      <Text size={['medium', ,'large']} weight={['semiBold', ,'bold']}>
         {contain}
       </Text>
     </Flex>

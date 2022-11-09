@@ -1,5 +1,7 @@
 export type Styles = {
-  'spaceColor': string;
+  'boxBorder': string;
+  'colorPlate': string;
+  'rounded': string;
 };
 
 export type ClassNames = keyof Styles;

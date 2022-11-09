@@ -1,16 +1,28 @@
-import { Box, Text } from "component/atoms";
+import { Box, Text, Icon, ColorPlate } from "component/atoms";
 import { Stack, Flex } from "component/organisms";
 import { Button } from "component/molecules";
-import { TColor } from "styles/Color";
-import styles from "./LeadCard.modules.scss";
+import { TColor, TTextColor } from "styles/Color";
 
-type TLeadScore = "high" | "medium" | "low" | "inactive";
+type TLeadScore = "high" | "medium" | "low";
 
-const ColorMapping: Record<TLeadScore, TColor> = {
-  high: "errorDarker",
-  medium: "error",
-  low: "errorLighter",
-  inactive: "greyDarker",
+interface ColorProps {
+  background: TColor;
+  color: TTextColor;
+}
+
+const ColorMapping: Record<TLeadScore, ColorProps> = {
+  high: {
+    background: "successDarker",
+    color: "white",
+  },
+  medium: {
+    background: "success",
+    color: "white",
+  },
+  low: {
+    background: "successLighter",
+    color: "black",
+  },
 };
 
 export interface LeadCardProps {
@@ -19,35 +31,28 @@ export interface LeadCardProps {
   location: string;
   searchFor: string;
   lastSearch: string;
+  signUpTime: string;
   leadScore: TLeadScore;
+  isVerified: boolean;
 }
 
 export const LeadQuality = () => (
   <Box border rounded paddingInline={3} paddingBlock={4}>
     <Flex gap={3}>
       <Flex gap={3}>
-        <Box backgroundColor="errorDarker" style={{ width: "32px" }}>
-          {" "}
-        </Box>
-        <Text>High</Text>
+        <ColorPlate backgroundColor="successDarker" />
+        <Icon iconName="info" size="small" color="black" title="Last Search" position="bottom center"/>
+        <Text>Hot</Text>
       </Flex>
       <Flex gap={3}>
-        <Box backgroundColor="error" style={{ width: "32px" }}>
-          {" "}
-        </Box>
-        <Text>Medium</Text>
+      <ColorPlate backgroundColor="success" />
+      <Icon iconName="info" size="small" color="black" title="Last Search" position="bottom center"/>
+        <Text>Warm</Text>
       </Flex>
       <Flex gap={3}>
-        <Box backgroundColor="errorLighter" style={{ width: "32px" }}>
-          {" "}
-        </Box>
-        <Text>Low</Text>
-      </Flex>
-      <Flex gap={3}>
-        <Box backgroundColor="greyDarker" style={{ width: "32px" }}>
-          {" "}
-        </Box>
-        <Text>Inactive</Text>
+      <ColorPlate backgroundColor="successLighter" />
+      <Icon iconName="info" size="small" color="black" title="Last Search" position="bottom center"/>
+        <Text>Cold</Text>
       </Flex>
     </Flex>
   </Box>
@@ -59,54 +64,76 @@ const LeadCard = ({
   location,
   searchFor,
   lastSearch,
+  signUpTime,
   leadScore,
+  isVerified,
 }: LeadCardProps) => (
   <Box border rounded>
-    <Box padding={[2, 4, 6]} backgroundColor={ColorMapping[leadScore]}>
-      <Text type="title" color="white">
+    <Flex
+      padding={[2, 4, 6]}
+      gap={3}
+      alignItem="center"
+      backgroundColor={ColorMapping[leadScore].background}
+    >
+      <Text type="title" color={ColorMapping[leadScore].color}>
         {name}
       </Text>
-    </Box>
+      {isVerified && (
+        <Icon
+          iconName="verified"
+          title="OTP Verified"
+          size="small"
+          color={ColorMapping[leadScore].color}
+          position="top center"
+        />
+      )}
+    </Flex>
+    <Flex
+      gap={2}
+      justifyContent="spaceBetween"
+      padding={3}
+      backgroundColor="greyLighter"
+    >
+      <Flex gap={2}>
+        <Icon iconName="update" size="small" color="black" title="Last Search" position="bottom center"/>
+        <Text as="span" color="black" size="small" weight="thin">
+          {lastSearch}
+        </Text>
+      </Flex>
+      <Flex gap={2}>
+        <Icon iconName="file_upload" size="small" color="black" title="Submit Date" position="bottom center"/>
+        <Text as="span" color="black" size="small" weight="thin">
+          {signUpTime}
+        </Text>
+      </Flex>
+    </Flex>
     <Box padding={[2, 4, 6]} backgroundColor="white">
-      <Stack gap={2}>
-        <Flex direction={["column", "row"]} gap={2}>
-          <Text as="span" color="black" size="medium" weight="semiBold">
-            Budget
-          </Text>
-          <Text as="span" color="black" size="medium" weight="thin">
+      <Stack gap={4}>
+        <Flex gap={2}>
+          <Icon iconName="paid" size="small" color="black" title="Budget"/>
+          <Text as="span" color="black" size="small" weight="thin">
             {budegetRange}
           </Text>
         </Flex>
-        <Flex direction={["column", "row"]} gap={2}>
-          <Text as="span" color="black" size="medium" weight="semiBold">
-            Search Location
-          </Text>
-          <Text as="span" color="black" size="medium" weight="thin">
+        <Flex gap={2}>
+          <Icon iconName="location_on" size="small" color="black" title="Prefere Location"/>
+          <Text as="span" color="black" size="small" weight="thin">
             {location}
           </Text>
         </Flex>
-        <Flex direction={["column", "row"]} gap={2}>
-          <Text as="span" color="black" size="medium" weight="semiBold">
-            Searching for
-          </Text>
-          <Text as="span" color="black" size="medium" weight="thin">
+        <Flex gap={2}>
+          <Icon iconName="home" size="small" color="black" title="Ownership"/>
+          <Text as="span" color="black" size="small" weight="thin">
             {searchFor}
           </Text>
         </Flex>
-        <Flex direction={["column", "row"]} gap={2}>
-          <Text as="span" color="black" size="medium" weight="semiBold">
-            Last Seach
-          </Text>
-          <Text as="span" color="black" size="medium" weight="thin">
-            {lastSearch}
-          </Text>
-        </Flex>
       </Stack>
-      <Flex gap={4} paddingBlock={3} justifyContent="spaceBetween">
+      <Flex gap={4} justifyContent="spaceBetween" paddingTop={5}>
         <Button type="outline">Show More</Button>
         <Flex gap={2}>
+          <Button iconName="share" size="small" isFloat type="outline" />
+          <Button iconName="chat" size="small" isFloat type="outline" />
           <Button iconName="call" size="small" isFloat type="outline" />
-          <Button iconName="sms" size="small" isFloat type="outline" />
         </Flex>
       </Flex>
     </Box>
