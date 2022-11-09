@@ -41,14 +41,17 @@ export const LeadQuality = () => (
     <Flex gap={3}>
       <Flex gap={3}>
         <ColorPlate backgroundColor="successDarker" />
+        <Icon iconName="info" size="small" color="black" title="Last Search" position="bottom center"/>
         <Text>Hot</Text>
       </Flex>
       <Flex gap={3}>
       <ColorPlate backgroundColor="success" />
+      <Icon iconName="info" size="small" color="black" title="Last Search" position="bottom center"/>
         <Text>Warm</Text>
       </Flex>
       <Flex gap={3}>
       <ColorPlate backgroundColor="successLighter" />
+      <Icon iconName="info" size="small" color="black" title="Last Search" position="bottom center"/>
         <Text>Cold</Text>
       </Flex>
     </Flex>
@@ -81,6 +84,7 @@ const LeadCard = ({
           title="OTP Verified"
           size="small"
           color={ColorMapping[leadScore].color}
+          position="top center"
         />
       )}
     </Flex>
@@ -91,13 +95,13 @@ const LeadCard = ({
       backgroundColor="greyLighter"
     >
       <Flex gap={2}>
-        <Icon iconName="update" size="small" color="black" title="Last Search"/>
+        <Icon iconName="update" size="small" color="black" title="Last Search" position="bottom center"/>
         <Text as="span" color="black" size="small" weight="thin">
           {lastSearch}
         </Text>
       </Flex>
       <Flex gap={2}>
-        <Icon iconName="file_upload" size="small" color="black" title="Submit Date"/>
+        <Icon iconName="file_upload" size="small" color="black" title="Submit Date" position="bottom center"/>
         <Text as="span" color="black" size="small" weight="thin">
           {signUpTime}
         </Text>
@@ -106,19 +110,19 @@ const LeadCard = ({
     <Box padding={[2, 4, 6]} backgroundColor="white">
       <Stack gap={4}>
         <Flex gap={2}>
-          <Icon iconName="paid" size="small" color="black" />
+          <Icon iconName="paid" size="small" color="black" title="Budget"/>
           <Text as="span" color="black" size="small" weight="thin">
             {budegetRange}
           </Text>
         </Flex>
         <Flex gap={2}>
-          <Icon iconName="location_on" size="small" color="black" />
+          <Icon iconName="location_on" size="small" color="black" title="Prefere Location"/>
           <Text as="span" color="black" size="small" weight="thin">
             {location}
           </Text>
         </Flex>
         <Flex gap={2}>
-          <Icon iconName="home" size="small" color="black" />
+          <Icon iconName="home" size="small" color="black" title="Ownership"/>
           <Text as="span" color="black" size="small" weight="thin">
             {searchFor}
           </Text>
