@@ -94,7 +94,7 @@ const LeadCard = ({
           </Text>
         </Flex>
       </Stack>
-      <Flex gap={4} paddingBlock={3} justifyContent="spaceBetween">
+      <Flex gap={4} justifyContent="spaceBetween">
         <Button type="outline">Show More</Button>
         <Button iconName="call" size="small" isFloat type="outline" />
       </Flex>
