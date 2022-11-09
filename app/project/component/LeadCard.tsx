@@ -27,6 +27,8 @@ const ColorMapping: Record<TLeadScore, ColorProps> = {
 
 export interface LeadCardProps {
   name: string;
+  phoneNumber: string;
+  email: string;
   budegetRange: string;
   location: string;
   searchFor: string;
@@ -40,18 +42,25 @@ export const LeadQuality = () => (
   <Box border rounded paddingInline={3} paddingBlock={4}>
     <Flex gap={3}>
       <Flex gap={3}>
+        <Icon
+          iconName="info"
+          size="small"
+          color="black"
+          title="Last Search"
+          position="bottom center"
+        />
+        <Text>Lead Quality</Text>
+      </Flex>
+      <Flex gap={3}>
         <ColorPlate backgroundColor="successDarker" />
-        <Icon iconName="info" size="small" color="black" title="Last Search" position="bottom center"/>
         <Text>Hot</Text>
       </Flex>
       <Flex gap={3}>
-      <ColorPlate backgroundColor="success" />
-      <Icon iconName="info" size="small" color="black" title="Last Search" position="bottom center"/>
+        <ColorPlate backgroundColor="success" />
         <Text>Warm</Text>
       </Flex>
       <Flex gap={3}>
-      <ColorPlate backgroundColor="successLighter" />
-      <Icon iconName="info" size="small" color="black" title="Last Search" position="bottom center"/>
+        <ColorPlate backgroundColor="successLighter" />
         <Text>Cold</Text>
       </Flex>
     </Flex>
@@ -60,6 +69,8 @@ export const LeadQuality = () => (
 
 const LeadCard = ({
   name,
+  phoneNumber,
+  email,
   budegetRange,
   location,
   searchFor,
@@ -70,14 +81,11 @@ const LeadCard = ({
 }: LeadCardProps) => (
   <Box border rounded>
     <Flex
-      padding={[2, 4, 6]}
+      padding={[2, 4]}
       gap={3}
       alignItem="center"
       backgroundColor={ColorMapping[leadScore].background}
     >
-      <Text type="title" color={ColorMapping[leadScore].color}>
-        {name}
-      </Text>
       {isVerified && (
         <Icon
           iconName="verified"
@@ -87,6 +95,20 @@ const LeadCard = ({
           position="top center"
         />
       )}
+      <Stack gap={1}>
+        <Text size="medium" color={ColorMapping[leadScore].color}>
+          {name}
+        </Text>
+        <Flex>
+        <a href={`tel:${phoneNumber}`}><Text size="xSmall" color={ColorMapping[leadScore].color}>
+          {phoneNumber}
+        </Text></a>
+        <Text size="xSmall" weight="bold" color={ColorMapping[leadScore].color}>&nbsp;&nbsp;.&nbsp;&nbsp;</Text>
+        <a href={`mailto:${email}`}><Text size="xSmall" color={ColorMapping[leadScore].color}>
+          {email}
+        </Text></a>
+        </Flex>
+      </Stack>
     </Flex>
     <Flex
       gap={2}
@@ -95,13 +117,25 @@ const LeadCard = ({
       backgroundColor="greyLighter"
     >
       <Flex gap={2}>
-        <Icon iconName="update" size="small" color="black" title="Last Search" position="bottom center"/>
+        <Icon
+          iconName="update"
+          size="small"
+          color="black"
+          title="Last Search"
+          position="bottom center"
+        />
         <Text as="span" color="black" size="small" weight="thin">
           {lastSearch}
         </Text>
       </Flex>
       <Flex gap={2}>
-        <Icon iconName="file_upload" size="small" color="black" title="Submit Date" position="bottom center"/>
+        <Icon
+          iconName="file_upload"
+          size="small"
+          color="black"
+          title="Submit Date"
+          position="bottom center"
+        />
         <Text as="span" color="black" size="small" weight="thin">
           {signUpTime}
         </Text>
@@ -110,19 +144,24 @@ const LeadCard = ({
     <Box padding={[2, 4, 6]} backgroundColor="white">
       <Stack gap={4}>
         <Flex gap={2}>
-          <Icon iconName="paid" size="small" color="black" title="Budget"/>
+          <Icon iconName="paid" size="small" color="black" title="Budget" />
           <Text as="span" color="black" size="small" weight="thin">
             {budegetRange}
           </Text>
         </Flex>
         <Flex gap={2}>
-          <Icon iconName="location_on" size="small" color="black" title="Prefere Location"/>
+          <Icon
+            iconName="location_on"
+            size="small"
+            color="black"
+            title="Prefere Location"
+          />
           <Text as="span" color="black" size="small" weight="thin">
             {location}
           </Text>
         </Flex>
         <Flex gap={2}>
-          <Icon iconName="home" size="small" color="black" title="Ownership"/>
+          <Icon iconName="home" size="small" color="black" title="Ownership" />
           <Text as="span" color="black" size="small" weight="thin">
             {searchFor}
           </Text>
@@ -131,9 +170,7 @@ const LeadCard = ({
       <Flex gap={4} justifyContent="spaceBetween" paddingTop={5}>
         <Button type="outline">Show More</Button>
         <Flex gap={2}>
-          <Button iconName="share" size="small" isFloat type="outline" />
           <Button iconName="chat" size="small" isFloat type="outline" />
-          <Button iconName="call" size="small" isFloat type="outline" />
         </Flex>
       </Flex>
     </Box>

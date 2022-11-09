@@ -3,6 +3,8 @@ import { LeadCardProps } from "../component/LeadCard";
 export const leadInfo: Array<LeadCardProps> = [
   {
     name: "Mike Wong",
+    phoneNumber: "+60149380832",
+    email:"mike@gmail.com",
     budegetRange: "RM 500k - 620k",
     location: "Penang",
     searchFor: "Self stay",
@@ -13,6 +15,8 @@ export const leadInfo: Array<LeadCardProps> = [
   },
   {
     name: "Dickson Chong",
+    phoneNumber: "+60129304838",
+    email:"dickson@gmail.com",
     budegetRange: "RM 330k - 520k",
     location: "Penang",
     searchFor: "Self stay",
@@ -23,6 +27,8 @@ export const leadInfo: Array<LeadCardProps> = [
   },
   {
     name: "Karen Mo",
+    phoneNumber: "+60183832049",
+    email:"karen@gmail.com",
     budegetRange: "RM 330k - 520k",
     location: "Penang",
     searchFor: "Self stay",
@@ -33,6 +39,8 @@ export const leadInfo: Array<LeadCardProps> = [
   },
   {
     name: "Anna Hee",
+    phoneNumber: "+60183938204",
+    email:"anna@gmail.com",
     budegetRange: "RM 430k - 500k",
     location: "Penang",
     searchFor: "Self stay",
@@ -43,6 +51,8 @@ export const leadInfo: Array<LeadCardProps> = [
   },
   {
     name: "Tan Ah Kao",
+    phoneNumber: "+60149383208",
+    email:"kaokao@gmail.com",
     budegetRange: "RM 330k - 520k",
     location: "Malaysia",
     searchFor: "Investment",
@@ -53,6 +63,8 @@ export const leadInfo: Array<LeadCardProps> = [
   },
   {
     name: "Hana Teow",
+    phoneNumber: "+60120498338",
+    email:"hana@gmail.com",
     budegetRange: "RM 330k - 520k",
     location: "Malaysia",
     searchFor: "Self stay",
@@ -63,6 +75,8 @@ export const leadInfo: Array<LeadCardProps> = [
   },
   {
     name: "Julie Lew",
+    phoneNumber: "+60183820493",
+    email:"julie@gmail.com",
     budegetRange: "RM 600k - 720k",
     location: "Kuala Lumpur",
     searchFor: "Investment",
@@ -73,6 +87,8 @@ export const leadInfo: Array<LeadCardProps> = [
   },
   {
     name: "Michelle Yeong",
+    email:"michelle@gmail.com",
+    phoneNumber: "+60184933208",
     budegetRange: "RM 300k - 350k",
     location: "Malaysia",
     searchFor: "Investment",
