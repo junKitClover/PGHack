@@ -21,18 +21,20 @@ interface ProjectNameProps {
 
 const Page = ({ params: { projectName } }: ProjectNameProps) => {
   const { name, detailList } = projectInfo[projectName];
-  const [loginUser, setLoginUser] = useState('');
 
   useEffect(() => {
     const localStorageUser = localStorage.getItem("userName") || '';
+    
+    if(!localStorageUser){
+      window.location.href = '/';
+      Router.push('/');
+    }
+
     if(SUPER_USER.indexOf(localStorageUser)<0){
       window.location.href = `/project/direct/${projectName}`;
       Router.push(`/project/direct/${projectName}`);
     }
-    if(localStorageUser){
-      setLoginUser(localStorageUser);
-    }
-  }, [loginUser]);
+  });
 
   return (
     <Stack gap={4}>

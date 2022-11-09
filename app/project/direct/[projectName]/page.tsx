@@ -25,6 +25,12 @@ const Page = ({ params: { projectName } }: ProjectNameProps) => {
 
   useEffect(() => {
     const localStorageUser = localStorage.getItem("userName") || "";
+
+    if(!localStorageUser){
+      window.location.href = '/';
+      Router.push('/');
+    }
+    
     if (SUPER_USER.indexOf(localStorageUser) >= 0) {
       setLoginUser("SUPER");
     }
