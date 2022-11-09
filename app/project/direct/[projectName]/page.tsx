@@ -9,7 +9,6 @@ import InfoCard, { InfoCardProps } from "../../component/InfoCard";
 import { projectInfo } from "../../data/project";
 import { leadInfo } from "../../data/lead";
 import { Button } from "component/molecules";
-import { SUPER_USER } from "../../../user";
 import Link from "next/link";
 import Router from "next/router";
 
@@ -22,7 +21,7 @@ interface ProjectNameProps {
 
 const Page = ({ params: { projectName } }: any) => {
   const { name, detailList } = projectInfo[projectName];
-  const [loginUser, setLoginUser] = useState("");
+  const [loginUserType, setLoginUserType] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -33,17 +32,18 @@ const Page = ({ params: { projectName } }: any) => {
   }, []);
 
   useEffect(() => {
-    const localStorageUser = localStorage.getItem("userName") || "";
+    const localStorageUserName = localStorage.getItem("userName") || '';
+    const localStorageUserType = localStorage.getItem("userType") || "";
 
-    if (!localStorageUser) {
+    if (!localStorageUserName) {
       window.location.href = "/";
       Router.push("/");
     }
 
-    if (SUPER_USER.indexOf(localStorageUser) >= 0) {
-      setLoginUser("SUPER");
+    if (localStorageUserType) {
+      setLoginUserType(localStorageUserType);
     }
-  }, [loginUser]);
+  }, [loginUserType]);
 
   return (
     <Stack gap={4}>
@@ -52,14 +52,14 @@ const Page = ({ params: { projectName } }: any) => {
       </Text>
       <Flex gap={2}>
         <Button type="contained">Direct Lead</Button>
-        {loginUser === "SUPER" ? (
-          <Link href={`/project/indirect/${projectName}`}>
-            <Button type="outline">Indirect Lead</Button>
-          </Link>
-        ) : (
+        {loginUserType === "NORMAL" ? (
           <Button disabled type="outline" iconName="lock">
             Indirect Lead
           </Button>
+        ) : (
+          <Link href={`/project/indirect/${projectName}`}>
+            <Button type="outline">Indirect Lead</Button>
+          </Link>
         )}
       </Flex>
       <Visible visible={false}>
@@ -69,7 +69,7 @@ const Page = ({ params: { projectName } }: any) => {
           ))}
         </Grid>
       </Visible>
-      {loginUser === "SUPER" ? <LeadQuality /> : false}
+      {loginUserType === "NORMAL" ? null : <LeadQuality /> }
       <Grid col={[1, 2, 3]} gap={[3, 5, 6]} paddingBlock={5} paddingInline={3}>
         {leadInfo.map((prop, i) => {
           if (isLoading) return <LeadCardShimmer key={i} />;

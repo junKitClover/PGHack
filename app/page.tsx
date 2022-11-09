@@ -4,7 +4,7 @@ import { Box, Text } from "component/atoms";
 import { Button } from "component/molecules";
 import { useState, useEffect } from "react";
 import Router, { useRouter } from "next/router";
-import { SUPER_USER, NORMAL_USER } from "./user";
+import { SUPER_USER, NORMAL_USER, MID_USER } from "./user";
 
 const Page = () => {
   const [submitStatus, setSubmitStatus] = useState("");
@@ -13,9 +13,23 @@ const Page = () => {
   const onSubmit = (props: any) => {
     if (props.target[0].value === props.target[1].value) {
       if (
-        SUPER_USER.indexOf(props.target[0].value) >= 0 ||
+        SUPER_USER.indexOf(props.target[0].value) >= 0
+      ) {
+        localStorage.setItem("userType", "SUPER");
+        localStorage.setItem("userName", props.target[0].value);
+        setSubmitStatus("success");
+      }
+      if (
         NORMAL_USER.indexOf(props.target[0].value) >= 0
       ) {
+        localStorage.setItem("userType", "NORMAL"); 
+        localStorage.setItem("userName", props.target[0].value);
+        setSubmitStatus("success");
+      }
+      if (
+        MID_USER.indexOf(props.target[0].value) >= 0
+      ) {
+        localStorage.setItem("userType", "MID");
         localStorage.setItem("userName", props.target[0].value);
         setSubmitStatus("success");
       }
