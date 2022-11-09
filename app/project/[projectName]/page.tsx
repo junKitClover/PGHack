@@ -1,7 +1,7 @@
 import { Box, Text } from "component/atoms";
 import { Stack, Grid, Flex } from "component/organisms";
-import LeadCard, { LeadCardProps, LeadQuality } from "./LeadCard";
-import InfoCard, { InfoCardProps } from "./InfoCard";
+import LeadCard, { LeadCardProps, LeadQuality } from "../component/LeadCard";
+import InfoCard, { InfoCardProps } from "../component/InfoCard";
 import { Button } from "component/molecules";
 
 interface ProjectNameProps {

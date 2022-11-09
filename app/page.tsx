@@ -1,74 +1,28 @@
+'use client'
 import { Flex, Grid, Stack } from "component/organisms";
 import { Box, Text } from "component/atoms";
 import { Button } from "component/molecules";
 
-const LeadCard = () => (
-  <Box border rounded>
-    <Box padding={[2, 4, 6]} backgroundColor="errorDarker">
-      <Text type="title" color="white">
-        Name
-      </Text>
-    </Box>
-    <Box padding={[2, 4, 6]} backgroundColor="white">
-      <Stack gap={2}>
-        <Flex direction={["column", "row"]} gap={2}>
-          <Text as="span" color="black" size="medium" weight="semiBold">
-            Name
-          </Text>
-          <Text as="span" color="black" size="medium" weight="thin">
-            Name
-          </Text>
-        </Flex>
-        <Flex direction={["column", "row"]} gap={2}>
-          <Text as="span" color="black" size="medium" weight="semiBold">
-            Name
-          </Text>
-          <Text as="span" color="black" size="medium" weight="thin">
-            Name
-          </Text>
-        </Flex>
-        <Flex direction={["column", "row"]} gap={2}>
-          <Text as="span" color="black" size="medium" weight="semiBold">
-            Name
-          </Text>
-          <Text as="span" color="black" size="medium" weight="thin">
-            Name
-          </Text>
-        </Flex>
-        <Flex direction={["column", "row"]} gap={2}>
-          <Text as="span" color="black" size="medium" weight="semiBold">
-            Name
-          </Text>
-          <Text as="span" color="black" size="medium" weight="thin">
-            Name
-          </Text>
-        </Flex>
-      </Stack>
-      <Flex gap={4} paddingBlock={3} justifyContent="spaceBetween">
-        <Button type="outline">Show More</Button>
-        <Flex gap={2}>
-          <Button iconName="call" size="small" isFloat type="outline" />
-          <Button iconName="sms" size="small" isFloat type="outline" />
-        </Flex>
-      </Flex>
-    </Box>
-  </Box>
-);
 
 const Page = () => (
-  <Grid col={[1, 2, 3]} gap={[3, 5, 6]} paddingBlock={5} paddingInline={3}>
-    <LeadCard />
-    <LeadCard />
-    <LeadCard />
-    <LeadCard />
-    <LeadCard />
-    <LeadCard />
-    <LeadCard />
-    <LeadCard />
-    <LeadCard />
-    <LeadCard />
-    <LeadCard />
-  </Grid>
+  <form>
+    <Flex justifyContent="center" alignItem="center" padding={10}>
+      <Box padding={3} border rounded>
+        <Stack gap={4}>
+          <Flex gap={3}>
+            <Text as="label">Username:</Text><input name="username" type="text" placeholder="User Name" />
+          </Flex>
+          <Flex gap={3}>
+            <Text as="label">Password:</Text><input name="password" type="password" placeholder="Password" />
+          </Flex>
+          <Flex gap={3}>
+            <Button>Sign In</Button>
+            <Button type="text">Forget password</Button>
+          </Flex>
+        </Stack>
+      </Box>
+    </Flex>
+  </form>
 );
 
 export default Page;
