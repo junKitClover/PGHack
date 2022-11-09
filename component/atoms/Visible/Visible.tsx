@@ -29,6 +29,7 @@ export const Visible = ({ visible, children, visibleInPrint = true, ...restprops
   <div
     {...restprops}
     className={classnames(
+      styles.base,
       ...generateVisibleStyleList(visible),
       styles[`display_print_${getVisibleTerms(visibleInPrint)}`]
     )}

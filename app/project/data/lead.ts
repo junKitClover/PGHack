@@ -10,7 +10,7 @@ export const leadInfo: Array<LeadCardProps> = [
     searchFor: "Self stay",
     lastSearch: "3 days ago",
     signUpTime: "11 days ago",
-    leadScore: "high",
+    leadScore: "Hot",
     isVerified: true,
   },
   {
@@ -22,7 +22,7 @@ export const leadInfo: Array<LeadCardProps> = [
     searchFor: "Self stay",
     lastSearch: "1 days ago",
     signUpTime: "3 days ago",
-    leadScore: "high",
+    leadScore: "Hot",
     isVerified: true,
   },
   {
@@ -34,7 +34,7 @@ export const leadInfo: Array<LeadCardProps> = [
     searchFor: "Self stay",
     lastSearch: "Just Now",
     signUpTime: "Just Now",
-    leadScore: "high",
+    leadScore: "Hot",
     isVerified: false,
   },
   {
@@ -46,7 +46,7 @@ export const leadInfo: Array<LeadCardProps> = [
     searchFor: "Self stay",
     lastSearch: "Just Now",
     signUpTime: "A Month ago",
-    leadScore: "high",
+    leadScore: "Hot",
     isVerified: true,
   },
   {
@@ -58,7 +58,7 @@ export const leadInfo: Array<LeadCardProps> = [
     searchFor: "Investment",
     lastSearch: "14 days ago",
     signUpTime: "A Month ago",
-    leadScore: "medium",
+    leadScore: "Warm",
     isVerified: true,
   },
   {
@@ -70,7 +70,7 @@ export const leadInfo: Array<LeadCardProps> = [
     searchFor: "Self stay",
     lastSearch: "23 days ago",
     signUpTime: "2 Months ago",
-    leadScore: "medium",
+    leadScore: "Warm",
     isVerified: false,
   },
   {
@@ -82,7 +82,7 @@ export const leadInfo: Array<LeadCardProps> = [
     searchFor: "Investment",
     lastSearch: "A Month ago",
     signUpTime: "3 Months ago",
-    leadScore: "low",
+    leadScore: "Cold",
     isVerified: false,
   },
   {
@@ -94,7 +94,7 @@ export const leadInfo: Array<LeadCardProps> = [
     searchFor: "Investment",
     lastSearch: "2 Months ago",
     signUpTime: "3 Months ago",
-    leadScore: "low",
+    leadScore: "Cold",
     isVerified: false,
   },
 ];
