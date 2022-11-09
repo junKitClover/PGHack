@@ -67,7 +67,7 @@ const Page = ({ params: { projectName } }: ProjectNameProps) => {
           <InfoCard {...props} key={i} />
         ))}
       </Grid>
-      <LeadQuality />
+      {loginUser === "SUPER" ? <LeadQuality /> : false}
       <Grid col={[1, 2, 3]} gap={[3, 5, 6]} paddingBlock={5} paddingInline={3}>
         {leadInfo.map((prop, i) => {
           if (isLoading) return <LeadCardShimmer key={i} />;

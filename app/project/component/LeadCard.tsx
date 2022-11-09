@@ -101,9 +101,9 @@ const LeadCard = ({
         padding={[2, 4]}
         gap={3}
         alignItem="center"
-        backgroundColor={ColorMapping[leadScore].background}
+        backgroundColor={loginUser === "SUPER" ? ColorMapping[leadScore].background : 'white'}
       >
-        {isVerified && (
+        {( isVerified && loginUser === "SUPER" ) && (
           <Icon
             iconName="verified"
             title="OTP Verified"
@@ -113,20 +113,20 @@ const LeadCard = ({
           />
         )}
         <Stack gap={1}>
-          <Text size="medium" color={ColorMapping[leadScore].color}>
+          <Text size="medium" color={loginUser === "SUPER" ? ColorMapping[leadScore].color : "black"}>
             {name}
           </Text>
           <Flex>
-          <a href={`tel:${phoneNumber}`}><Text size="xSmall" color={ColorMapping[leadScore].color}>
+          <a href={`tel:${phoneNumber}`}><Text size="xSmall" color={loginUser === "SUPER" ? ColorMapping[leadScore].color : "black"}>
             {phoneNumber}
           </Text></a>
           <Text size="xSmall" weight="bold" color={ColorMapping[leadScore].color}>&nbsp;&nbsp;.&nbsp;&nbsp;</Text>
-          <a href={`mailto:${email}`}><Text size="xSmall" color={ColorMapping[leadScore].color}>
+          <a href={`mailto:${email}`}><Text size="xSmall" color={loginUser === "SUPER" ? ColorMapping[leadScore].color : "black"}>
             {email}
           </Text></a>
           </Flex>
         </Stack>
-        <div className={styles.leadScore}><Text color="white" size="xSmall">{leadScore}</Text></div>
+        {loginUser === "SUPER" && <div className={styles.leadScore}><Text color="white" size="xSmall">{leadScore}</Text></div>}
       </Flex>
     </div>
     <Box
