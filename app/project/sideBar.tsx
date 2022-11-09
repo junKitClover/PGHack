@@ -15,37 +15,37 @@ const projectList: Array<ProjectProps> = [
     id: 1,
     name: "THE LIGHT Waterfront Penang",
     location: "Gelugor, Penang",
-    path: "/project/the-light-waterfront-penang",
+    path: "/project/direct/the-light-waterfront-penang",
   },
   {
     id: 2,
     name: "Permatang Sanctuary",
     location: "Permatang Tinggi, Bukit Mertajam",
-    path: "/project/permatang-sanctuary",
+    path: "/project/direct/permatang-sanctuary",
   },
   {
     id: 3,
     name: "Tréhaus",
     location: "Bukit Jambul, Penang",
-    path: "/project/trehaus",
+    path: "/project/direct/trehaus",
   },
   {
     id: 4,
     name: "The Terraces Condominium",
     location: "Bukit Jambul, Penang",
-    path: "/project/the-terraces-condominium",
+    path: "/project/direct/the-terraces-condominium",
   },
   {
     id: 5,
     name: "UDINI Square",
     location: "MetroEast, Penang",
-    path: "/project/udini-square",
+    path: "/project/direct/udini-square",
   },
   {
     id: 6,
     name: "Vertiq Boutique Outlets",
     location: "Metroeast, Penang",
-    path: "/project/vertiq-boutique-outlets",
+    path: "/project/direct/vertiq-boutique-outlets",
   },
 ];
 
