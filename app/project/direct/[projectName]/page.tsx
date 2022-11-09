@@ -20,7 +20,7 @@ interface ProjectNameProps {
   searchParams: object;
 }
 
-const Page = ({ params: { projectName } }: ProjectNameProps) => {
+const Page = ({ params: { projectName } }: any) => {
   const { name, detailList } = projectInfo[projectName];
   const [loginUser, setLoginUser] = useState("");
   const [isLoading, setIsLoading] = useState(true);

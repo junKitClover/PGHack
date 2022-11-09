@@ -13,14 +13,8 @@ import Link from "next/link";
 import { SUPER_USER } from '../../../user';
 import Router from "next/router";
 
-interface ProjectNameProps {
-  params: {
-    projectName: string;
-  };
-  searchParams: object;
-}
 
-const Page = ({ params: { projectName } }: ProjectNameProps) => {
+const Page = ({ params: { projectName } }: any) => {
   const { name, detailList } = projectInfo[projectName];
   const [isLoading, setIsLoading] = useState(true);
 
