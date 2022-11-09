@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Text } from "component/atoms";
+import { Box, Text, Visible } from "component/atoms";
 import { useEffect, useState } from "react";
 import { Stack, Grid, Flex } from "component/organisms";
 import LeadCard, { LeadCardProps, LeadQuality } from "../../component/LeadCard";
@@ -62,11 +62,13 @@ const Page = ({ params: { projectName } }: any) => {
           </Button>
         )}
       </Flex>
-      <Grid col={[2, , 3]} gap={[3, 5, 6]} paddingBlock={5} paddingInline={3}>
-        {detailList.map((props, i) => (
-          <InfoCard {...props} key={i} />
-        ))}
-      </Grid>
+      <Visible visible={false}>
+        <Grid col={[2, , 3]} gap={[3, 5, 6]} paddingBlock={5} paddingInline={3}>
+          {detailList.map((props, i) => (
+            <InfoCard {...props} key={i} />
+          ))}
+        </Grid>
+      </Visible>
       {loginUser === "SUPER" ? <LeadQuality /> : false}
       <Grid col={[1, 2, 3]} gap={[3, 5, 6]} paddingBlock={5} paddingInline={3}>
         {leadInfo.map((prop, i) => {

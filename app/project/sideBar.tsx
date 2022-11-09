@@ -1,7 +1,10 @@
+'use client'
+
 import { Stack } from "component/organisms";
 import { Box } from "component/atoms";
 import { Button } from "component/molecules";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 interface ProjectProps {
   id: number,
@@ -49,18 +52,27 @@ const projectList: Array<ProjectProps> = [
   },
 ];
 
-const SideBar = () => (
-  <Box paddingBlock={3} paddingInline={2}>
-    <Stack gap={3}>
-      {projectList.map(({name, id, path}) => (
-        <Link key={id} href={path}>
-          <Button type="text" isFloat >
-            {name}
-          </Button>
-        </Link>
-      ))}
-    </Stack>
-  </Box>
-);
+const SideBar = () => {
+  const [currentPath, setCurrentPath]= useState('/project/direct/the-light-waterfront-penang');
+
+  useEffect(()=>{
+    const {href} = window.location;
+    const paths = href.split('/');
+    setCurrentPath(paths[paths.length - 1]);
+  },[])
+
+  return (
+    <Box paddingBlock={3} paddingInline={2}>
+      <Stack gap={3}>
+        {projectList.map(({name, id, path}) => (
+          <Link key={id} href={path}>
+            <Button type={path.indexOf(currentPath) >= 0 ? "contained" : "text"} isFloat onClick={()=>{setCurrentPath(path)}}>
+              {name}
+            </Button>
+          </Link>
+        ))}
+      </Stack>
+    </Box>
+  )};
 
 export default SideBar;
