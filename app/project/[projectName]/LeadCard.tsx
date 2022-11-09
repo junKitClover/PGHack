@@ -1,14 +1,28 @@
-import { Box, Text } from "component/atoms";
+import { Box, Text, Icon, ColorPlate } from "component/atoms";
 import { Stack, Flex } from "component/organisms";
 import { Button } from "component/molecules";
-import { TColor } from "styles/Color";
+import { TColor, TTextColor } from "styles/Color";
 
-type TLeadScore = "high" | "medium" | "low" ;
+type TLeadScore = "high" | "medium" | "low";
 
-const ColorMapping: Record<TLeadScore, TColor> = {
-  high: "successDarker",
-  medium: "success",
-  low: "successLighter",
+interface ColorProps {
+  background: TColor;
+  color: TTextColor;
+}
+
+const ColorMapping: Record<TLeadScore, ColorProps> = {
+  high: {
+    background: "successDarker",
+    color: "white",
+  },
+  medium: {
+    background: "success",
+    color: "white",
+  },
+  low: {
+    background: "successLighter",
+    color: "black",
+  },
 };
 
 export interface LeadCardProps {
@@ -17,28 +31,24 @@ export interface LeadCardProps {
   location: string;
   searchFor: string;
   lastSearch: string;
+  signUpTime: string;
   leadScore: TLeadScore;
+  isVerified: boolean;
 }
 
 export const LeadQuality = () => (
   <Box border rounded paddingInline={3} paddingBlock={4}>
     <Flex gap={3}>
       <Flex gap={3}>
-        <Box backgroundColor="successDarker">
-          {" "}
-        </Box>
+        <ColorPlate backgroundColor="successDarker" />
         <Text>Hot</Text>
       </Flex>
       <Flex gap={3}>
-        <Box backgroundColor="success">
-          {" "}
-        </Box>
+      <ColorPlate backgroundColor="success" />
         <Text>Warm</Text>
       </Flex>
       <Flex gap={3}>
-        <Box backgroundColor="successLighter">
-          {" "}
-        </Box>
+      <ColorPlate backgroundColor="successLighter" />
         <Text>Cold</Text>
       </Flex>
     </Flex>
@@ -51,52 +61,76 @@ const LeadCard = ({
   location,
   searchFor,
   lastSearch,
+  signUpTime,
   leadScore,
+  isVerified,
 }: LeadCardProps) => (
   <Box border rounded>
-    <Box padding={[2, 4, 6]} backgroundColor={ColorMapping[leadScore]}>
-      <Text type="title" color="white">
+    <Flex
+      padding={[2, 4, 6]}
+      gap={3}
+      alignItem="center"
+      backgroundColor={ColorMapping[leadScore].background}
+    >
+      <Text type="title" color={ColorMapping[leadScore].color}>
         {name}
       </Text>
-    </Box>
+      {isVerified && (
+        <Icon
+          iconName="verified"
+          title="OTP Verified"
+          size="small"
+          color={ColorMapping[leadScore].color}
+        />
+      )}
+    </Flex>
+    <Flex
+      gap={2}
+      justifyContent="spaceBetween"
+      padding={3}
+      backgroundColor="greyLighter"
+    >
+      <Flex gap={2}>
+        <Icon iconName="update" size="small" color="black" title="Last Search"/>
+        <Text as="span" color="black" size="small" weight="thin">
+          {lastSearch}
+        </Text>
+      </Flex>
+      <Flex gap={2}>
+        <Icon iconName="file_upload" size="small" color="black" title="Submit Date"/>
+        <Text as="span" color="black" size="small" weight="thin">
+          {signUpTime}
+        </Text>
+      </Flex>
+    </Flex>
     <Box padding={[2, 4, 6]} backgroundColor="white">
-      <Stack gap={2}>
-        <Flex direction={["column", "row"]} gap={2}>
-          <Text as="span" color="black" size="medium" weight="semiBold">
-            Budget
-          </Text>
-          <Text as="span" color="black" size="medium" weight="thin">
+      <Stack gap={4}>
+        <Flex gap={2}>
+          <Icon iconName="paid" size="small" color="black" />
+          <Text as="span" color="black" size="small" weight="thin">
             {budegetRange}
           </Text>
         </Flex>
-        <Flex direction={["column", "row"]} gap={2}>
-          <Text as="span" color="black" size="medium" weight="semiBold">
-            Search Location
-          </Text>
-          <Text as="span" color="black" size="medium" weight="thin">
+        <Flex gap={2}>
+          <Icon iconName="location_on" size="small" color="black" />
+          <Text as="span" color="black" size="small" weight="thin">
             {location}
           </Text>
         </Flex>
-        <Flex direction={["column", "row"]} gap={2}>
-          <Text as="span" color="black" size="medium" weight="semiBold">
-            Searching for
-          </Text>
-          <Text as="span" color="black" size="medium" weight="thin">
+        <Flex gap={2}>
+          <Icon iconName="home" size="small" color="black" />
+          <Text as="span" color="black" size="small" weight="thin">
             {searchFor}
           </Text>
         </Flex>
-        <Flex direction={["column", "row"]} gap={2}>
-          <Text as="span" color="black" size="medium" weight="semiBold">
-            Last Seach
-          </Text>
-          <Text as="span" color="black" size="medium" weight="thin">
-            {lastSearch}
-          </Text>
-        </Flex>
       </Stack>
-      <Flex gap={4} justifyContent="spaceBetween">
+      <Flex gap={4} justifyContent="spaceBetween" paddingTop={5}>
         <Button type="outline">Show More</Button>
-        <Button iconName="call" size="small" isFloat type="outline" />
+        <Flex gap={2}>
+          <Button iconName="share" size="small" isFloat type="outline" />
+          <Button iconName="chat" size="small" isFloat type="outline" />
+          <Button iconName="call" size="small" isFloat type="outline" />
+        </Flex>
       </Flex>
     </Box>
   </Box>

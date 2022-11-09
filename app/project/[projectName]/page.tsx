@@ -2,6 +2,7 @@ import { Box, Text } from "component/atoms";
 import { Stack, Grid, Flex } from "component/organisms";
 import LeadCard, { LeadCardProps, LeadQuality } from "./LeadCard";
 import InfoCard, { InfoCardProps } from "./InfoCard";
+import { Button } from "component/molecules";
 
 interface ProjectNameProps {
   params: {
@@ -23,6 +24,7 @@ const projectInfo: Record<string, ProjectInfor> = {
       { title: "Type", contain: "Condo" },
       { title: "Location", contain: "Gelugor, Penang" },
       { title: "Numbers of Leads", contain: "24" },
+      { title: "Target Company", contain: "Sunway, Setia City" },
     ],
     name: "The Light Waterfront Penang",
   },
@@ -33,6 +35,7 @@ const projectInfo: Record<string, ProjectInfor> = {
       { title: "Type", contain: "Condo" },
       { title: "Location", contain: "Gelugor, Penang" },
       { title: "Numbers of Leads", contain: "15" },
+      { title: "Target Company", contain: "Sunway, Setia City" },
     ],
     name: "Permatang Sanctuary",
   },
@@ -43,6 +46,7 @@ const projectInfo: Record<string, ProjectInfor> = {
       { title: "Type", contain: "Condo" },
       { title: "Location", contain: "Gelugor, Penang" },
       { title: "Numbers of Leads", contain: "23" },
+      { title: "Target Company", contain: "Sunway, Setia City" },
     ],
     name: "Trehaus",
   },
@@ -53,6 +57,7 @@ const projectInfo: Record<string, ProjectInfor> = {
       { title: "Type", contain: "Condo" },
       { title: "Location", contain: "Gelugor, Penang" },
       { title: "Numbers of Leads", contain: "32" },
+      { title: "Target Company", contain: "Sunway, Setia City" },
     ],
     name: "The Terraces Condominium",
   },
@@ -73,6 +78,7 @@ const projectInfo: Record<string, ProjectInfor> = {
       { title: "Type", contain: "Outlet" },
       { title: "Location", contain: "Gelugor, Penang" },
       { title: "Numbers of Leads", contain: "0" },
+      { title: "Target Company", contain: "Sunway, Setia City" },
     ],
     name: "Vertiq Boutique Outlets",
   },
@@ -84,75 +90,95 @@ const leadInfo: Array<LeadCardProps> = [
     budegetRange: "RM 500k - 620k",
     location: "Penang",
     searchFor: "Self stay",
-    lastSearch: "10/11/2022 . 3:30pm",
+    lastSearch: "3 days ago",
+    signUpTime: "11 days ago",
     leadScore: "high",
+    isVerified: true,
   },
   {
     name: "Dickson Chong",
     budegetRange: "RM 330k - 520k",
     location: "Penang",
     searchFor: "Self stay",
-    lastSearch: "10/11/2022 . 3:30pm",
+    lastSearch: "1 days ago",
+    signUpTime: "3 days ago",
     leadScore: "high",
+    isVerified: true,
   },
   {
     name: "Karen Mo",
     budegetRange: "RM 330k - 520k",
     location: "Penang",
     searchFor: "Self stay",
-    lastSearch: "10/11/2022 . 3:30pm",
+    lastSearch: "Just Now",
+    signUpTime: "Just Now",
     leadScore: "high",
+    isVerified: false,
   },
   {
     name: "Anna Hee",
     budegetRange: "RM 430k - 500k",
     location: "Penang",
     searchFor: "Self stay",
-    lastSearch: "1/11/2022 . 3:30pm",
+    lastSearch: "Just Now",
+    signUpTime: "A Month ago",
     leadScore: "high",
+    isVerified: true,
   },
   {
     name: "Tan Ah Kao",
     budegetRange: "RM 330k - 520k",
     location: "Malaysia",
-    searchFor: "investment",
-    lastSearch: "1/11/2022 . 3:30pm",
+    searchFor: "Investment",
+    lastSearch: "14 days ago",
+    signUpTime: "A Month ago",
     leadScore: "medium",
+    isVerified: true,
   },
   {
     name: "Hana Teow",
     budegetRange: "RM 330k - 520k",
     location: "Malaysia",
     searchFor: "Self stay",
-    lastSearch: "1/11/2022 . 3:30pm",
+    lastSearch: "23 days ago",
+    signUpTime: "2 Months ago",
     leadScore: "medium",
+    isVerified: false,
   },
   {
     name: "Julie Lew",
     budegetRange: "RM 600k - 720k",
     location: "Kuala Lumpur",
-    searchFor: "investment",
-    lastSearch: "1/11/2022 . 3:30pm",
+    searchFor: "Investment",
+    lastSearch: "A Month ago",
+    signUpTime: "3 Months ago",
     leadScore: "low",
+    isVerified: false,
   },
   {
     name: "Michelle Yeong",
     budegetRange: "RM 300k - 350k",
     location: "Malaysia",
-    searchFor: "investment",
-    lastSearch: "1/11/2022 . 3:30pm",
+    searchFor: "Investment",
+    lastSearch: "2 Months ago",
+    signUpTime: "3 Months ago",
     leadScore: "low",
+    isVerified: false,
   },
 ];
 
 const Page = ({ params: { projectName } }: ProjectNameProps) => {
-  const {name, detailList} = projectInfo[projectName];
+  const { name, detailList } = projectInfo[projectName];
   return (
     <Stack gap={4}>
       <Text type="display" as="h1" padding={4}>
         {name}
       </Text>
-      <Grid col={[1, 2, 3]} gap={[3, 5, 6]} paddingBlock={5} paddingInline={3}>
+      <Flex gap={2}>
+        <Button type="outline">Direct Lead</Button>
+        <Button type="contained">Indirect Lead</Button>
+      </Flex>
+      <Grid col={[2, , 3]} gap={[3, 5, 6]} paddingBlock={5} paddingInline={3}>
         {detailList.map((props, i) => (
           <InfoCard {...props} key={i} />
         ))}

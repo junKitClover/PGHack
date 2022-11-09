@@ -1,6 +1,8 @@
+import 'material-icons/iconfont/material-icons.css';
 import { IconProps } from "./Icon.d";
 import { getIconStyle } from "./IconHelper";
 import classnames from "classnames";
+import { TColor, styleColor } from 'styles/Color';
 import { TGeneralDevice } from 'types/device.d';
 import styles from './Icon.module.scss';
 
@@ -22,33 +24,41 @@ const generateSizeStyleList = (value?: TGeneralDevice<IconSizeType>): Array<stri
 
 interface IconComponentProps extends IconProps {
   iconName: string;
+  color?: TColor;
   size: TGeneralDevice<IconSizeType>;
+  title?:string;
 }
 
 const Icon = ({
-  iconType,
+  iconType = 'outlined',
+  color='black',
   iconFilled,
   iconGrade,
   iconOpticalSize,
   iconWeight,
   size,
-  iconName
+  iconName,
+  title,
 }: IconComponentProps) => (
-  <span
-    className={classnames(
-      `material-icons-${iconType}`,
-      ...generateSizeStyleList(size)
-    )}
-    style={{
-      fontVariationSettings: getIconStyle({
-        iconFilled,
-        iconGrade,
-        iconOpticalSize,
-        iconType,
-        iconWeight,
-      }),
-    }}
-  >
-    {iconName}
-  </span>
+    <span
+      title={title}
+      className={classnames(
+        styles.iconImage,
+        `material-icons-${iconType}`,
+        styleColor(color),
+        ...generateSizeStyleList(size)
+      )}
+      style={{
+        fontVariationSettings: getIconStyle({
+          iconFilled,
+          iconGrade,
+          iconOpticalSize,
+          iconType,
+          iconWeight,
+        }),
+      }}
+    >
+      {iconName}
+    </span>
 );
+export default Icon;

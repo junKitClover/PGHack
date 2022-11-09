@@ -19,6 +19,7 @@ export type Styles = {
   'icon_size_tablet_xSmall': string;
   'icon_size_xLarge': string;
   'icon_size_xSmall': string;
+  'iconImage': string;
 };
 
 export type ClassNames = keyof Styles;
