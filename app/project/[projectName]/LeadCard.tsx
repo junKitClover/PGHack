@@ -2,15 +2,13 @@ import { Box, Text } from "component/atoms";
 import { Stack, Flex } from "component/organisms";
 import { Button } from "component/molecules";
 import { TColor } from "styles/Color";
-import styles from "./LeadCard.modules.scss";
 
-type TLeadScore = "high" | "medium" | "low" | "inactive";
+type TLeadScore = "high" | "medium" | "low" ;
 
 const ColorMapping: Record<TLeadScore, TColor> = {
-  high: "errorDarker",
-  medium: "error",
-  low: "errorLighter",
-  inactive: "greyDarker",
+  high: "successDarker",
+  medium: "success",
+  low: "successLighter",
 };
 
 export interface LeadCardProps {
@@ -26,28 +24,22 @@ export const LeadQuality = () => (
   <Box border rounded paddingInline={3} paddingBlock={4}>
     <Flex gap={3}>
       <Flex gap={3}>
-        <Box backgroundColor="errorDarker" style={{ width: "32px" }}>
+        <Box backgroundColor="successDarker">
           {" "}
         </Box>
-        <Text>High</Text>
+        <Text>Hot</Text>
       </Flex>
       <Flex gap={3}>
-        <Box backgroundColor="error" style={{ width: "32px" }}>
+        <Box backgroundColor="success">
           {" "}
         </Box>
-        <Text>Medium</Text>
+        <Text>Warm</Text>
       </Flex>
       <Flex gap={3}>
-        <Box backgroundColor="errorLighter" style={{ width: "32px" }}>
+        <Box backgroundColor="successLighter">
           {" "}
         </Box>
-        <Text>Low</Text>
-      </Flex>
-      <Flex gap={3}>
-        <Box backgroundColor="greyDarker" style={{ width: "32px" }}>
-          {" "}
-        </Box>
-        <Text>Inactive</Text>
+        <Text>Cold</Text>
       </Flex>
     </Flex>
   </Box>
@@ -104,10 +96,7 @@ const LeadCard = ({
       </Stack>
       <Flex gap={4} paddingBlock={3} justifyContent="spaceBetween">
         <Button type="outline">Show More</Button>
-        <Flex gap={2}>
-          <Button iconName="call" size="small" isFloat type="outline" />
-          <Button iconName="sms" size="small" isFloat type="outline" />
-        </Flex>
+        <Button iconName="call" size="small" isFloat type="outline" />
       </Flex>
     </Box>
   </Box>
