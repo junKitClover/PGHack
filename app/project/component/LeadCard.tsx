@@ -36,6 +36,7 @@ export interface LeadCardProps {
   email: string;
   budegetRange: string;
   location: string;
+  propertyType: string;
   searchFor: string;
   lastSearch: string;
   signUpTime: string;
@@ -77,6 +78,7 @@ const LeadCard = ({
   phoneNumber,
   email,
   budegetRange,
+  propertyType,
   location,
   searchFor,
   lastSearch,
@@ -139,28 +141,37 @@ const LeadCard = ({
     </Box>
     <Visible visible={loginUser === "SUPER"}>
       <Box padding={[2, 4, 6]} backgroundColor="white">
-        <Stack gap={4}>
+        <Stack gap={2}>
           <Flex gap={2}>
-            <Icon iconName="paid" size="small" color="black" title="Budget" />
+            <Text as="span" color="black" size="small" weight="semiBold">
+              Budget:
+            </Text>
             <Text as="span" color="black" size="small" weight="thin">
               {budegetRange}
             </Text>
           </Flex>
           <Flex gap={2}>
-            <Icon
-              iconName="location_on"
-              size="small"
-              color="black"
-              title="Prefere Location"
-            />
+            <Text as="span" color="black" size="small" weight="semiBold">
+              Purpose:
+            </Text>
             <Text as="span" color="black" size="small" weight="thin">
-              {location}
+              {searchFor}
             </Text>
           </Flex>
           <Flex gap={2}>
-            <Icon iconName="home" size="small" color="black" title="Ownership" />
+            <Text as="span" color="black" size="small" weight="semiBold">
+              Property Type:
+            </Text>
             <Text as="span" color="black" size="small" weight="thin">
-              {searchFor}
+              {propertyType}
+            </Text>
+          </Flex>
+          <Flex gap={2}>
+            <Text as="span" color="black" size="small" weight="semiBold">
+              Location:
+            </Text>
+            <Text as="span" color="black" size="small" weight="thin">
+              {location}
             </Text>
           </Flex>
         </Stack>
