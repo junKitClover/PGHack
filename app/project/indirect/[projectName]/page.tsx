@@ -4,6 +4,7 @@ import { Box, Text } from "component/atoms";
 import { useEffect, useState } from "react";
 import { Stack, Grid, Flex } from "component/organisms";
 import LeadCard, { LeadCardProps, LeadQuality } from "../../component/LeadCard";
+import LeadCardShimmer from "../../component/LeadCardShimmer";
 import InfoCard, { InfoCardProps } from "../../component/InfoCard";
 import { projectInfo } from '../../data/project';
 import { leadInfo } from '../../data/lead';
@@ -21,10 +22,18 @@ interface ProjectNameProps {
 
 const Page = ({ params: { projectName } }: ProjectNameProps) => {
   const { name, detailList } = projectInfo[projectName];
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsLoading(false);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const localStorageUser = localStorage.getItem("userName") || '';
-    
+
     if(!localStorageUser){
       window.location.href = '/';
       Router.push('/');
@@ -52,9 +61,10 @@ const Page = ({ params: { projectName } }: ProjectNameProps) => {
       </Grid>
       <LeadQuality />
       <Grid col={[1, 2, 3]} gap={[3, 5, 6]} paddingBlock={5} paddingInline={3}>
-        {leadInfo.map((prop, i) => (
-          <LeadCard {...prop} key={i} />
-        ))}
+      {leadInfo.map((prop, i) => {
+          if (isLoading) return <LeadCardShimmer key={i} />;
+          return <LeadCard {...prop} key={i} />;
+        })}
       </Grid>
     </Stack>
   );
