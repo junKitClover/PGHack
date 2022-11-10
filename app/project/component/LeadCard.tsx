@@ -44,6 +44,10 @@ export interface LeadCardProps {
   isVerified: boolean;
   hideContact?: boolean;
   disableShowMore?: boolean;
+  lastSearch30Days: Array<string>;
+  propertiesView30Days: Array<string>;
+  leadSubmit30Days: string;
+  isInterestedNewProject: "STRONG" | "MODERATE";
 }
 
 export const LeadQuality = () => (
@@ -87,10 +91,19 @@ const LeadCard = ({
   signUpTime,
   leadScore,
   isVerified,
+  lastSearch30Days,
+  leadSubmit30Days,
+  propertiesView30Days,
+  isInterestedNewProject,
   hideContact = false,
   disableShowMore = false,
 }: LeadCardProps) => {
   const [loginUserType, setLoginUserType] = useState("");
+  const [showMore, setShowMore] = useState(false);
+
+  const showMoreHandler = () => {
+    setShowMore((prev) => !prev);
+  };
 
   useEffect(() => {
     const localStorageUserType = localStorage.getItem("userType") || "";
@@ -98,7 +111,11 @@ const LeadCard = ({
   }, [loginUserType]);
 
   return (
-    <Box border rounded>
+    <Box
+      border
+      rounded
+      className={showMore ? styles.showMore : styles.showLess}
+    >
       <div className={styles.container}>
         <Flex
           padding={[2, 4]}
@@ -167,7 +184,11 @@ const LeadCard = ({
             </Visible>
             <Visible visible={hideContact}>
               <Flex gap={3} alignItem="center">
-                <Icon iconName="lock" size="small" color={ColorMapping[leadScore].color}/>
+                <Icon
+                  iconName="lock"
+                  size="small"
+                  color={ColorMapping[leadScore].color}
+                />
                 <Text type="tooltips" color={ColorMapping[leadScore].color}>
                   Please contact your Account Manager to unlock
                 </Text>
@@ -188,55 +209,98 @@ const LeadCard = ({
           Lead Submission {lastSearch}
         </Text>
       </Box>
-      <Visible visible={loginUserType !== "NORMAL"}>
-        <Box padding={[2, 4, 6]} backgroundColor="white">
-          <Stack gap={2}>
-            <Flex gap={2}>
-              <Text as="span" color="black" size="small" weight="semiBold">
-                Budget:
-              </Text>
-              <Text as="span" color="black" size="small" weight="thin">
-                {budegetRange}
-              </Text>
-            </Flex>
-            <Flex gap={2}>
-              <Text as="span" color="black" size="small" weight="semiBold">
-                Purpose:
-              </Text>
-              <Text as="span" color="black" size="small" weight="thin">
-                {searchFor}
-              </Text>
-            </Flex>
-            <Flex gap={2}>
-              <Text as="span" color="black" size="small" weight="semiBold">
-                Property Type:
-              </Text>
-              <Text as="span" color="black" size="small" weight="thin">
-                {propertyType}
-              </Text>
-            </Flex>
-            <Flex gap={2}>
-              <Text as="span" color="black" size="small" weight="semiBold">
-                Location:
-              </Text>
-              <Text as="span" color="black" size="small" weight="thin">
-                {location}
-              </Text>
-            </Flex>
-          </Stack>
+      <Visible visible={loginUserType !== "NORMAL"} isAutoWidth={false}>
+        <Flex direction={"column"} padding={[2, 4, 6]} backgroundColor="white">
+          <Flex direction={["column", "row"]} gap={[2, 10]}>
+            <Stack gap={2}>
+              <Flex gap={2}>
+                <Text as="span" color="black" size="small" weight="semiBold">
+                  Budget:
+                </Text>
+                <Text as="span" color="black" size="small" weight="thin">
+                  {budegetRange}
+                </Text>
+              </Flex>
+              <Flex gap={2}>
+                <Text as="span" color="black" size="small" weight="semiBold">
+                  Purpose:
+                </Text>
+                <Text as="span" color="black" size="small" weight="thin">
+                  {searchFor}
+                </Text>
+              </Flex>
+              <Flex gap={2}>
+                <Text as="span" color="black" size="small" weight="semiBold">
+                  Property Type:
+                </Text>
+                <Text as="span" color="black" size="small" weight="thin">
+                  {propertyType}
+                </Text>
+              </Flex>
+              <Flex gap={2}>
+                <Text as="span" color="black" size="small" weight="semiBold">
+                  Location:
+                </Text>
+                <Text as="span" color="black" size="small" weight="thin">
+                  {location}
+                </Text>
+              </Flex>
+            </Stack>
+            <Visible visible={showMore}>
+              <Stack gap={2}>
+                <Flex gap={2} alignItem="center">
+                  <Text as="span" color="black" size="small" weight="semiBold">
+                    Search done last 30 days:
+                  </Text>
+                  <Flex gap={1}>
+                    {lastSearch30Days.map((key) => (
+                      <Button isFloat key={key} size="small">{key}</Button>
+                    ))}
+                  </Flex>
+                </Flex>
+                <Flex gap={2} alignItem="center">
+                  <Text as="span" color="black" size="small" weight="semiBold">
+                    Properties viewed last 30 days:
+                  </Text>
+                  <Flex gap={1}>
+                    {propertiesView30Days.map((key) => (
+                      <Button isFloat key={key} size="small">{key}</Button>
+                    ))}
+                  </Flex>
+                </Flex>
+                <Flex gap={2}>
+                  <Text as="span" color="black" size="small" weight="semiBold">
+                    Leads Submitted last 30 days:
+                  </Text>
+                  <Text as="span" color="black" size="small" weight="thin">
+                    {leadSubmit30Days}
+                  </Text>
+                </Flex>
+                <Flex gap={2}>
+                  <Text as="span" color="black" size="small" weight="semiBold">
+                    New Project Interest:
+                  </Text>
+                  <Text as="span" color={isInterestedNewProject === "STRONG" ? "successDarker" : "warningDarker"} size="small" weight="bold" >
+                    {isInterestedNewProject}
+                  </Text>
+                </Flex>
+              </Stack>
+            </Visible>
+          </Flex>
           <Flex gap={4} justifyContent="spaceBetween" paddingTop={5}>
             <Button
               type={"outline"}
               iconName={disableShowMore ? "lock" : ""}
               disabled={disableShowMore}
+              onClick={showMoreHandler}
             >
-              Show More
+              {showMore ? "Show Less" : "Show More"}
             </Button>
             <Button iconName="chat" size="small" isFloat type="outline" />
           </Flex>
-        </Box>
+        </Flex>
       </Visible>
-      <Visible visible={loginUserType === "NORMAL"}>
+      <Visible visible={loginUserType === "NORMAL"} isAutoWidth={false}>
         <Flex
           padding={[2, 4, 6]}
           gap={5}

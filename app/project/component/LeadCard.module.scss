@@ -11,3 +11,15 @@
 .container {
   position: relative;
 }
+
+.showMore {
+  grid-column: 1/-1;
+}
+
+.showLess {
+  grid-column: auto;
+}
+
+.minWidth {
+  min-width: fit-content;
+}
