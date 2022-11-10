@@ -1,6 +1,9 @@
 export type Styles = {
   'container': string;
   'leadScore': string;
+  'leadScore_cold': string;
+  'leadScore_hot': string;
+  'leadScore_warm': string;
   'minWidth': string;
   'showLess': string;
   'showMore': string;

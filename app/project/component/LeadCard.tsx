@@ -7,6 +7,7 @@ import { Button } from "component/molecules";
 import { TColor, TTextColor } from "styles/Color";
 import styles from "./LeadCard.module.scss";
 import { SUPER_USER } from "../../user";
+import classnames from "classnames";
 
 type TLeadScore = "Hot" | "Warm" | "Cold";
 
@@ -196,7 +197,11 @@ const LeadCard = ({
             </Visible>
           </Stack>
           {loginUserType !== "NORMAL" && (
-            <div className={styles.leadScore}>
+            <div className={classnames(styles.leadScore, {
+              [styles.leadScore_hot]: leadScore==='Hot',
+              [styles.leadScore_warm]: leadScore==='Warm',
+              [styles.leadScore_cold]: leadScore==='Cold',
+            })}>
               <Text color="white" size="xSmall">
                 {leadScore}
               </Text>
@@ -280,7 +285,7 @@ const LeadCard = ({
                   <Text as="span" color="black" size="small" weight="semiBold">
                     New Project Interest:
                   </Text>
-                  <Text as="span" color={isInterestedNewProject === "STRONG" ? "successDarker" : "warningDarker"} size="small" weight="bold" >
+                  <Text as="span" color={isInterestedNewProject === "STRONG" ? "successDarker" : "warningDarker"} size="small" weight="semiBold" >
                     {isInterestedNewProject}
                   </Text>
                 </Flex>
