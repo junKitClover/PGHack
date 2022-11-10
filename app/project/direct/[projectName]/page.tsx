@@ -46,7 +46,7 @@ const Page = ({ params: { projectName } }: any) => {
   }, [loginUserType]);
 
   return (
-    <Stack gap={4}>
+    <Stack gap={4} paddingInline={2}>
       <Text type="display" as="h1" padding={4}>
         {name}
       </Text>
@@ -58,7 +58,7 @@ const Page = ({ params: { projectName } }: any) => {
           </Button>
         ) : (
           <Link href={`/project/indirect/${projectName}`}>
-            <Button type="outline">Indirect Lead</Button>
+            <Button type="outline">Lookalike Lead</Button>
           </Link>
         )}
       </Flex>

@@ -50,7 +50,7 @@ const Page = ({ params: { projectName } }: any) => {
   });
 
   return (
-    <Stack gap={4}>
+    <Stack gap={4} paddingInline={2}>
       <Text type="display" as="h1" padding={4}>
         {name}
       </Text>
@@ -58,7 +58,7 @@ const Page = ({ params: { projectName } }: any) => {
         <Link href={`/project/direct/${projectName}`}>
           <Button type="outline">Direct Lead</Button>
         </Link>
-        <Button type="contained">Indirect Lead</Button>
+        <Button type="contained">Lookalike Lead</Button>
       </Flex>
       <Grid col={[1, 2]} gap={[3, 5, 6]} paddingBlock={5} paddingInline={3}>
         <div

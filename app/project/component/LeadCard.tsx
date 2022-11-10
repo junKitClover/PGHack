@@ -53,7 +53,7 @@ export interface LeadCardProps {
 
 export const LeadQuality = () => (
   <Box border rounded paddingInline={3} paddingBlock={4}>
-    <Flex gap={3}>
+    <Flex gap={3} direction={["column","row"]}>
       <Flex gap={3}>
         <Icon
           iconName="info"
@@ -253,7 +253,7 @@ const LeadCard = ({
             </Stack>
             <Visible visible={showMore}>
               <Stack gap={2}>
-                <Flex gap={2} alignItem="center">
+                <Flex gap={2} alignItem={["start","center"]} direction={["column", "row"]}>
                   <Text as="span" color="black" size="small" weight="semiBold">
                     Search done last 30 days:
                   </Text>
@@ -263,7 +263,7 @@ const LeadCard = ({
                     ))}
                   </Flex>
                 </Flex>
-                <Flex gap={2} alignItem="center">
+                <Flex gap={2} alignItem={["start","center"]} direction={["column", "row"]}>
                   <Text as="span" color="black" size="small" weight="semiBold">
                     Properties viewed last 30 days:
                   </Text>
@@ -273,7 +273,7 @@ const LeadCard = ({
                     ))}
                   </Flex>
                 </Flex>
-                <Flex gap={2}>
+                <Flex gap={2} direction={["column", "row"]}>
                   <Text as="span" color="black" size="small" weight="semiBold">
                     Leads Submitted last 30 days:
                   </Text>
@@ -281,7 +281,7 @@ const LeadCard = ({
                     {leadSubmit30Days}
                   </Text>
                 </Flex>
-                <Flex gap={2}>
+                <Flex gap={2} direction={["column", "row"]}>
                   <Text as="span" color="black" size="small" weight="semiBold">
                     New Project Interest:
                   </Text>
