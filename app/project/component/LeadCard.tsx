@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Text, Icon, ColorPlate, Visible } from "component/atoms";
+import { Box, Text, Icon, Visible } from "component/atoms";
 import { useState, useEffect } from "react";
 import { Stack, Flex } from "component/organisms";
 import { Button } from "component/molecules";
@@ -50,35 +50,6 @@ export interface LeadCardProps {
   leadSubmit30Days: string;
   isInterestedNewProject: "STRONG" | "MODERATE";
 }
-
-export const LeadQuality = () => (
-  <Box border rounded paddingInline={3} paddingBlock={4}>
-    <Flex gap={3} direction={["column","row"]}>
-      <Flex gap={3}>
-        <Icon
-          iconName="info"
-          size="small"
-          color="black"
-          title="Last Search"
-          position="bottom center"
-        />
-        <Text>Lead Quality</Text>
-      </Flex>
-      <Flex gap={3}>
-        <ColorPlate backgroundColor="successDarker" />
-        <Text>Hot</Text>
-      </Flex>
-      <Flex gap={3}>
-        <ColorPlate backgroundColor="success" />
-        <Text>Warm</Text>
-      </Flex>
-      <Flex gap={3}>
-        <ColorPlate backgroundColor="successLighter" />
-        <Text>Cold</Text>
-      </Flex>
-    </Flex>
-  </Box>
-);
 
 const LeadCard = ({
   name,
@@ -197,11 +168,13 @@ const LeadCard = ({
             </Visible>
           </Stack>
           {loginUserType !== "NORMAL" && (
-            <div className={classnames(styles.leadScore, {
-              [styles.leadScore_hot]: leadScore==='Hot',
-              [styles.leadScore_warm]: leadScore==='Warm',
-              [styles.leadScore_cold]: leadScore==='Cold',
-            })}>
+            <div
+              className={classnames(styles.leadScore, {
+                [styles.leadScore_hot]: leadScore === "Hot",
+                [styles.leadScore_warm]: leadScore === "Warm",
+                [styles.leadScore_cold]: leadScore === "Cold",
+              })}
+            >
               <Text color="white" size="xSmall">
                 {leadScore}
               </Text>
@@ -253,23 +226,35 @@ const LeadCard = ({
             </Stack>
             <Visible visible={showMore}>
               <Stack gap={2}>
-                <Flex gap={2} alignItem={["start","center"]} direction={["column", "row"]}>
+                <Flex
+                  gap={2}
+                  alignItem={["start", "center"]}
+                  direction={["column", "row"]}
+                >
                   <Text as="span" color="black" size="small" weight="semiBold">
                     Search done last 30 days:
                   </Text>
                   <Flex gap={1}>
                     {lastSearch30Days.map((key) => (
-                      <Button isFloat key={key} size="small">{key}</Button>
+                      <Button isFloat key={key} size="small">
+                        {key}
+                      </Button>
                     ))}
                   </Flex>
                 </Flex>
-                <Flex gap={2} alignItem={["start","center"]} direction={["column", "row"]}>
+                <Flex
+                  gap={2}
+                  alignItem={["start", "center"]}
+                  direction={["column", "row"]}
+                >
                   <Text as="span" color="black" size="small" weight="semiBold">
                     Properties viewed last 30 days:
                   </Text>
                   <Flex gap={1}>
                     {propertiesView30Days.map((key) => (
-                      <Button isFloat key={key} size="small">{key}</Button>
+                      <Button isFloat key={key} size="small">
+                        {key}
+                      </Button>
                     ))}
                   </Flex>
                 </Flex>
@@ -285,7 +270,16 @@ const LeadCard = ({
                   <Text as="span" color="black" size="small" weight="semiBold">
                     New Project Interest:
                   </Text>
-                  <Text as="span" color={isInterestedNewProject === "STRONG" ? "successDarker" : "warningDarker"} size="small" weight="semiBold" >
+                  <Text
+                    as="span"
+                    color={
+                      isInterestedNewProject === "STRONG"
+                        ? "successDarker"
+                        : "warningDarker"
+                    }
+                    size="small"
+                    weight="semiBold"
+                  >
                     {isInterestedNewProject}
                   </Text>
                 </Flex>
