@@ -1,4 +1,5 @@
 export type Styles = {
+  'autoWidth': string;
   'display_hidden': string;
   'display_laptop_hidden': string;
   'display_laptop_show': string;
@@ -9,6 +10,7 @@ export type Styles = {
   'display_show': string;
   'display_tablet_hidden': string;
   'display_tablet_show': string;
+  'fullWidth': string;
 };
 
 export type ClassNames = keyof Styles;

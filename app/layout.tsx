@@ -14,10 +14,7 @@ export default function RootLayout({
       <head></head>
       <body className={styles.body}>
         <Header />
-        <Grid col={[1, "1by6"]} gap={3}>
-          <SideBar />
-          {children}
-        </Grid>
+        {children}
         <Footer />
       </body>
     </html>

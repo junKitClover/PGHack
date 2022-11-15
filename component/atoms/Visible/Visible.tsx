@@ -7,6 +7,7 @@ export interface IVisibleProps extends HTMLAttributes<HTMLDivElement> {
   visible: TGeneralDevice<boolean>;
   visibleInPrint?: boolean;
   children: ReactNode | ReactNode[];
+  isAutoWidth?: boolean;
 }
 
 const getVisibleTerms = (visible: boolean): 'show' | 'hidden' => (visible ? 'show' : 'hidden');
@@ -25,10 +26,11 @@ const generateVisibleStyleList = (value?: TGeneralDevice<boolean>): Array<string
   return value === false ? [styles['display_hidden']] : [styles['display_show']] ;
 };
 
-export const Visible = ({ visible, children, visibleInPrint = true, ...restprops }: IVisibleProps) => (
+export const Visible = ({ visible, children, visibleInPrint = true, isAutoWidth = true, ...restprops }: IVisibleProps) => (
   <div
     {...restprops}
     className={classnames(
+      isAutoWidth ? styles.autoWidth : styles.fullWidth,
       ...generateVisibleStyleList(visible),
       styles[`display_print_${getVisibleTerms(visibleInPrint)}`]
     )}

@@ -73,11 +73,11 @@ const Icon = ({
       }
       position={position}
       on={['hover', 'focus']}
-      arrow={true}
+      arrow={false}
     >
       {
         title ? <Box backgroundColor="white" rounded padding={2} border>
-          <Text>{title}</Text>
+          <Text type="tooltips">{title}</Text>
         </Box> : null
       }
       
