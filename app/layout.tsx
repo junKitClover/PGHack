@@ -11,10 +11,12 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <head></head>
+      <head>
+      <meta content="width=device-width, initial-scale=1" name="viewport" />
+      </head>
       <body className={styles.body}>
         <Header />
-        {children}
+        <div className={styles.content}>{children}</div>
         <Footer />
       </body>
     </html>
