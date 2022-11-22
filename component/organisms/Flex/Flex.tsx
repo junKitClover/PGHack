@@ -1,8 +1,9 @@
 import { ReactNode, HTMLAttributes } from 'react';
-import { generateSpaceListBaseOnCommonInterface, PaddingSemanticProps, MarginSemanticProps, GapProps } from 'styles/Space';
+import { generateSpaceListBaseOnCommonInterface, PaddingSemanticProps, MarginSemanticProps, GapProps, PaddingProps } from 'styles/Space';
 import { TGeneralDevice } from 'types/device.d';
 import classnames from 'classnames';
 import styles from './Flex.module.scss';
+import { TColor, styleBgColor } from 'styles/Color';
 
 export type TGap = TGeneralDevice<1 | 2 | 3 | 4 | 5 | 6 | 8 | 10>;
 export type TDirection = TGeneralDevice<'row' | 'column' | 'rowReverse' | 'columnReverse'>;
@@ -12,13 +13,14 @@ export type TJustifyContent = TGeneralDevice<
 export type TAlignItem = TGeneralDevice<'center' | 'flexEnd' | 'flexStart' | 'stretch' | 'start' | 'end'>;
 export type TWrapper = 'wrap' | 'wrapReverse' | 'noWrap';
 
-export interface FlexProps extends HTMLAttributes<HTMLDivElement>, PaddingSemanticProps, MarginSemanticProps, GapProps {
+export interface FlexProps extends HTMLAttributes<HTMLDivElement>, PaddingProps, MarginSemanticProps, GapProps {
   children: ReactNode | ReactNode[];
   direction?: TDirection;
   justifyContent?: TJustifyContent;
   alignItem?: TAlignItem;
   wrap?: TWrapper;
   border?: boolean;
+  backgroundColor?: TColor;
 }
 
 const generateDirectionStyleList = (value?: TDirection): Array<string> => {
@@ -74,6 +76,10 @@ export const Flex = ({
   padding,
   paddingBlock,
   paddingInline,
+  paddingTop,
+  paddingBottom,
+  paddingLeft,
+  paddingRight,
   margin,
   marginBlock,
   marginInline,
@@ -84,12 +90,17 @@ export const Flex = ({
   wrap,
   border,
   className,
+  backgroundColor,
   ...restProps
 }: FlexProps) => {
   const listStyles: Array<string> = generateSpaceListBaseOnCommonInterface({
     padding,
     paddingBlock,
     paddingInline,
+    paddingTop,
+    paddingBottom,
+    paddingLeft,
+    paddingRight,
     margin,
     marginBlock,
     marginInline,
@@ -103,6 +114,7 @@ export const Flex = ({
         className,
         styles.flexBase,
         listStyles,
+        styleBgColor(backgroundColor),
         generateDirectionStyleList(direction),
         generateJustifyContentStyleList(justifyContent),
         generateAlignItemsStyleList(alignItem),

@@ -1,4 +1,5 @@
 export type Styles = {
+  'base': string;
   'display_hidden': string;
   'display_laptop_hidden': string;
   'display_laptop_show': string;

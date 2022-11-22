@@ -17,3 +17,7 @@ $gapSizeList:
     @include cssGenerator.scriptGenerator($gapSizeList, 'height');
   }
 }
+
+.iconImage{
+  cursor:pointer;
+}
