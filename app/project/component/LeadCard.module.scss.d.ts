@@ -1,4 +1,6 @@
 export type Styles = {
+  'borderBottomRound': string;
+  'borderTopRound': string;
   'container': string;
   'leadScore': string;
   'leadScore_cold': string;

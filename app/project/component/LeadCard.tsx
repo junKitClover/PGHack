@@ -18,15 +18,15 @@ interface ColorProps {
 
 const ColorMapping: Record<TLeadScore, ColorProps> = {
   Hot: {
-    background: "successDarker",
+    background: "informationDarker",
     color: "white",
   },
   Warm: {
-    background: "success",
+    background: "information",
     color: "white",
   },
   Cold: {
-    background: "successLighter",
+    background: "informationLighter",
     color: "black",
   },
 };
@@ -98,6 +98,7 @@ const LeadCard = ({
               ? "white"
               : ColorMapping[leadScore].background
           }
+          className={styles.borderTopRound}
         >
           {isVerified && loginUserType !== "NORMAL" && (
             <Icon
@@ -182,13 +183,13 @@ const LeadCard = ({
           )}
         </Flex>
       </div>
-      <Box padding={3} backgroundColor="greyLight">
+      <Box padding={3} backgroundColor="greyLighter">
         <Text as="span" color="black" size="xSmall" weight="thin">
           Lead Submission {lastSearch}
         </Text>
       </Box>
       <Visible visible={loginUserType !== "NORMAL"} isAutoWidth={false}>
-        <Flex direction={"column"} padding={[2, 4, 6]} backgroundColor="white">
+        <Flex direction={"column"} padding={[2, 4, 6]} backgroundColor="white" className={styles.borderBottomRound}>
           <Flex direction={["column", "row"]} gap={[2, 10]}>
             <Stack gap={2}>
               <Flex gap={2}>
