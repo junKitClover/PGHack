@@ -9,7 +9,7 @@ const menuList = [
   {name: 'Registration', path: '/submit-lead'},
   {name: 'Project', path: '/project/direct/the-light-waterfront-penang'},
   {name: 'Lead Validation', path: '/lead-check'},
-  {name: 'Market 360', path: 'http://osg-nvidia-dgx1.guruestate.com:8111/BulkUpload.html'},
+  {name: 'Market 360', path: '/market-360'},
   {name: 'Bulk Validation Leads', path: '/bundle-lead-check'},
 ]
 
