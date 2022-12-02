@@ -47,6 +47,7 @@ export const Grid = ({
   gap,
   border,
   col=1,
+  className,
   ...restProps
 }: StackProps) => {
   const listStyles: Array<string> = generateSpaceListBaseOnCommonInterface({
@@ -63,6 +64,7 @@ export const Grid = ({
     <div
       {...restProps}
       className={classnames(
+        className,
         styles.gridBase,
         listStyles,
         generateColumnStyleList(col),

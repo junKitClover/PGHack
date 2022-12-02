@@ -201,14 +201,6 @@ const LeadCard = ({
               </Flex>
               <Flex gap={2}>
                 <Text as="span" color="black" size="small" weight="semiBold">
-                  Purpose:
-                </Text>
-                <Text as="span" color="black" size="small" weight="thin">
-                  {searchFor}
-                </Text>
-              </Flex>
-              <Flex gap={2}>
-                <Text as="span" color="black" size="small" weight="semiBold">
                   Property Type:
                 </Text>
                 <Text as="span" color="black" size="small" weight="thin">

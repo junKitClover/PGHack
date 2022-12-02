@@ -62,7 +62,7 @@ const SideBar = () => {
   },[])
 
   return (
-    <Box paddingBlock={3} paddingInline={2}>
+    <Box paddingBlock={3} paddingInline={2} backgroundColor="transparent">
       <Stack gap={3}>
         {projectList.map(({name, id, path}) => (
           <Link key={id} href={path}>

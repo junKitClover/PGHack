@@ -1,7 +1,4 @@
-import Header from "./header";
-import { Flex, Grid, Stack } from "component/organisms";
-import Footer from "./footer";
-import SideBar from "./sideBar";
+import Header from "./components/header/header";
 import styles from "./layout.module.scss";
 
 export default function RootLayout({
@@ -11,13 +8,12 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <head>
-      <meta content="width=device-width, initial-scale=1" name="viewport" />
-      </head>
+      <head><meta content="width=device-width, initial-scale=1" name="viewport" /></head>
       <body className={styles.body}>
         <Header />
-        <div className={styles.content}>{children}</div>
-        <Footer />
+        <div className={styles.content}>
+          {children}
+        </div>
       </body>
     </html>
   );

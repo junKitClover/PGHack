@@ -1,0 +1,22 @@
+.button{
+  display: inline-flex;
+  padding-inline: 16px;
+  padding-block:2px;
+  text-decoration: none;
+  color: #f2f2f2;
+  font-weight: 300;
+  font-size: 17px;
+  font-family: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  margin: 0px;
+  height: inherit;
+  align-items: center;
+
+  &:hover {
+    background-color: #f2f2f2;
+    color:#333;
+  }
+}
+
+.navList {
+  height: 60px;
+}

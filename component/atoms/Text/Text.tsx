@@ -31,7 +31,7 @@ export const Text = ({
   paddingLeft,
   paddingRight,
   paddingTop,
-  color = 'greyDarker',
+  color = "fontColor",
   ...restProps
 }: TextBaseProps) => {
   const CustomTag = as;

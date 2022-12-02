@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { ReactElement } from "react";
 import { Text } from "component/atoms";
 import { Flex } from "component/organisms";

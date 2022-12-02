@@ -5,6 +5,7 @@ export type Styles = {
   'backgroundColor_errorDarker': string;
   'backgroundColor_errorLight': string;
   'backgroundColor_errorLighter': string;
+  'backgroundColor_fontColor': string;
   'backgroundColor_grey': string;
   'backgroundColor_greyDark': string;
   'backgroundColor_greyDarker': string;
@@ -30,6 +31,7 @@ export type Styles = {
   'backgroundColor_successDarker': string;
   'backgroundColor_successLight': string;
   'backgroundColor_successLighter': string;
+  'backgroundColor_transparent': string;
   'backgroundColor_warning': string;
   'backgroundColor_warningDark': string;
   'backgroundColor_warningDarker': string;
@@ -42,6 +44,7 @@ export type Styles = {
   'color_errorDarker': string;
   'color_errorLight': string;
   'color_errorLighter': string;
+  'color_fontColor': string;
   'color_grey': string;
   'color_greyDark': string;
   'color_greyDarker': string;
@@ -67,6 +70,7 @@ export type Styles = {
   'color_successDarker': string;
   'color_successLight': string;
   'color_successLighter': string;
+  'color_transparent': string;
   'color_warning': string;
   'color_warningDark': string;
   'color_warningDarker': string;
@@ -79,6 +83,7 @@ export type Styles = {
   'fill_errorDarker': string;
   'fill_errorLight': string;
   'fill_errorLighter': string;
+  'fill_fontColor': string;
   'fill_grey': string;
   'fill_greyDark': string;
   'fill_greyDarker': string;
@@ -104,6 +109,7 @@ export type Styles = {
   'fill_successDarker': string;
   'fill_successLight': string;
   'fill_successLighter': string;
+  'fill_transparent': string;
   'fill_warning': string;
   'fill_warningDark': string;
   'fill_warningDarker': string;
@@ -116,6 +122,7 @@ export type Styles = {
   'stroke_errorDarker': string;
   'stroke_errorLight': string;
   'stroke_errorLighter': string;
+  'stroke_fontColor': string;
   'stroke_grey': string;
   'stroke_greyDark': string;
   'stroke_greyDarker': string;
@@ -141,6 +148,7 @@ export type Styles = {
   'stroke_successDarker': string;
   'stroke_successLight': string;
   'stroke_successLighter': string;
+  'stroke_transparent': string;
   'stroke_warning': string;
   'stroke_warningDark': string;
   'stroke_warningDarker': string;

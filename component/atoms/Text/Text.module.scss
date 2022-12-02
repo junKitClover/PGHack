@@ -1,6 +1,5 @@
 @use 'mixin/cssGenerator.modules.scss';
 @use 'mixin/breakpoint.modules.scss';
-$font-family: var(--font-family, 'Nunito');
 
 $fontWeightList: 
 300,
@@ -53,7 +52,7 @@ $fontWeightList:
 }
 
 .text{
-  font-family: $font-family;
+  font-family: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   margin: 0px;
 
   &_specify_tooltips{
@@ -72,13 +71,13 @@ $fontWeightList:
   &_specify_paragraph{
     font-weight: 300;
     @include breakpoint.mobile{
-      font-size: 16px;
+      font-size: 17px;
     }
     @include breakpoint.tablet{
-      font-size: 16px;
+      font-size: 17px;
     }
     @include breakpoint.aboveLaptop{
-      font-size: 18px;
+      font-size: 17px;
     }
   }
 
@@ -91,12 +90,12 @@ $fontWeightList:
       font-size: 18px;
     }
     @include breakpoint.aboveLaptop{
-      font-size: 20px;
+      font-size: 18px;
     }
   }
 
   &_specify_title{
-    font-weight: 600;
+    font-weight: 400;
     @include breakpoint.mobile{
       font-size: 24px;
     }
@@ -104,7 +103,7 @@ $fontWeightList:
       font-size: 24px;
     }
     @include breakpoint.aboveLaptop{
-      font-size: 28px;
+      font-size: 24px;
     }
   }
 
