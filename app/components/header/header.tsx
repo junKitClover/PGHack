@@ -57,7 +57,7 @@ const DesktopHeader = () => {
       gap={3}
       className={styles.header}
     >
-      <a href="https://www.propertyguruforbusiness.com/">
+      <a href="/">
         <Image alt="headerLogo" width={150} height={60} src="/pg4b.svg" />
       </a>
       <NavBar/>
