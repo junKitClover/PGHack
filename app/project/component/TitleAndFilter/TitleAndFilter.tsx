@@ -120,7 +120,7 @@ const leadTypeStyles: StylesConfig<LeadOption> = {
 export default function TitleAndFilter() {
   const { name, detailList } = projectInfo["the-light-waterfront-penang"];
   return (
-    <Box paddingBlock={4} paddingInline={[2,3,6]} border rounded>
+    <Box paddingBlock={4} paddingInline={[4,,6]} border rounded marginTop={[4,12]}>
       <Stack gap={4}>
         <Text type="title">{name}</Text>
         <Flex gap={4}>
