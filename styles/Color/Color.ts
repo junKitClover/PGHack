@@ -57,7 +57,12 @@ export type TTextColor =
   | "black"
   | "fontColor"
   | "secondaryFontColor"
-  | "transparent";
+  | "transparent"
+  | "primaryLighter"
+  | "primaryLight"
+  | "primary"
+  | "primaryDark"
+  | "primaryDarker";
 
 export type TPrimaryColor =
   | "primaryLighter"

@@ -139,7 +139,7 @@ const LeadCard = ({
       <Flex direction={"column"} paddingTop={5} backgroundColor="white" className={styles.borderBottomRound}>
         <Flex direction={"column"} gap={2}>
           <Stack gap={2}>
-            <Flex gap={2}>
+            <Flex gap={2} direction={["column", "row"]}>
               <Text as="span" type="label" color="secondaryFontColor">
                 Budget
               </Text>
@@ -147,7 +147,7 @@ const LeadCard = ({
                 {budegetRange}
               </Text>
             </Flex>
-            <Flex gap={2}>
+            <Flex gap={2} direction={["column", "row"]}>
               <Text as="span" type="label" color="secondaryFontColor">
                 Property Type
               </Text>
@@ -155,7 +155,7 @@ const LeadCard = ({
                 {propertyType}
               </Text>
             </Flex>
-            <Flex gap={2}>
+            <Flex gap={2} direction={["column", "row"]}>
               <Text as="span" type="label" color="secondaryFontColor">
                 Location
               </Text>
