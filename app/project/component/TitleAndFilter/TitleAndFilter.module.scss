@@ -1,0 +1,19 @@
+@use 'mixin/breakpoint.modules.scss';
+
+.selecter{
+  border: 0px;
+  font-family: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+.filterBox {
+  width: 320px;
+  @include breakpoint.mobile{
+    width: 300px;
+  }
+}
+.secondBox{
+  border-left: 1px solid #CCCCCC;
+
+  @include breakpoint.mobile{
+    border-left: 0px;
+  }
+}

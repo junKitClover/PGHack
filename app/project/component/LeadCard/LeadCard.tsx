@@ -3,10 +3,8 @@
 import { Box, Text, Icon, Visible } from "component/atoms";
 import { useState, useEffect } from "react";
 import { Stack, Flex } from "component/organisms";
-import { Button } from "component/molecules";
 import { TColor, TTextColor } from "styles/Color";
 import styles from "./LeadCard.module.scss";
-import { SUPER_USER } from "../../user";
 import classnames from "classnames";
 
 type TLeadScore = "Hot" | "Warm" | "Cold";

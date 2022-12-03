@@ -4,7 +4,6 @@ import { Stack } from "component/organisms";
 import { Box, Text } from "component/atoms";
 import styles from "./sideBar.module.scss";
 import classNames from "classnames";
-import { Button } from "component/molecules";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
