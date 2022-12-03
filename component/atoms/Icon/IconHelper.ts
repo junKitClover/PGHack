@@ -6,4 +6,4 @@ export const getIconStyle = ({
   iconOpticalSize = 20,
   iconWeight = 300
 }: Omit<IconProps, 'iconName'>): string =>
-  `"FILL" ${iconFilled ? 1 : 0}, "wght" ${iconWeight}, "GRAD" ${iconGrade}, "opsz" ${iconOpticalSize};`;
+  `"FILL" ${iconFilled ? 1 : 0}, "wght" ${iconWeight}, "GRAD" ${iconGrade}, "opsz" ${iconOpticalSize}`;

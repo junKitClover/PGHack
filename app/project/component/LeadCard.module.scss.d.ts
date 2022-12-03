@@ -6,9 +6,9 @@ export type Styles = {
   'leadScore_cold': string;
   'leadScore_hot': string;
   'leadScore_warm': string;
+  'line': string;
+  'link': string;
   'minWidth': string;
-  'showLess': string;
-  'showMore': string;
 };
 
 export type ClassNames = keyof Styles;

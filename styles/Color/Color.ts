@@ -49,11 +49,14 @@ export type TTextColor =
   | "success"
   | "successDarker"
   | "greyLighter"
+  | "greyLight"
   | "grey"
+  | "greyDark"
   | "greyDarker"
   | "white"
   | "black"
   | "fontColor"
+  | "secondaryFontColor"
   | "transparent";
 
 export type TPrimaryColor =

@@ -5,7 +5,6 @@ $button-border-radius: var(--button-border-radius, 4px);
 $button-width: fit-content;
 $button-height: fit-content;
 $font-weight: 400;
-$font-family: var(--font-family, 'Nunito');
 
 $button-color: var(--primary-button, #ffffff);
 $button-bg-color: var(--primary-button-bg, #0e2638);
@@ -67,7 +66,7 @@ $button-outline-bg-disable-color: var(--primary-button, #ffffff);
 }
 
 @mixin buttonBase {
-  font-family: $font-family;
+  font-family: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: $font-weight;
   width: $button-width;
   height: $button-height;

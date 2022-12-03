@@ -39,8 +39,8 @@ interface IconComponentProps extends IconProps {
 const Icon = ({
   iconType = 'outlined',
   color='black',
-  iconFilled,
-  iconGrade,
+  iconFilled = false,
+  iconGrade = 0,
   iconOpticalSize,
   iconWeight,
   size,

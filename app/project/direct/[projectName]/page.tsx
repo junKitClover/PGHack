@@ -124,12 +124,12 @@ const Page = ({ params: { projectName } }: any) => {
           </Flex>
         </Flex>
       </Box> }
-      <Grid col={[1, 2, 3]} gap={[3, 5, 6]} paddingBlock={5} paddingInline={3}>
+      <Flex gap={[3, 5, 6]} paddingBlock={5} paddingInline={3} wrap="wrap">
         {allLeadInfo.map((prop, i) => {
           if (isLoading) return <LeadCardShimmer key={i} />;
           return <LeadCard {...prop} key={i} />;
         })}
-      </Grid>
+      </Flex>
     </Stack>
   );
 };

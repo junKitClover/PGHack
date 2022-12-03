@@ -86,11 +86,11 @@ const LeadCard = ({
     <Box
       border
       rounded
-      className={showMore ? styles.showMore : styles.showLess}
+      paddingBlock={5}
+      paddingInline={4}
     >
       <div className={styles.container}>
         <Flex
-          padding={[2, 4]}
           gap={3}
           alignItem="center"
           backgroundColor="white"
@@ -112,30 +112,14 @@ const LeadCard = ({
             >
               {name}
             </Text>
-            <Flex>
-              <a href={`tel:${phoneNumber}`}>
-                <Text
-                  size="xSmall"
-                  color="fontColor"
-                >
-                  {phoneNumber}
-                </Text>
-              </a>
+            <Flex gap={1}>
+              <Icon iconName="schedule" size="xSmall" iconOpticalSize={20} color="secondaryFontColor" />
               <Text
                 size="xSmall"
-                weight="bold"
-                color="fontColor"
+                color="secondaryFontColor"
               >
-                &nbsp;&nbsp;.&nbsp;&nbsp;
+                {lastSearch}
               </Text>
-              <a href={`mailto:${email}`}>
-                <Text
-                  size="xSmall"
-                  color="fontColor"
-                >
-                  {email}
-                </Text>
-              </a>
             </Flex>
           </Stack>
           <div
@@ -151,111 +135,123 @@ const LeadCard = ({
           </div>
         </Flex>
       </div>
-      <Box padding={3} backgroundColor="white">
-        <Text as="span" color="black" size="xSmall" weight="thin">
-          Lead Submission {lastSearch}
-        </Text>
-      </Box>
-      <Flex direction={"column"} padding={[2, 4, 6]} backgroundColor="white" className={styles.borderBottomRound}>
-        <Flex direction={["column", "row"]} gap={[2, 10]}>
+      <Flex direction={"column"} paddingTop={5} backgroundColor="white" className={styles.borderBottomRound}>
+        <Flex direction={"column"} gap={2}>
           <Stack gap={2}>
             <Flex gap={2}>
-              <Text as="span" color="black" size="small" weight="semiBold">
-                Budget:
+              <Text as="span" type="label">
+                Budget
               </Text>
-              <Text as="span" color="black" size="small" weight="thin">
+              <Text as="span" type="labelValue">
                 {budegetRange}
               </Text>
             </Flex>
             <Flex gap={2}>
-              <Text as="span" color="black" size="small" weight="semiBold">
-                Property Type:
+              <Text as="span" type="label">
+                Property Type
               </Text>
-              <Text as="span" color="black" size="small" weight="thin">
+              <Text as="span" type="labelValue">
                 {propertyType}
               </Text>
             </Flex>
             <Flex gap={2}>
-              <Text as="span" color="black" size="small" weight="semiBold">
-                Location:
+              <Text as="span" type="label">
+                Location
               </Text>
-              <Text as="span" color="black" size="small" weight="thin">
+              <Text as="span" type="labelValue">
                 {location}
               </Text>
             </Flex>
-          </Stack>
-          <Visible visible={showMore}>
-            <Stack gap={2}>
-              <Flex
-                gap={2}
-                alignItem={["start", "center"]}
-                direction={["column", "row"]}
-              >
-                <Text as="span" color="black" size="small" weight="semiBold">
-                  Search done last 30 days:
-                </Text>
-                <Flex gap={1}>
-                  {lastSearch30Days.map((key) => (
-                    <Button isFloat key={key} size="small">
-                      {key}
-                    </Button>
-                  ))}
-                </Flex>
-              </Flex>
-              <Flex
-                gap={2}
-                alignItem={["start", "center"]}
-                direction={["column", "row"]}
-              >
-                <Text as="span" color="black" size="small" weight="semiBold">
-                  Properties viewed last 30 days:
-                </Text>
-                <Flex gap={1}>
-                  {propertiesView30Days.map((key) => (
-                    <Button isFloat key={key} size="small">
-                      {key}
-                    </Button>
-                  ))}
-                </Flex>
-              </Flex>
-              <Flex gap={2} direction={["column", "row"]}>
-                <Text as="span" color="black" size="small" weight="semiBold">
-                  Leads Submitted last 30 days:
-                </Text>
-                <Text as="span" color="black" size="small" weight="thin">
-                  {leadSubmit30Days}
-                </Text>
-              </Flex>
-              <Flex gap={2} direction={["column", "row"]}>
-                <Text as="span" color="black" size="small" weight="semiBold">
-                  New Project Interest:
-                </Text>
-                <Text
-                  as="span"
-                  color={
-                    isInterestedNewProject === "STRONG"
-                      ? "successDarker"
-                      : "warningDarker"
-                  }
-                  size="small"
-                  weight="semiBold"
+            <Visible visible={showMore}>
+              <Stack gap={2}>
+                <Flex
+                  gap={2}
+                  alignItem={["start", "center"]}
+                  direction={["column", "row"]}
                 >
-                  {isInterestedNewProject}
-                </Text>
-              </Flex>
-            </Stack>
-          </Visible>
-        </Flex>
-        <Flex gap={4} justifyContent="spaceBetween" paddingTop={5}>
-          <Button
-            type={"outline"}
-            iconName={disableShowMore ? "lock" : ""}
-            disabled={disableShowMore}
-            onClick={showMoreHandler}
-          >
-            {showMore ? "Show Less" : "Show More"}
-          </Button>
-          <Button iconName="chat" size="small" isFloat type="outline" />
+                  <Text as="span" type="label">
+                    Search done last 30 days
+                  </Text>
+                  <Text as="span" type="labelValue">
+                    {lastSearch30Days.join(',')}
+                  </Text>
+                </Flex>
+                <Flex
+                  gap={2}
+                  alignItem={["start", "center"]}
+                  direction={["column", "row"]}
+                >
+                  <Text as="span" type="label">
+                    Properties viewed last 30 days
+                  </Text>
+                  <Text as="span" type="labelValue">
+                    {propertiesView30Days.join(',')}
+                  </Text>
+                </Flex>
+                <Flex gap={2} direction={["column", "row"]}>
+                  <Text as="span" type="label">
+                    Leads Submitted last 30 days
+                  </Text>
+                  <Text as="span" type="labelValue">
+                    {leadSubmit30Days}
+                  </Text>
+                </Flex>
+                <Flex gap={2} direction={["column", "row"]}>
+                  <Text as="span" type="label">
+                    New Project Interest
+                  </Text>
+                  <Text
+                    as="span"
+                    type="labelValue"
+                  >
+                    {isInterestedNewProject}
+                  </Text>
+                </Flex>
+              </Stack>
+            </Visible>
+            <a
+              type="text"
+              onClick={showMoreHandler}
+              className={styles.link}
+            >
+              <Text as="span" type="label" color="error">
+                {showMore ? "Show Less" : "Show More"}
+              </Text>
+            </a>
+            <hr className={styles.line} />
+            <Flex justifyContent="spaceBetween" alignItem="center">
+              <Stack gap={2}>
+                <Flex gap={1}>
+                  <Icon iconName="call" color="secondaryFontColor" size="xSmall" />
+                  <a href={`tel:${phoneNumber}`} className={styles.link}>
+                    <Text
+                      size="xSmall"
+                      color="fontColor"
+                    >
+                      {phoneNumber}
+                    </Text>
+                  </a>
+                </Flex>
+                <Flex gap={1}>
+                  <Icon iconName="mail" color="secondaryFontColor" size="xSmall" />
+                  <a href={`mailto:${email}`} className={styles.link}>
+                    <Text
+                      size="xSmall"
+                      color="fontColor"
+                    >
+                      {email}
+                    </Text>
+                  </a>
+                </Flex>
+              </Stack>
+              <a className={styles.link}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#74757f" viewBox="0 0 16 16">
+                  <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"></path>
+                </svg>
+              </a>
+            </Flex>
+          </Stack>
+
         </Flex>
       </Flex>
     </Box>

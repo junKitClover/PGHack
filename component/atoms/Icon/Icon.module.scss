@@ -15,6 +15,7 @@ $gapSizeList:
   &_size {
     @include cssGenerator.scriptGenerator($gapSizeList, 'width');
     @include cssGenerator.scriptGenerator($gapSizeList, 'height');
+    @include cssGenerator.scriptGenerator($gapSizeList, 'font-size');
   }
 }
 

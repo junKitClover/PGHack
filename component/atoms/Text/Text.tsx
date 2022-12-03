@@ -6,7 +6,7 @@ import classnames from 'classnames';
 import styles from './Text.module.scss';
 
 export type TAs = 'span' | 'div' | 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'label';
-export type TSizeType = 'display' | 'paragraph' | 'subtitle' | 'title' | 'tooltips';
+export type TSizeType = 'display' | 'paragraph' | 'subtitle' | 'title' | 'tooltips' | 'label' | 'labelValue';
 
 export interface TextBaseProps extends HTMLAttributes<HTMLElement>, PaddingProps {
   as?: TAs;
