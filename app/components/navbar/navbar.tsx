@@ -10,7 +10,7 @@ const menuList = [
   {name: 'Project', path: '/project/direct/the-light-waterfront-penang'},
   {name: 'Lead Validation', path: '/lead-check'},
   {name: 'Market 360', path: '/market-360'},
-  {name: 'Bulk Validation Leads', path: '/bundle-lead-check'},
+  {name: 'Leads Bulk Validation', path: '/bundle-lead-check'},
 ]
 
 const NavBar = () => (
