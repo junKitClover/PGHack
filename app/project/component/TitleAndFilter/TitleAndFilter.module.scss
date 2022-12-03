@@ -7,7 +7,7 @@
 .filterBox {
   width: 320px;
   @include breakpoint.mobile{
-    width: 300px;
+    width: 250px;
   }
 }
 .secondBox{

@@ -28,8 +28,8 @@
   position: relative;
   min-width: 350px;
   @include breakpoint.mobile{
-    max-width: 350px;
-    min-width: 300px;
+    max-width: 300px;
+    min-width: 250px;
   }
 }
 
