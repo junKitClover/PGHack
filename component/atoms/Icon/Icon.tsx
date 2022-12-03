@@ -34,6 +34,7 @@ interface IconComponentProps extends IconProps {
   size: TGeneralDevice<IconSizeType>;
   title?:string;
   position?: 'right center' | 'left center' | 'top center' | 'bottom center';
+  className?: string;
 }
 
 const Icon = ({
@@ -47,12 +48,14 @@ const Icon = ({
   iconName,
   title,
   position = 'right center',
+  className
 }: IconComponentProps) => (
     <Popup
       trigger={
         <span
           title={title}
           className={classnames(
+            className,
             styles.iconImage,
             `material-icons-${iconType}`,
             styleColor(color),

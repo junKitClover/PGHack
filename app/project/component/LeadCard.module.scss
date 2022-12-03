@@ -18,6 +18,10 @@
   }
 }
 
+.cardBase {
+  height: fit-content;
+}
+
 .container {
   position: relative;
   min-width: 350px;
@@ -46,4 +50,14 @@
 
 .minWidth {
   min-width: fit-content;
+}
+
+.showLessIcon {
+  transform: rotate(0deg);
+  transition: rotate 1s;
+}
+
+.showMoreIcon {
+  transform: rotate(180deg);
+  transition: rotate 1s;
 }

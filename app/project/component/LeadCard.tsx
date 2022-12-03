@@ -88,6 +88,7 @@ const LeadCard = ({
       rounded
       paddingBlock={5}
       paddingInline={4}
+      className={styles.cardBase}
     >
       <div className={styles.container}>
         <Flex
@@ -139,7 +140,7 @@ const LeadCard = ({
         <Flex direction={"column"} gap={2}>
           <Stack gap={2}>
             <Flex gap={2}>
-              <Text as="span" type="label">
+              <Text as="span" type="label" color="secondaryFontColor">
                 Budget
               </Text>
               <Text as="span" type="labelValue">
@@ -147,7 +148,7 @@ const LeadCard = ({
               </Text>
             </Flex>
             <Flex gap={2}>
-              <Text as="span" type="label">
+              <Text as="span" type="label" color="secondaryFontColor">
                 Property Type
               </Text>
               <Text as="span" type="labelValue">
@@ -155,7 +156,7 @@ const LeadCard = ({
               </Text>
             </Flex>
             <Flex gap={2}>
-              <Text as="span" type="label">
+              <Text as="span" type="label" color="secondaryFontColor">
                 Location
               </Text>
               <Text as="span" type="labelValue">
@@ -169,7 +170,7 @@ const LeadCard = ({
                   alignItem={["start", "center"]}
                   direction={["column", "row"]}
                 >
-                  <Text as="span" type="label">
+                  <Text as="span" type="label" color="secondaryFontColor">
                     Search done last 30 days
                   </Text>
                   <Text as="span" type="labelValue">
@@ -181,7 +182,7 @@ const LeadCard = ({
                   alignItem={["start", "center"]}
                   direction={["column", "row"]}
                 >
-                  <Text as="span" type="label">
+                  <Text as="span" type="label" color="secondaryFontColor" >
                     Properties viewed last 30 days
                   </Text>
                   <Text as="span" type="labelValue">
@@ -189,7 +190,7 @@ const LeadCard = ({
                   </Text>
                 </Flex>
                 <Flex gap={2} direction={["column", "row"]}>
-                  <Text as="span" type="label">
+                  <Text as="span" type="label" color="secondaryFontColor">
                     Leads Submitted last 30 days
                   </Text>
                   <Text as="span" type="labelValue">
@@ -197,7 +198,7 @@ const LeadCard = ({
                   </Text>
                 </Flex>
                 <Flex gap={2} direction={["column", "row"]}>
-                  <Text as="span" type="label">
+                  <Text as="span" type="label" color="secondaryFontColor">
                     New Project Interest
                   </Text>
                   <Text
@@ -214,9 +215,12 @@ const LeadCard = ({
               onClick={showMoreHandler}
               className={styles.link}
             >
-              <Text as="span" type="label" color="error">
-                {showMore ? "Show Less" : "Show More"}
-              </Text>
+              <Flex gap={2} alignItem="center">
+                <Text as="span" type="label" color="error">
+                  {showMore ? "Show Less" : "Show More"}
+                </Text>
+                <Icon iconName="expand_more" size="xSmall" color="error" className={showMore ? styles.showMoreIcon : styles.showLessIcon}/>
+              </Flex>
             </a>
             <hr className={styles.line} />
             <Flex justifyContent="spaceBetween" alignItem="center">

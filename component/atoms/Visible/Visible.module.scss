@@ -19,6 +19,11 @@ $displayList:
   }
 }
 
+.heightAnimation {
+  transition: height 2s;
+  height: 100%;
+}
+
 .fullWidth{
   width: 100%;
 }

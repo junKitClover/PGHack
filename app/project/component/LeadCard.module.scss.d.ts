@@ -1,6 +1,7 @@
 export type Styles = {
   'borderBottomRound': string;
   'borderTopRound': string;
+  'cardBase': string;
   'container': string;
   'leadScore': string;
   'leadScore_cold': string;
@@ -9,6 +10,8 @@ export type Styles = {
   'line': string;
   'link': string;
   'minWidth': string;
+  'showLessIcon': string;
+  'showMoreIcon': string;
 };
 
 export type ClassNames = keyof Styles;
