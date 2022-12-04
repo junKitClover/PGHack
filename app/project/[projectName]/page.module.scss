@@ -3,6 +3,6 @@
 .container {
   width: auto;
   @include breakpoint.mobile{
-    width: min-content;
+    width: 100%;
   }
 }

@@ -1,5 +1,13 @@
+@use 'mixin/breakpoint.modules.scss';
+
 .projectSideBar{
   width: 350px;
+  @include breakpoint.mobile{
+    width: 100%;
+  }
+  @include breakpoint.tablet{
+    width: 100%
+  }
 }
 
 .link {

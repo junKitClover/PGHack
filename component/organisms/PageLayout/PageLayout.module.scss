@@ -11,6 +11,9 @@
 
   &_item{
     max-width: 1280px;
+    @include breakpoint.mobile {
+      width: 100%;
+    }
   }
 
   @include breakpoint.mobile {

@@ -3,7 +3,7 @@
 import { Stack } from "component/organisms";
 import { Box, Text } from "component/atoms";
 import styles from "./sideBar.module.scss";
-import { projectName } from "state/projectState";
+import { PROJECT_NAME } from "state/projectState";
 import { useAtom } from "jotai";
 import classNames from "classnames";
 import Link from "next/link";
@@ -57,7 +57,7 @@ const projectList: Array<ProjectProps> = [
 
 const SideBar = () => {
   const [currentPath, setCurrentPath] = useState('/project/the-light-waterfront-penang');
-  const [, setProjectName] = useAtom(projectName);
+  const [, setProjectName] = useAtom(PROJECT_NAME);
 
   useEffect(() => {
     const { href } = window.location;

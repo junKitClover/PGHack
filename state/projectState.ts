@@ -1,3 +1,3 @@
 import { atom } from "jotai";
 
-export const projectName = atom('The Light Waterfront Penang');
+export const PROJECT_NAME = atom('The Light Waterfront Penang');

@@ -5,13 +5,13 @@ import { ReactElement, useEffect, useState } from "react";
 import { Flex, Grid } from "component/organisms";
 import { Text, Visible } from "component/atoms";
 import { Button } from "component/molecules";
-import { ShowMainMenu } from "state/headerState";
+import { SHOW_MENU } from "state/headerState";
 import NavBar from '../navbar/navbar';
 import { useAtom } from "jotai";
 import styles from "./header.module.scss";
 
 const MobileHeader = () => {
-  const [showMainMenu, setShowMainMenu] = useAtom(ShowMainMenu);
+  const [showMainMenu, setShowMainMenu] = useAtom(SHOW_MENU);
 
   return (
     <Grid

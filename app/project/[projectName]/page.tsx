@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { Stack, Grid, Flex } from "component/organisms";
+import { PROJECT_NAME } from "state/projectState";
+import { useAtom } from "jotai";
 import LeadCard, { LeadCardProps } from "../component/LeadCard/LeadCard";
 import LeadCardShimmer from "../component/LeadCardShimmer/LeadCardShimmer";
 import { projectInfo } from "../data/project";
@@ -17,11 +19,16 @@ interface ProjectNameProps {
 }
 
 const Page = ({ params: { projectName } }: any) => {
-  const { name, detailList } = projectInfo[projectName];
+  const { name } = projectInfo[projectName];
   const [loginUserType, setLoginUserType] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [allLeadInfo, setAllLeadInfo] = useState(leadInfo);
   const [isSelected, setIsSelected] = useState(["Hot", "Warm", "Cold"]);
+  const [projectNameState, setProjectName] = useAtom(PROJECT_NAME);
+
+  if(name !== projectNameState){
+    setProjectName(name);
+  }
 
   const onChangeSelected = (input: "Hot" | "Warm" | "Cold") => {
     setIsSelected((prev): Array<string> => {
@@ -61,13 +68,7 @@ const Page = ({ params: { projectName } }: any) => {
 
   return (
     <Stack gap={4}>
-      {/* <Flex gap={[3, 5, 6]} paddingBlock={5} wrap="wrap" justifyContent={["center","spaceBetween"]} className={styles.container}>
-        {allLeadInfo.map((prop, i) => {
-          if (isLoading) return <LeadCardShimmer key={i} />;
-          return <LeadCard {...prop} key={i} />;
-        })}
-      </Flex> */}
-      <Grid gap={[3, 5, 6]} paddingBlock={5} col={[1,2,3]} className={styles.container}>
+      <Grid gap={[3, 5, 6]} paddingBlock={5} col={[1,2,2]} className={styles.container}>
         {allLeadInfo.map((prop, i) => {
           if (isLoading) return <LeadCardShimmer key={i} />;
           return <LeadCard {...prop} key={i} />;

@@ -137,7 +137,7 @@ const LeadCard = ({
       <Flex direction={"column"} paddingTop={5} backgroundColor="white" className={styles.borderBottomRound}>
         <Flex direction={"column"} gap={2}>
           <Stack gap={2}>
-            <Flex gap={2} direction={["column", "row"]}>
+            <Flex gap={2} direction={["column", , "row"]}>
               <Text as="span" type="label" color="secondaryFontColor">
                 Budget
               </Text>
@@ -145,7 +145,7 @@ const LeadCard = ({
                 {budegetRange}
               </Text>
             </Flex>
-            <Flex gap={2} direction={["column", "row"]}>
+            <Flex gap={2} direction={["column", ,  "row"]}>
               <Text as="span" type="label" color="secondaryFontColor">
                 Property Type
               </Text>
@@ -153,7 +153,7 @@ const LeadCard = ({
                 {propertyType}
               </Text>
             </Flex>
-            <Flex gap={2} direction={["column", "row"]}>
+            <Flex gap={2} direction={["column", ,  "row"]}>
               <Text as="span" type="label" color="secondaryFontColor">
                 Location
               </Text>
@@ -165,8 +165,8 @@ const LeadCard = ({
               <Stack gap={2}>
                 <Flex
                   gap={2}
-                  alignItem={["start", "center"]}
-                  direction={["column", "row"]}
+                  alignItem={["start",  , "center"]}
+                  direction={["column", , "row"]}
                 >
                   <Text as="span" type="label" color="secondaryFontColor">
                     Search done last 30 days
@@ -178,7 +178,7 @@ const LeadCard = ({
                 <Flex
                   gap={2}
                   alignItem={["start", "center"]}
-                  direction={["column", "row"]}
+                  direction={["column", , "row"]}
                 >
                   <Text as="span" type="label" color="secondaryFontColor" >
                     Properties viewed last 30 days
@@ -187,7 +187,7 @@ const LeadCard = ({
                     {propertiesView30Days.join(',')}
                   </Text>
                 </Flex>
-                <Flex gap={2} direction={["column", "row"]}>
+                <Flex gap={2} direction={["column", , "row"]}>
                   <Text as="span" type="label" color="secondaryFontColor">
                     Leads Submitted last 30 days
                   </Text>
@@ -195,7 +195,7 @@ const LeadCard = ({
                     {leadSubmit30Days}
                   </Text>
                 </Flex>
-                <Flex gap={2} direction={["column", "row"]}>
+                <Flex gap={2} direction={["column", , "row"]}>
                   <Text as="span" type="label" color="secondaryFontColor">
                     New Project Interest
                   </Text>
