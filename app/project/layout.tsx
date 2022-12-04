@@ -8,6 +8,7 @@ import { ShowMainMenu } from "state/headerState";
 import { useAtom } from "jotai";
 import Select from 'react-select';
 import TitleAndFilter from "./component/TitleAndFilter/TitleAndFilter";
+import styles from './layout.module.scss';
 
 const options = [
   { value: 'kl', label: 'Kuala Lumpur' },
@@ -29,7 +30,7 @@ export default function RootLayout({
         <Visible visible={[openMenu, true]}>
           <SideBar />
         </Visible>
-        <div>
+        <div className={styles.mainContainer}>
           <TitleAndFilter />
           {children}
         </div>

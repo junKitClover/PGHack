@@ -7,6 +7,8 @@ import chroma from 'chroma-js';
 import { projectInfo } from "../../data/project";
 import { Flex, Stack } from "component/organisms";
 import { Button } from "component/molecules";
+import { projectName } from "state/projectState";
+import { useAtom } from "jotai";
 import classNames from "classnames";
 
 export interface LeadOption {
@@ -118,7 +120,7 @@ const leadTypeStyles: StylesConfig<LeadOption> = {
 };
 
 export default function TitleAndFilter() {
-  const { name, detailList } = projectInfo["the-light-waterfront-penang"];
+  const [name] = useAtom(projectName);
   return (
     <Box paddingBlock={4} paddingInline={[4,,6]} border rounded marginTop={[4,12]}>
       <Stack gap={4}>
