@@ -1,0 +1,35 @@
+@use 'mixin/breakpoint.modules.scss';
+
+.projectSideBar{
+  width: 350px;
+  @include breakpoint.mobile{
+    width: 100%;
+  }
+  @include breakpoint.tablet{
+    width: 100%
+  }
+}
+
+.link {
+  text-decoration: none;
+  position: relative;
+  
+  :hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+
+.highlightBar {
+  position: absolute;
+  left:0;
+  height: 100%;
+  width: 4px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  background-color: #0e2638;
+}
+
+.borderOnTop {
+  border-top: 1px solid #CCCCCC;
+}

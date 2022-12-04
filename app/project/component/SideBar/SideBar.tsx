@@ -19,7 +19,7 @@ interface ProjectProps {
 const projectList: Array<ProjectProps> = [
   {
     id: 1,
-    name: "THE LIGHT Waterfront Penang",
+    name: "The Light Waterfront Penang",
     location: "Gelugor, Penang",
     path: "/project/the-light-waterfront-penang",
   },
@@ -31,7 +31,7 @@ const projectList: Array<ProjectProps> = [
   },
   {
     id: 3,
-    name: "Tréhaus",
+    name: "Trehaus",
     location: "Bukit Jambul, Penang",
     path: "/project/trehaus",
   },
@@ -56,14 +56,7 @@ const projectList: Array<ProjectProps> = [
 ];
 
 const SideBar = () => {
-  const [currentPath, setCurrentPath] = useState('/project/the-light-waterfront-penang');
-  const [, setProjectName] = useAtom(PROJECT_NAME);
-
-  useEffect(() => {
-    const { href } = window.location;
-    const paths = href.split('/');
-    setCurrentPath(paths[paths.length - 1]);
-  }, []);
+  const [projectName, setProjectName] = useAtom(PROJECT_NAME);
 
   return (
     <Box paddingBlock={3} backgroundColor="transparent" className={styles.projectSideBar}>
@@ -71,12 +64,12 @@ const SideBar = () => {
         <Text color="fontColor" size="small" >PROJECT</Text>
         <Box border rounded backgroundColor="white" >
           {projectList.map(({ name, id, path }, index) => (
-            <Link key={id} href={path} className={styles.link} onClick={()=>{setCurrentPath(path); setProjectName(name)}}>
-              {path.indexOf(currentPath) >= 0  && <div className={styles.highlightBar}/>}
+            <Link key={id} href={path} className={styles.link} onClick={()=>{setProjectName(name)}}>
+              {projectName === name && <div className={styles.highlightBar}/>}
               <Box backgroundColor="transparent" paddingBlock={8} paddingInline={6} className={classNames({
               [styles.borderOnTop]: index !==0
             })}>
-                <Text size="small" color={path.indexOf(currentPath) > 0 ? "primary" : 'fontColor'}>{name}</Text>
+                <Text size="small" color={projectName === name ? "primary" : 'fontColor'}>{name}</Text>
               </Box>
             </Link>
           ))}
