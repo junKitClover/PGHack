@@ -66,7 +66,7 @@ const SideBar = () => {
   }, []);
 
   return (
-    <Box paddingBlock={3} paddingInline={2} backgroundColor="transparent" className={styles.projectSideBar}>
+    <Box paddingBlock={3} backgroundColor="transparent" className={styles.projectSideBar}>
       <Stack gap={4}>
         <Text color="fontColor" size="small" >PROJECT</Text>
         <Box border rounded backgroundColor="white" >

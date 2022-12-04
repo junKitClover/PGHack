@@ -15,7 +15,7 @@
   }
 
   @include breakpoint.mobile {
-    margin-inline: variables.$base-space * 1;
+    margin-inline: variables.$base-space * 2;
     padding-block: variables.$base-space * 4;
     padding-inline: 0px;
   }
