@@ -61,12 +61,18 @@ const Page = ({ params: { projectName } }: any) => {
 
   return (
     <Stack gap={4}>
-      <Flex gap={[3, 5, 6]} paddingBlock={5} paddingInline={[1,3]} wrap="wrap" justifyContent="center" className={styles.container}>
+      {/* <Flex gap={[3, 5, 6]} paddingBlock={5} wrap="wrap" justifyContent={["center","spaceBetween"]} className={styles.container}>
         {allLeadInfo.map((prop, i) => {
           if (isLoading) return <LeadCardShimmer key={i} />;
           return <LeadCard {...prop} key={i} />;
         })}
-      </Flex>
+      </Flex> */}
+      <Grid gap={[3, 5, 6]} paddingBlock={5} col={[1,2,3]} className={styles.container}>
+        {allLeadInfo.map((prop, i) => {
+          if (isLoading) return <LeadCardShimmer key={i} />;
+          return <LeadCard {...prop} key={i} />;
+        })}
+      </Grid>
     </Stack>
   );
 };
