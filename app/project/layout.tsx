@@ -1,6 +1,6 @@
 "use client";
 
-import SideBar from "./sideBar";
+import SideBar from "./component/SideBar/SideBar";
 import { Grid, Flex, PageLayout } from "component/organisms";
 import TitleAndFilter from "./component/TitleAndFilter/TitleAndFilter";
 import styles from './layout.module.scss';

@@ -2,7 +2,7 @@
 
 import { Stack } from "component/organisms";
 import { Box, Text } from "component/atoms";
-import styles from "./sideBar.module.scss";
+import styles from "./SideBar.module.scss";
 import { PROJECT_NAME } from "state/projectState";
 import { useAtom } from "jotai";
 import classNames from "classnames";
