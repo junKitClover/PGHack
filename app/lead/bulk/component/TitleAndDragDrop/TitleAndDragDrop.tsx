@@ -1,32 +1,124 @@
 "use client";
 
-import { Box, Text } from "component/atoms";
-import styles from './TitleAndSearch.module.scss';
+import { Box, Icon, Text, TextBaseProps, Visible } from "component/atoms";
+import styles from './TitleAndDragDrop.module.scss';
 import { Flex, Stack } from "component/organisms";
-import { Button } from "component/molecules";
-import { LEAD_SEARCH_RESULT, LEAD_SEARCH_LOADING, LEAD_USER_NAME } from "state/leadStated";
-import { useAtom } from "jotai";
-import classNames from "classnames";
-import { MouseEvent } from "react";
-import { prettyDataSet } from '../../../helper/prettyDataSet';
-import { Result } from '../../../LeadType';
+import { MouseEvent, useState, ChangeEvent } from "react";
+import { parse } from 'papaparse';
 
-const selectFile = (event: MouseEvent<HTMLButtonElement, MouseEvent>) => {
-  
+interface CSVData {
+  name: string,
+  phoneNumber: string,
+  email: string,
 }
 
+interface CSV<T> {
+  data: Array<T>;
+  meta: {
+    delimiter: string,
+    linebreak: string,
+    aborted: boolean,
+    truncated: boolean,
+    cursor: number,
+    fields: Array<string>,
+  }
+};
+interface PreviewTableProps {
+  data: Array<CSV<CSVData>>
+}
+
+const TableCell = ({ children, ...restProps }: TextBaseProps) => (<td><Text {...restProps}>{children}</Text></td>)
+
+const PreviewTable = ({ data }: PreviewTableProps) => (
+  <table>
+    <tr>
+      <TableCell paddingInline={2}>Name</TableCell>
+      <TableCell paddingInline={2}>Phone Number</TableCell>
+      <TableCell paddingInline={2}>Email</TableCell>
+      <TableCell paddingInline={2}>Status</TableCell>
+    </tr>
+    <tr><td colSpan={4}><hr /></td></tr>
+    {
+      data.map((csvFile) => (
+        csvFile.data.map(({ name, phoneNumber, email }, index) =>
+        (<>
+          <tr key={index}>
+            <TableCell size="small" paddingInline={2}>{name}</TableCell>
+            <TableCell size="small" paddingInline={2}>{phoneNumber}</TableCell>
+            <TableCell size="small" paddingInline={2}>{email}</TableCell>
+            <TableCell size="small" paddingInline={2}>Hot</TableCell>
+          </tr>
+          <tr><td colSpan={4}><hr /></td></tr>
+        </>
+        )
+        )
+      )
+      )
+    }
+  </table>
+)
+
+interface PreviewTableProps {
+  data: Array<CSV<CSVData>>
+}
+
+const selectFile = (event: MouseEvent<HTMLButtonElement, MouseEvent>) => {
+
+}
+
+
+
 export default function TitleAndFilter() {
+
+  const [uploadedFile, setUploadedFile] = useState<Array<CSV<CSVData>>>([]);
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const fileList = event.target.files || [];
+    
+    for (let i = 0; i < fileList.length; i++) {
+      const file = fileList[i];
+      console.log('file => ',file);
+      if (file.type === 'text/csv') {
+        file.text().then((words: string) => {
+          const result = parse(words, { header: true }) as unknown as CSV<CSVData>;
+
+          console.log('result => ',result);
+
+          setUploadedFile((prev) => [...prev, result]);
+        });
+      }
+    }
+  };
+
   return (
-    <Box paddingBlock={4} paddingInline={[4, , 6]} border rounded marginTop={[4, 12]}>
-      <Stack gap={4}>
-        <Text type="title">Search Lead</Text>
-        <Box border rounded paddingBlock={8} paddingInline={4}>
-          <Flex justifyContent="center" alignItem="center" direction="column">
-            <Text>Please upload a csv files, contain name, phoneNumber and email on the header</Text>
-            <input type="file">Select Files</input>
-          </Flex>
-        </Box>
-      </Stack>
-    </Box>
+    <Stack gap={6}>
+      <Box paddingBlock={4} paddingInline={[4, , 6]} border rounded marginTop={[4, 12]}>
+        <Stack gap={4}>
+          <Text type="title">Search Lead</Text>
+          <Box border rounded paddingBlock={8} paddingInline={4}>
+            <Flex justifyContent="center" alignItem="center" direction="column" gap={8}>
+              <Text>Please upload a csv files, contain name, phoneNumber and email on the header</Text>
+              <label className={styles.customFileUpload}>
+                <input type="file" className={styles.fileInput} color="white" accept=".csv" onChange={handleChange} />
+                <Flex justifyContent="spaceEvenly" alignItem="center" gap={4}>
+                  <Icon size="medium" iconName="upload_file" color="white" />
+                  <Text color="white">Upload file</Text>
+                </Flex>
+              </label>
+            </Flex>
+          </Box>
+        </Stack>
+      </Box>
+      <Box paddingBlock={4} border rounded className={styles.fullSize}>
+        <Flex justifyContent="center">
+          <Visible visible={uploadedFile.length > 0} isAutoWidth>
+            <PreviewTable data={uploadedFile} />
+          </Visible>
+          <Visible visible={uploadedFile.length === 0} isAutoWidth>
+            <Text color="white">Waiting CSV to upload</Text>
+          </Visible>
+        </Flex>
+      </Box>
+    </Stack>
   );
 }

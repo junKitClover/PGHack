@@ -1,0 +1,20 @@
+.fileInput {
+  display: none;
+}
+
+.customFileUpload {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  color: #CCC;
+  font-family: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #0e2638;
+  display: inline-block;
+  padding: 18px 32px;
+  cursor: pointer;
+}
+
+.fullSize {
+  width: 100%;
+  overflow-x: scroll;
+  min-height: 500px;
+}
