@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Stack, Grid } from "component/organisms";
-import { PROJECT_NAME, PROJECT_IS_LOADING } from "state/projectState";
+import { PROJECT_NAME, PROJECT_IS_LOADING, PROJECT_LEAD_QUALITY, PROJECT_LEAD_STATUS } from "state/projectState";
 import { useAtom } from "jotai";
 import LeadCard from "./component/LeadCard/LeadCard";
 import LeadCardShimmer from "./component/LeadCardShimmer/LeadCardShimmer";
@@ -25,6 +25,7 @@ const Page = ({ params: { projectName } }: any) => {
   const [isSelected, setIsSelected] = useState(["Hot", "Warm", "Cold"]);
   const [projectNameState, setProjectName] = useAtom(PROJECT_NAME);
   const [projectIsLoading] = useAtom(PROJECT_IS_LOADING);
+  const [projectFilterLeadQuality] = useAtom(PROJECT_LEAD_QUALITY);
 
   if(name !== projectNameState){
     setProjectName(name);
@@ -63,7 +64,12 @@ const Page = ({ params: { projectName } }: any) => {
   return (
     <Stack gap={4}>
       <Grid gap={[3, 5, 6]} paddingBlock={5} col={[1,2,2]} className={styles.container}>
-        {allLeadInfo.map((prop, i) => {
+        {allLeadInfo.filter(({leadScore}) => {
+          if(projectFilterLeadQuality.length > 0) { 
+            return projectFilterLeadQuality.indexOf(leadScore) >= 0;
+          } 
+          return true;
+        }).map((prop, i) => {
           if (projectIsLoading) return <LeadCardShimmer key={i} />;
           return <LeadCard {...prop} key={i} />;
         })}

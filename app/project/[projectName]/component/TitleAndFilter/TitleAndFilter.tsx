@@ -153,7 +153,7 @@ export default function TitleAndFilter() {
                 <Select
                   options={leadOptions}
                   isMulti={true}
-                  onChange={(value) => { setProjectLeadQuality(value.map(({ value }) => value)); setIsLoading(true); }}
+                  onChange={(value) => { setProjectLeadQuality(value.map(({ label }) => label)); setIsLoading(true); }}
                   placeholder="Select Lead Quality"
                   className={styles.selecter} styles={leadStyles} />
               </Box>
@@ -161,7 +161,7 @@ export default function TitleAndFilter() {
                 <Select
                   options={leadTypeOptions}
                   isMulti={true}
-                  onChange={(value) => { setProjectLeadStatus(value.map(({ value }) => value)); setIsLoading(true); }}
+                  onChange={(value) => { setProjectLeadStatus(value.map(({ label }) => label)); setIsLoading(true); }}
                   placeholder="Select Lead Type"
                   className={styles.selecter} styles={leadTypeStyles} />
               </Box>

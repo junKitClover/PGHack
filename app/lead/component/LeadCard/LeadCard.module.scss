@@ -26,11 +26,11 @@
 
 .container {
   position: relative;
-  // min-width: 350px;
-  // @include breakpoint.mobile{
-  //   max-width: 300px;
-  //   min-width: 250px;
-  // }
+  min-width: 350px;
+  @include breakpoint.mobile{
+    max-width: 300px;
+    min-width: 250px;
+  }
 }
 
 .borderTopRound {
