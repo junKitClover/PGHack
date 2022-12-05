@@ -8,7 +8,7 @@ import styles from "./LeadCard.module.scss";
 import { useAtom } from "jotai";
 import { LEAD_USER_NAME } from "state/leadStated";
 import classnames from "classnames";
-import { LeadDisplayData } from "../../LeadType";
+import { LeadDisplayData } from "../../../LeadType";
 
 type TLeadScore = "Hot" | "Warm" | "Cold";
 

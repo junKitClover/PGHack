@@ -6,11 +6,11 @@ import styles from './navBar.module.scss';
 import Link from "next/link";
 
 const menuList = [
+  {name: 'Market 360', path: '/market-360'},
   {name: 'Registration', path: '/submit-lead'},
   {name: 'Project', path: '/project/the-light-waterfront-penang'},
-  {name: 'Lead Validation', path: '/lead-check'},
-  {name: 'Market 360', path: '/market-360'},
-  {name: 'Leads Bulk Validation', path: '/bundle-lead-check'},
+  {name: 'Lead Validation', path: '/lead/search'},
+  {name: 'Leads Bulk Validation', path: '/lead/bulk'},
 ]
 
 const NavBar = () => (

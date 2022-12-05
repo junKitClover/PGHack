@@ -7,11 +7,11 @@ import { Button } from "component/molecules";
 import { LEAD_SEARCH_RESULT, LEAD_SEARCH_LOADING, LEAD_USER_NAME } from "state/leadStated";
 import { useAtom } from "jotai";
 import classNames from "classnames";
-import { useEffect, useState, FormEvent } from "react";
-import { Result, LeadDisplayData, LeadResult } from '../../LeadType';
+import { useState, FormEvent } from "react";
+import { Result, LeadDisplayData, LeadResult } from '../../../LeadType';
 
 const prettyDataSet = (data: Result): Array<LeadDisplayData> => {
-  if(data.temp_sam_us_leads360_leads.length > 0) {
+  if (data.temp_sam_us_leads360_leads.length > 0) {
     return data.temp_sam_us_leads360_leads.map(({
       country,
       lead_qualification_category,
@@ -43,19 +43,19 @@ const prettyDataSet = (data: Result): Array<LeadDisplayData> => {
       pref_config_1,
       pref_config_2,
       pref_config_3,
-    }: LeadResult):LeadDisplayData =>({
+    }: LeadResult): LeadDisplayData => ({
       country,
       leadQualification: lead_qualification_category,
-      email:contact_email,
+      email: contact_email,
       phoneNumber: contact_mobile,
       lastLogin: audit_lastLogin,
-      topSearchProperties: [top_property_name1 || '',top_property_name2 ||'',top_property_name3 || '',top_property_name4 || '',top_property_name5||''],
-      topSearchRegion: [top_region1 || '',top_region2 ||'',top_region3 || '',top_region4 || '',top_region5 || ''],
-      topSearchDistricts: [top_district1 || '',top_district2 ||'',top_district3 || '',top_district4 || '',top_district5 ||''],
+      topSearchProperties: [top_property_name1 || '', top_property_name2 || '', top_property_name3 || '', top_property_name4 || '', top_property_name5 || ''],
+      topSearchRegion: [top_region1 || '', top_region2 || '', top_region3 || '', top_region4 || '', top_region5 || ''],
+      topSearchDistricts: [top_district1 || '', top_district2 || '', top_district3 || '', top_district4 || '', top_district5 || ''],
       interestNewProject: new_project_interest || '',
-      newProject: [new_project_names_enquired1 || '',new_project_names_enquired2 || '',new_project_names_enquired3 || ''],
-      prefPrice:[pref_price_1 || '',pref_price_2 || '',pref_price_3 || ''],
-      prefConfig: [pref_config_1 || '',pref_config_2 || '',pref_config_3 || ''],
+      newProject: [new_project_names_enquired1 || '', new_project_names_enquired2 || '', new_project_names_enquired3 || ''],
+      prefPrice: [pref_price_1 || '', pref_price_2 || '', pref_price_3 || ''],
+      prefConfig: [pref_config_1 || '', pref_config_2 || '', pref_config_3 || ''],
     }));
   }
   return [];
@@ -72,44 +72,41 @@ export default function TitleAndFilter() {
 
   const validateEmail = (email: string) => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email) ? true : false;
 
-  useEffect(() => {
-    setLeadSearchLoading(true)
-    fetch('https://propertyguru.hasura.app/api/rest/getLeads360ByEmail', {
-      method: 'POST',
-      cache: 'no-cache',
-      headers: {
-        'x-hasura-admin-secret': 'Sfuro9op4sS5tmD98vlqcjEZirCddguhzg4WxNo3415CLsjqdK26jl6AzOAkwbWa',
-      },
-      body: JSON.stringify({ "emailId": email })
-    })
-      .then((res) => res.json())
-      .then((data: Result) => {
-        setLeadSearchResult(prettyDataSet(data));
-        setLeadSearchLoading(false);
-      })
-  }, [email, setLeadSearchLoading, setLeadSearchResult]);
-
   const onSubmitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const [{value: name}, { value: email } , {value: phone}] = e.target as unknown as any;
+    const [{ value: name }, { value: email }, { value: phone }] = e.target as unknown as any;
 
-    if(name){
+    if (name) {
       setLeadUserName(name);
       setInvalidName(false);
     }
-    else{
+    else {
       setInvalidName(true);
       return;
     }
 
     if (email && validateEmail(email)) {
       setEmail(email);
+      setLeadSearchLoading(true);
+      fetch('https://propertyguru.hasura.app/api/rest/getLeads360ByEmail', {
+        method: 'POST',
+        cache: 'no-cache',
+        headers: {
+          'x-hasura-admin-secret': 'Sfuro9op4sS5tmD98vlqcjEZirCddguhzg4WxNo3415CLsjqdK26jl6AzOAkwbWa',
+        },
+        body: JSON.stringify({ "emailId": email })
+      })
+        .then((res) => res.json())
+        .then((data: Result) => {
+          setLeadSearchResult(prettyDataSet(data));
+          setLeadSearchLoading(false);
+        })
       setInvalidEmail(false);
     } else {
       setInvalidEmail(true);
     }
 
-    
+
   }
 
   return (
