@@ -15,8 +15,8 @@ interface FirstFormProps {
 
 const FirstForm = ({ onSubmit }: FirstFormProps) => {
   return (
-    <Box backgroundColor="white" border rounded marginTop={10}>
-    <Stack gap={5} paddingBlock={[2, 3, 6]} paddingInline={[2, 3, 5]}>
+    <Box backgroundColor="white" border rounded marginTop={10}paddingBlock={[2, 3, 8]} paddingInline={[2, 3, 6]}>
+    <Stack gap={5} >
       <Flex justifyContent="center" alignItem="center" gap={10} direction="column">
         <Text type="title">Leads Submission Form</Text>
         <form onSubmit={onSubmit} method="post">
@@ -28,7 +28,7 @@ const FirstForm = ({ onSubmit }: FirstFormProps) => {
             <Text as="label">Email:</Text>
             <input name="email" type="text" placeholder="Email" className={styles.inputField} />
             <Text as="label">Interested Project:</Text>
-            <input name="interestedProject" type="text" placeholder="Email" className={styles.inputField} />
+            <input name="interestedProject" type="text" placeholder="Interested Project" className={styles.inputField} />
             <Text as="label">Budget:</Text>
             <input name="budget" type="text" placeholder="Budget" className={styles.inputField} />
             <Text as="label">Looking for:</Text>
