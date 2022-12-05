@@ -1,0 +1,8 @@
+@use 'mixin/breakpoint.modules.scss';
+
+.container {
+  width: auto;
+  @include breakpoint.mobile{
+    width: 100%;
+  }
+}

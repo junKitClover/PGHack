@@ -1,10 +1,10 @@
 import { ReactNode, HTMLAttributes } from 'react';
 import styles from './Box.module.scss';
-import { generateSpaceListBaseOnCommonInterface, PaddingSemanticProps, MarginSemanticProps } from 'styles/Space';
+import { generateSpaceListBaseOnCommonInterface, PaddingSemanticProps, MarginProps } from 'styles/Space';
 import { TColor, styleBgColor, styleColor } from 'styles/Color';
 import classnames from 'classnames';
 
-export interface SpaceProps extends HTMLAttributes<HTMLDivElement>, PaddingSemanticProps, MarginSemanticProps {
+export interface SpaceProps extends HTMLAttributes<HTMLDivElement>, PaddingSemanticProps, MarginProps {
   backgroundColor?: TColor;
   color?: TColor;
   children: ReactNode;
@@ -23,6 +23,10 @@ export const Box = ({
   paddingInline,
   margin,
   marginBlock,
+  marginBottom,
+  marginLeft,
+  marginRight,
+  marginTop,
   marginInline,
   className,
   ...restProps
@@ -33,7 +37,11 @@ export const Box = ({
     paddingInline,
     margin,
     marginBlock,
-    marginInline
+    marginInline,
+    marginBottom,
+    marginLeft,
+    marginRight,
+    marginTop,
   });
 
   return (

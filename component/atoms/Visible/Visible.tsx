@@ -30,6 +30,7 @@ export const Visible = ({ visible, children, visibleInPrint = true, isAutoWidth 
   <div
     {...restprops}
     className={classnames(
+      styles.heightAnimation,
       isAutoWidth ? styles.autoWidth : styles.fullWidth,
       ...generateVisibleStyleList(visible),
       styles[`display_print_${getVisibleTerms(visibleInPrint)}`]

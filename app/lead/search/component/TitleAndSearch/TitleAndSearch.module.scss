@@ -1,0 +1,28 @@
+@use 'mixin/breakpoint.modules.scss';
+
+
+.filterBox {
+  max-width: 320px;
+  
+  @include breakpoint.mobile{
+    width: 250px;
+  }
+}
+.secondBox{
+  border-left: 1px solid #CCCCCC;
+
+  @include breakpoint.mobile{
+    border-left: 0px;
+  }
+}
+
+.textInput {
+  font-family: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  border: 0px;
+  color: #0e2638;
+  font-size: 16px;
+  padding-inline: 12px;
+  padding-block: 12px;
+  font-weight: 400;
+  height: 100%;
+}

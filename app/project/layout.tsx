@@ -1,24 +1,24 @@
 "use client";
 
-import SideBar from "./sideBar";
-import { useState } from "react";
-import { Grid, Flex } from "component/organisms";
-import { Box, Visible } from "component/atoms";
-import { ShowMainMenu } from "state/headerState";
-import { useAtom } from "jotai";
+import SideBar from "./component/SideBar/SideBar";
+import { Grid, Flex, PageLayout } from "component/organisms";
+import TitleAndFilter from "./component/TitleAndFilter/TitleAndFilter";
+import styles from './layout.module.scss';
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [openMenu] = useAtom(ShowMainMenu);
   return (
-    <Grid col={[1, "1by6"]} gap={3}>
-      <Visible visible={[openMenu, true]}>
+    <PageLayout paddingTop={10}>
+      <Flex gap={6} direction={["column",, "row"]}>
         <SideBar />
-      </Visible>
-      <Visible visible={[!openMenu, true]}>{children}</Visible>
-    </Grid>
+        <div className={styles.mainContainer}>
+          <TitleAndFilter />
+          {children}
+        </div>
+      </Flex>
+    </PageLayout>
   );
 }

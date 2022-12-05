@@ -1,4 +1,4 @@
-import { LeadCardProps } from "../component/LeadCard";
+import { LeadCardProps } from "../component/LeadCard/LeadCard";
 
 export const leadInfo: Array<LeadCardProps> = [
   {

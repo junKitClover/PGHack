@@ -11,6 +11,7 @@ export type Styles = {
   'display_tablet_hidden': string;
   'display_tablet_show': string;
   'fullWidth': string;
+  'heightAnimation': string;
 };
 
 export type ClassNames = keyof Styles;

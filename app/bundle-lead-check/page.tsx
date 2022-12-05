@@ -81,7 +81,7 @@ function Page() {
 
   return (
     <Stack gap={2} paddingBlock={[2, 3, 6]} paddingInline={[2, 3, 5]}>
-      <Text type="title">Bundle Leads Check</Text>
+      <Text type="title">Leads Bulk Validation</Text>
       <Grid col={[1, "1by2"]}>
         <FileUploader
           multiple={true}

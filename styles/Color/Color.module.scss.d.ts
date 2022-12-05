@@ -24,6 +24,7 @@ export type Styles = {
   'backgroundColor_secondary': string;
   'backgroundColor_secondaryDark': string;
   'backgroundColor_secondaryDarker': string;
+  'backgroundColor_secondaryFontColor': string;
   'backgroundColor_secondaryLight': string;
   'backgroundColor_secondaryLighter': string;
   'backgroundColor_success': string;
@@ -63,6 +64,7 @@ export type Styles = {
   'color_secondary': string;
   'color_secondaryDark': string;
   'color_secondaryDarker': string;
+  'color_secondaryFontColor': string;
   'color_secondaryLight': string;
   'color_secondaryLighter': string;
   'color_success': string;
@@ -102,6 +104,7 @@ export type Styles = {
   'fill_secondary': string;
   'fill_secondaryDark': string;
   'fill_secondaryDarker': string;
+  'fill_secondaryFontColor': string;
   'fill_secondaryLight': string;
   'fill_secondaryLighter': string;
   'fill_success': string;
@@ -141,6 +144,7 @@ export type Styles = {
   'stroke_secondary': string;
   'stroke_secondaryDark': string;
   'stroke_secondaryDarker': string;
+  'stroke_secondaryFontColor': string;
   'stroke_secondaryLight': string;
   'stroke_secondaryLighter': string;
   'stroke_success': string;

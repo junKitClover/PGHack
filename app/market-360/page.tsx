@@ -1,21 +1,17 @@
 'use client';
-
-import { Grid, Stack } from 'component/organisms';
-import { Box, Text } from 'component/atoms';
-import { Button } from 'component/molecules';
-import { useState, useEffect } from 'react';
-import Router, { useRouter } from 'next/router';
+import { useEffect, SyntheticEvent } from 'react';
+import styles from './page.module.scss';
 
 function Page() {
+  const onIframeLoad = (event: SyntheticEvent<HTMLIFrameElement, Event>) => {
+    event.preventDefault();
+    console.log('on loading');
+    const nav = document.getElementById('navbar');
+    console.log('nav => ', nav);
+  }
 
   return (
-    <Stack gap={2} paddingBlock={[2,3,6]} paddingInline={[2,3,5]}>
-      <Text type="title">Market 360</Text>
-      <Grid col={[1,2]}>
-        <div>form entry</div>
-        <Box>result</Box>
-      </Grid>
-    </Stack>
+    <iframe src="http://osg-nvidia-dgx1.guruestate.com:8111/Map.html" title="Market 360" className={styles.iframeMap} onLoad={onIframeLoad}/>
   );
 }
 
