@@ -3,11 +3,10 @@
 import { Box, Icon, Text, TextBaseProps, Visible } from "component/atoms";
 import { Button } from "component/molecules";
 import styles from './TitleAndDragDrop.module.scss';
-import { CSVLink, CSVDownload } from "react-csv";
+import { CSVLink } from "react-csv";
 import { Flex, Stack } from "component/organisms";
 import { useState, ChangeEvent } from "react";
 import { parse } from 'papaparse';
-import { StringMappingType } from "typescript";
 
 interface CSVData {
   name: string,
@@ -124,7 +123,7 @@ return (
     </Box>
     <Flex justifyContent="center" marginBottom={4}>
       <Visible visible={uploadedFile.length > 0} isAutoWidth>
-        <CSVLink data={[
+        <CSVLink className={styles.download} data={[
           ...uploadedFile.map(({ meta: { fields } }) => (fields)),
           ...uploadedFile.map(({ data }) => data.map(({ email, name, phoneNumber, status }) => ([name, phoneNumber, email, status]))).flat()
         ]}><Button size="large" iconName="download">Download</Button></CSVLink>

@@ -1,5 +1,6 @@
 export type Styles = {
   'customFileUpload': string;
+  'download': string;
   'fileInput': string;
   'fullSize': string;
 };
