@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import { Stack, Grid, Flex } from "component/organisms";
 import { PROJECT_NAME } from "state/projectState";
 import { useAtom } from "jotai";
-import LeadCard, { LeadCardProps } from "../component/LeadCard/LeadCard";
-import LeadCardShimmer from "../component/LeadCardShimmer/LeadCardShimmer";
-import { projectInfo } from "../data/project";
-import { leadInfo } from "../data/lead";
+import LeadCard, { LeadCardProps } from "./component/LeadCard/LeadCard";
+import LeadCardShimmer from "./component/LeadCardShimmer/LeadCardShimmer";
+import { projectInfo } from "./data/project";
+import { leadInfo } from "./data/lead";
 import Router from "next/router";
 import styles from "./page.module.scss";
 
