@@ -127,7 +127,7 @@ return (
         <CSVLink data={[
           ...uploadedFile.map(({ meta: { fields } }) => (fields)),
           ...uploadedFile.map(({ data }) => data.map(({ email, name, phoneNumber, status }) => ([name, phoneNumber, email, status]))).flat()
-        ]}><Button>Download</Button></CSVLink>
+        ]}><Button size="large" iconName="download">Download</Button></CSVLink>
       </Visible>
     </Flex>
   </Stack>
