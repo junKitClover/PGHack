@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Stack, Grid, Flex } from "component/organisms";
-import { PROJECT_NAME } from "state/projectState";
+import { Stack, Grid } from "component/organisms";
+import { PROJECT_NAME, PROJECT_IS_LOADING } from "state/projectState";
 import { useAtom } from "jotai";
-import LeadCard, { LeadCardProps } from "./component/LeadCard/LeadCard";
+import LeadCard from "./component/LeadCard/LeadCard";
 import LeadCardShimmer from "./component/LeadCardShimmer/LeadCardShimmer";
 import { projectInfo } from "./data/project";
 import { leadInfo } from "./data/lead";
@@ -21,10 +21,10 @@ interface ProjectNameProps {
 const Page = ({ params: { projectName } }: any) => {
   const { name } = projectInfo[projectName];
   const [loginUserType, setLoginUserType] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
   const [allLeadInfo, setAllLeadInfo] = useState(leadInfo);
   const [isSelected, setIsSelected] = useState(["Hot", "Warm", "Cold"]);
   const [projectNameState, setProjectName] = useAtom(PROJECT_NAME);
+  const [projectIsLoading] = useAtom(PROJECT_IS_LOADING);
 
   if(name !== projectNameState){
     setProjectName(name);
@@ -45,12 +45,6 @@ const Page = ({ params: { projectName } }: any) => {
     isSelected
   ])
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsLoading(false);
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
 
   useEffect(() => {
     const localStorageUserName = localStorage.getItem("userName") || 'SUPER';
@@ -70,7 +64,7 @@ const Page = ({ params: { projectName } }: any) => {
     <Stack gap={4}>
       <Grid gap={[3, 5, 6]} paddingBlock={5} col={[1,2,2]} className={styles.container}>
         {allLeadInfo.map((prop, i) => {
-          if (isLoading) return <LeadCardShimmer key={i} />;
+          if (projectIsLoading) return <LeadCardShimmer key={i} />;
           return <LeadCard {...prop} key={i} />;
         })}
       </Grid>
