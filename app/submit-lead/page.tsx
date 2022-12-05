@@ -3,6 +3,7 @@
 import { Grid, Stack, Flex, PageLayout } from 'component/organisms';
 import { Text, Visible, Box } from 'component/atoms';
 import { Button } from 'component/molecules';
+import Select, { StylesConfig } from 'react-select';
 import { PROJECT_LEAD_INFO } from 'state/projectState';
 import { FormEvent, useState } from 'react';
 import { useAtom } from 'jotai';
