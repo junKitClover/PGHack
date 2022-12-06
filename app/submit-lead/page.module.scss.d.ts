@@ -1,6 +1,7 @@
 export type Styles = {
   'inputField': string;
   'resetBtn': string;
+  'selecter': string;
   'submitBtn': string;
 };
 
