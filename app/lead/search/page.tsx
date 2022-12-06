@@ -5,7 +5,7 @@ import { Flex, Stack } from "component/organisms";
 import { LEAD_SEARCH_LOADING, LEAD_SEARCH_RESULT } from "state/leadStated";
 import { useAtom } from "jotai";
 import TitleAndSearch from "./component/TitleAndSearch/TitleAndSearch";
-import LeadCard from "./component/LeadCard/LeadCard";
+import LeadCard from "../../components/LeadCard/LeadCard";
 import styles from "./page.module.scss";
 
 const Status = () => {

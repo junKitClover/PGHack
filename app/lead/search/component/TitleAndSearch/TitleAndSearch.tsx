@@ -8,7 +8,7 @@ import { LEAD_SEARCH_RESULT, LEAD_SEARCH_LOADING, LEAD_USER_NAME } from "state/l
 import { useAtom } from "jotai";
 import classNames from "classnames";
 import { useState, FormEvent } from "react";
-import { Result, LeadDisplayData, LeadResult } from '../../../LeadType';
+import { Result, LeadDisplayData, LeadResult } from '../../../../type/LeadType';
 
 const prettyDataSet = (data: Result): Array<LeadDisplayData> => {
   if (data.temp_sam_us_leads360_leads.length > 0) {

@@ -1,5 +1,5 @@
 
-import { Result, LeadDisplayData, LeadResult } from '../LeadType';
+import { Result, LeadDisplayData, LeadResult } from '../type/LeadType';
 
 export const prettyDataSet = (data: Result): Array<LeadDisplayData> => {
   if (data.temp_sam_us_leads360_leads.length > 0) {
