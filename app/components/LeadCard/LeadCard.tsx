@@ -5,8 +5,6 @@ import { useState, useEffect } from "react";
 import { Stack, Flex } from "component/organisms";
 import { TColor, TTextColor } from "styles/Color";
 import styles from "./LeadCard.module.scss";
-import { useAtom } from "jotai";
-import { LEAD_USER_NAME } from "state/leadStated";
 import classnames from "classnames";
 import { LeadDisplayData } from "../../type/LeadType";
 
@@ -17,7 +15,12 @@ interface ColorProps {
   color: TTextColor;
 }
 
+interface LeadCardProps extends LeadDisplayData{
+  name: string
+}
+
 const LeadCard = ({
+  name,
   country,
   leadQualification,
   email,
@@ -29,9 +32,7 @@ const LeadCard = ({
   topSearchProperties,
   topSearchRegion,
   interestNewProject
-}: LeadDisplayData) => {
-  const [name] = useAtom(LEAD_USER_NAME);
-
+}: LeadCardProps) => {
   return (
     <Box
       border

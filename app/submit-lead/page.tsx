@@ -2,7 +2,7 @@
 
 import { Grid, Stack, Flex, PageLayout } from 'component/organisms';
 import { Text, Visible, Box } from 'component/atoms';
-import { PROJECT_LEAD_INFO, TProjectType } from 'state/projectState';
+import { PROJECT_LEAD_INFO, TProjectType, PROJECT_LEAD_EMAIL_WITH_NAME } from 'state/projectState';
 import Select, { StylesConfig } from 'react-select';
 import { FormEvent, useState } from 'react';
 import { useAtom } from 'jotai';
@@ -65,13 +65,15 @@ type TStatus = 'INIT' | 'FINAL';
 function Page() {
   const [status, setStatus] = useState<TStatus>('INIT');
   const [leadRegister, setLeadRegister] = useAtom(PROJECT_LEAD_INFO);
+  const [emailWithName, setLeadEmailWithName] = useAtom(PROJECT_LEAD_EMAIL_WITH_NAME);
   const [project, setProject] = useState<TProjectType | null>(null);
+
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const [{ value: name }, { value: email }] = event.target as unknown as any;
-    if(project)
-    {
-      setLeadRegister({ ...leadRegister, [project]: [ ...leadRegister[project], { name,email } ] });
+    if (project) {
+      setLeadRegister({ ...leadRegister, [project]: [...leadRegister[project], { name, email }] });
+      setLeadEmailWithName({ ...emailWithName, [email]: name })
     }
     setStatus('FINAL');
     return false;

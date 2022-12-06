@@ -6,10 +6,11 @@ import styles from './TitleAndFilter.module.scss';
 import chroma from 'chroma-js';
 import { Flex, Stack } from "component/organisms";
 import { Button } from "component/molecules";
-import { PROJECT_NAME, PROJECT_LEAD_QUALITY, PROJECT_LEAD_STATUS, PROJECT_IS_LOADING } from "state/projectState";
+import { PROJECT_NAME, PROJECT_LEAD_QUALITY, PROJECT_LEAD_STATUS, PROJECT_IS_LOADING, PROJECT_LEAD_TYPE } from "state/projectState";
 import { useAtom } from "jotai";
 import classNames from "classnames";
 import { useEffect, useState } from 'react';
+import { TLeadType } from 'app/type/LeadType';
 
 export interface LeadOption {
   readonly value: string;
@@ -119,31 +120,21 @@ const leadTypeStyles: StylesConfig<LeadOption> = {
   indicatorSeparator: (styles) => ({ ...styles, display: 'none' }),
 };
 
-type Lead = 'DIRECT' | 'INDIRECT';
+
 
 export default function TitleAndFilter() {
   const [name] = useAtom(PROJECT_NAME);
   const [, setProjectLeadQuality] = useAtom(PROJECT_LEAD_QUALITY);
   const [, setProjectLeadStatus] = useAtom(PROJECT_LEAD_STATUS);
-  const [isLoading, setIsLoading] = useAtom(PROJECT_IS_LOADING);
-  const [lead, setLead] = useState<Lead>('DIRECT');
-
-  useEffect(() => {
-    if(isLoading){
-      const interval = setInterval(() => {
-        setIsLoading(false);
-      }, 1000);
-      return () => clearInterval(interval);
-    }
-  }, [isLoading,setIsLoading]);
+  const [leadType, setLeadType] = useAtom(PROJECT_LEAD_TYPE);
 
   return (
     <Box paddingBlock={4} paddingInline={[4, , 6]} border rounded marginTop={[4, 12]}>
       <Stack gap={4}>
         <Text type="title">{name}</Text>
         <Flex gap={4}>
-          <Button type={lead === "DIRECT" ? "contained" : "outline"} onClick={() => { setLead("DIRECT"); setIsLoading(true);}}>Direct Lead</Button>
-          <Button type={lead === "INDIRECT" ? "contained" : "outline"} onClick={() => { setLead("INDIRECT"); setIsLoading(true);}}>Lookalike Lead</Button>
+          <Button type={leadType === "DIRECT" ? "contained" : "outline"} onClick={() => { setLeadType("DIRECT"); }}>Direct Lead</Button>
+          <Button type={leadType === "INDIRECT" ? "contained" : "outline"} onClick={() => { setLeadType("INDIRECT"); }}>Lookalike Lead</Button>
         </Flex>
         <Box border rounded paddingBlock={3} paddingInline={4}>
           <Stack gap={2}>
@@ -153,7 +144,7 @@ export default function TitleAndFilter() {
                 <Select
                   options={leadOptions}
                   isMulti={true}
-                  onChange={(value) => { setProjectLeadQuality(value.map(({ label }) => label)); setIsLoading(true); }}
+                  onChange={(value) => { setProjectLeadQuality(value.map(({ label }) => label)); }}
                   placeholder="Select Lead Quality"
                   className={styles.selecter} styles={leadStyles} />
               </Box>
@@ -161,7 +152,7 @@ export default function TitleAndFilter() {
                 <Select
                   options={leadTypeOptions}
                   isMulti={true}
-                  onChange={(value) => { setProjectLeadStatus(value.map(({ label }) => label)); setIsLoading(true); }}
+                  onChange={(value) => { setProjectLeadStatus(value.map(({ label }) => label)); }}
                   placeholder="Select Lead Type"
                   className={styles.selecter} styles={leadTypeStyles} />
               </Box>

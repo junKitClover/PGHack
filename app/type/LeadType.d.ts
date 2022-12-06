@@ -81,3 +81,5 @@ export interface LeadResult {
 export interface Result {
   temp_sam_us_leads360_leads: Array<LeadResult>
 }
+
+export type TLeadType = 'DIRECT' | 'INDIRECT';

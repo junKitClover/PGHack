@@ -8,6 +8,8 @@ export type TProjectType =
   | "udini-square"
   | "vertiq-boutique-outlets";
 
+export type TLeadType = 'DIRECT' | 'INDIRECT';
+
 export type TLeadStore = Record<TProjectType, Array<RegisterInfor>>;  
 interface RegisterInfor {
   name: string;
@@ -28,3 +30,5 @@ export const PROJECT_LEAD_INFO = atom<
   "udini-square": [],
   "vertiq-boutique-outlets": [],
 });
+export const PROJECT_LEAD_EMAIL_WITH_NAME = atom<Record<string,string>>({});
+export const PROJECT_LEAD_TYPE = atom<TLeadType>('DIRECT');
