@@ -1,8 +1,9 @@
-import { Flex, Stack } from "component/organisms";
-import styles from "./page.modules.scss";
+import TitleAndDragDrop from "./component/TitleAndDragDrop/TitleAndDragDrop";
 
 const Page = () => {
-  return(<Flex alignItem='center' justifyContent="center" className={styles.fullSize}>this is a bulk page</Flex>);
+  return (
+      <TitleAndDragDrop />
+  );
 };
 
 export default Page;

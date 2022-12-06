@@ -8,7 +8,7 @@ import Link from "next/link";
 const menuList = [
   {name: 'Market 360', path: '/market-360'},
   {name: 'Registration', path: '/submit-lead'},
-  {name: 'Project', path: '/project/the-light-waterfront-penang'},
+  {name: 'Project', path: '/project/parc-esta'},
   {name: 'Lead Validation', path: '/lead/search'},
   {name: 'Leads Bulk Validation', path: '/lead/bulk'},
 ]

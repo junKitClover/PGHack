@@ -1,5 +1,6 @@
 
-import { Result, LeadDisplayData, LeadResult } from '../LeadType';
+import { Result, LeadDisplayData, LeadResult, LookALikeResult,LookALikeLeadResult } from '../type/LeadType';
+
 
 export const prettyDataSet = (data: Result): Array<LeadDisplayData> => {
   if (data.temp_sam_us_leads360_leads.length > 0) {
@@ -45,6 +46,48 @@ export const prettyDataSet = (data: Result): Array<LeadDisplayData> => {
       topSearchDistricts: [top_district1 || '', top_district2 || '', top_district3 || '', top_district4 || '', top_district5 || ''],
       interestNewProject: new_project_interest || '',
       newProject: [new_project_names_enquired1 || '', new_project_names_enquired2 || '', new_project_names_enquired3 || ''],
+      prefPrice: [pref_price_1 || '', pref_price_2 || '', pref_price_3 || ''],
+      prefConfig: [pref_config_1 || '', pref_config_2 || '', pref_config_3 || ''],
+    }));
+  }
+  return [];
+}
+
+export const prettyLookALikeDataSet = (data: LookALikeResult): Array<LeadDisplayData> => {
+  if (data.temp_sam_us_ARES_lookalike_temp.length > 0) {
+    return data.temp_sam_us_ARES_lookalike_temp.map(({
+      lead_qualification_category,
+      lookalike_email,
+      lookalike_mobile,
+      latest_visit_date,
+      pref_district_name_1,
+      pref_district_name_2,
+      pref_district_name_3,
+      pref_property_name_1,
+      pref_property_name_2,
+      pref_property_name_3,
+      pref_region_name_1,
+      pref_region_name_2,
+      pref_region_name_3,
+      new_project_interest,
+      new_project_names_enquired,
+      pref_price_1,
+      pref_price_2,
+      pref_price_3,
+      pref_config_1,
+      pref_config_2,
+      pref_config_3,
+    }: LookALikeLeadResult): LeadDisplayData => ({
+      country: 'sg',
+      leadQualification: lead_qualification_category,
+      email: lookalike_email,
+      phoneNumber: lookalike_mobile,
+      lastLogin: latest_visit_date,
+      topSearchProperties: [pref_property_name_1 || '', pref_property_name_2 || '', pref_property_name_3],
+      topSearchRegion: [pref_region_name_1 || '', pref_region_name_2 || '', pref_region_name_3],
+      topSearchDistricts: [pref_district_name_1 || '', pref_district_name_2 || '', pref_district_name_3],
+      interestNewProject: new_project_interest || '',
+      newProject: new_project_names_enquired,
       prefPrice: [pref_price_1 || '', pref_price_2 || '', pref_price_3 || ''],
       prefConfig: [pref_config_1 || '', pref_config_2 || '', pref_config_3 || ''],
     }));

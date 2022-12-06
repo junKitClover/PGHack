@@ -1,5 +1,6 @@
 export type Styles = {
   'container': string;
+  'emptyResult': string;
 };
 
 export type ClassNames = keyof Styles;

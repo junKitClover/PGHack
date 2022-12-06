@@ -1,4 +1,5 @@
 export interface LeadDisplayData {
+  name?:string;
   country: string,
   leadQualification: string,
   email: string,
@@ -78,6 +79,49 @@ export interface LeadResult {
   pref_config_3?: string,
 }
 
+export interface LookALikeLeadResult {
+  seed_email: string,
+  seed_mobile: string,
+  lookalike_email: string,
+  lookalike_mobile: string,
+  user_id: string,
+  lead_qualification_category: string,
+  latest_visit_date: string,
+  latest_enq_date: string,
+  pref_property_name_1?: string,
+  pref_property_id_1: string,
+  pref_property_name_2: string,
+  pref_property_id_2: string,
+  pref_property_name_3: string,
+  pref_property_id_3: string,
+  pref_price_1: string,
+  pref_price_2: string,
+  pref_price_3: string,
+  pref_config_1: string,
+  pref_config_2: string,
+  pref_config_3: string,
+  pref_region_code_1: string,
+  pref_region_name_1: string,
+  pref_region_code_2: string,
+  pref_region_name_2: string,
+  pref_region_code_3: string,
+  pref_region_name_3: string,
+  pref_district_code_1: string,
+  pref_district_name_1: string,
+  pref_district_code_2: string,
+  pref_district_name_2: string,
+  pref_district_code_3: string,
+  pref_district_name_3: string,
+  new_project_names_enquired: Array<string>,
+  new_project_interest: string
+}
+
+export interface LookALikeResult{
+  temp_sam_us_ARES_lookalike_temp: Array<LookALikeLeadResult> ;
+}
+
 export interface Result {
   temp_sam_us_leads360_leads: Array<LeadResult>
 }
+
+export type TLeadType = 'DIRECT' | 'INDIRECT';

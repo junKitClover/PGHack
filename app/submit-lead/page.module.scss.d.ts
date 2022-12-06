@@ -1,5 +1,8 @@
 export type Styles = {
-  'container': string;
+  'inputField': string;
+  'resetBtn': string;
+  'selecter': string;
+  'submitBtn': string;
 };
 
 export type ClassNames = keyof Styles;

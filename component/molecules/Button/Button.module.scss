@@ -71,6 +71,7 @@ $button-outline-bg-disable-color: var(--primary-button, #ffffff);
   width: $button-width;
   height: $button-height;
   text-align: left;
+  text-decoration: none;
 }
 
 @mixin buttonSize {

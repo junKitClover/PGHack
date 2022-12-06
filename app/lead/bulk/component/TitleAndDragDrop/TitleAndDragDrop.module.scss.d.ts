@@ -1,5 +1,9 @@
 export type Styles = {
-  'listStyle': string;
+  'customFileUpload': string;
+  'download': string;
+  'fileInput': string;
+  'fullSize': string;
+  'tableCell': string;
 };
 
 export type ClassNames = keyof Styles;
