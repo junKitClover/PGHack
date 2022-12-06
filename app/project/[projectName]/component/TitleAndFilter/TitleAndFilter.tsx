@@ -148,14 +148,14 @@ export default function TitleAndFilter() {
                   placeholder="Select Lead Quality"
                   className={styles.selecter} styles={leadStyles} />
               </Box>
-              <Box className={classNames(styles.filterBox, styles.secondBox)}>
+              {/* <Box className={classNames(styles.filterBox, styles.secondBox)}>
                 <Select
                   options={leadTypeOptions}
                   isMulti={true}
                   onChange={(value) => { setProjectLeadStatus(value.map(({ label }) => label)); }}
                   placeholder="Select Lead Type"
                   className={styles.selecter} styles={leadTypeStyles} />
-              </Box>
+              </Box> */}
             </Flex>
           </Stack>
         </Box>
