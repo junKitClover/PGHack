@@ -2,24 +2,25 @@
 
 import { useEffect, useState } from "react";
 import { Stack, Grid } from "component/organisms";
-import { PROJECT_NAME, PROJECT_LEAD_QUALITY, PROJECT_LEAD_INFO, TProjectType, PROJECT_LEAD_TYPE, PROJECT_LEAD_EMAIL_WITH_NAME } from "state/projectState";
+import { PROJECT_NAME, PROJECT_LEAD_QUALITY, PROJECT_LEAD_INFO, PROJECT_LEAD_TYPE, PROJECT_LEAD_EMAIL_WITH_NAME } from "state/projectState";
 import { useAtom } from "jotai";
 import LeadCard from "app/components/LeadCard/LeadCard";
 import LeadCardShimmer from "./component/LeadCardShimmer/LeadCardShimmer";
 import { projectInfo } from "./data/project";
 import styles from "./page.module.scss";
+import { TPropertyName } from "state/projectState";
 import { Result, LeadDisplayData, LookALikeResult } from "app/type/LeadType";
 import { prettyDataSet, prettyLookALikeDataSet } from "app/helper/prettyDataSet";
 
 interface ProjectNameProps {
   params: {
-    projectName: string;
+    projectName: TPropertyName;
   };
   searchParams: object;
 }
 
 const Page = ({ params: { projectName } }: any) => {
-  const { name } = projectInfo[projectName];
+  const { name } = projectInfo[projectName as unknown as TPropertyName];
   const [isLoading, setIsLoading] = useState(true);
   const [allLeadInfo, setAllLeadInfo] = useState<Array<LeadDisplayData>>([]);
   const [projectNameState, setProjectName] = useAtom(PROJECT_NAME);
@@ -33,7 +34,7 @@ const Page = ({ params: { projectName } }: any) => {
   }
 
   useEffect(() => {
-    const thisProjectLead = projectLead[projectName as unknown as TProjectType];
+    const thisProjectLead = projectLead[projectName as unknown as TPropertyName];
     console.log(leadType, thisProjectLead.map((({ email }) => (email))));
 
     if (leadType === 'DIRECT') {

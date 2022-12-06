@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 interface ProjectProps {
   id: number,
   name: string;
+  slug: string;
   location: string;
   path: string;
 }
@@ -19,39 +20,45 @@ interface ProjectProps {
 const projectList: Array<ProjectProps> = [
   {
     id: 1,
-    name: "The Light Waterfront Penang",
+    name: "Parc Esta",
+    slug: "parc-esta",
     location: "Gelugor, Penang",
-    path: "/project/the-light-waterfront-penang",
+    path: "/project/parc-esta",
   },
   {
     id: 2,
-    name: "Permatang Sanctuary",
+    name: "Archipelago",
+    slug: "archipelago",
     location: "Permatang Tinggi, Bukit Mertajam",
-    path: "/project/permatang-sanctuary",
+    path: "/project/archipelago",
   },
   {
     id: 3,
-    name: "Trehaus",
+    name: "The Mezzo",
+    slug: "the-mezzo",
     location: "Bukit Jambul, Penang",
-    path: "/project/trehaus",
+    path: "/project/the-mezzo",
   },
   {
     id: 4,
-    name: "The Terraces Condominium",
+    slug: "viva-vista",
+    name: "Viva Vista",
     location: "Bukit Jambul, Penang",
-    path: "/project/the-terraces-condominium",
+    path: "/project/viva-vista",
   },
   {
     id: 5,
-    name: "UDINI Square",
+    slug: "river-place",
+    name: "River Place",
     location: "MetroEast, Penang",
-    path: "/project/udini-square",
+    path: "/project/river-place",
   },
   {
     id: 6,
-    name: "Vertiq Boutique Outlets",
+    slug: "shelford-23",
+    name: "Shelford 23",
     location: "Metroeast, Penang",
-    path: "/project/vertiq-boutique-outlets",
+    path: "/project/shelford-23",
   },
 ];
 

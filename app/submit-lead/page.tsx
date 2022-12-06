@@ -2,7 +2,7 @@
 
 import { Grid, Stack, Flex, PageLayout } from 'component/organisms';
 import { Text, Visible, Box } from 'component/atoms';
-import { PROJECT_LEAD_INFO, TProjectType, PROJECT_LEAD_EMAIL_WITH_NAME } from 'state/projectState';
+import { PROJECT_LEAD_INFO, TPropertyName, PROJECT_LEAD_EMAIL_WITH_NAME } from 'state/projectState';
 import Select, { StylesConfig } from 'react-select';
 import { FormEvent, useState } from 'react';
 import { useAtom } from 'jotai';
@@ -37,14 +37,13 @@ const leadTypeStyles: StylesConfig<LeadProjectOption> = {
   indicatorSeparator: (styles) => ({ ...styles, display: 'none' }),
 };
 
-
 const leadTypeOptions: readonly LeadProjectOption[] = [
-  { value: 'the-light-waterfront-penang', label: 'The Light Waterfront Penang' },
-  { value: 'permatang-sanctuary', label: 'Permatang Sanctuary' },
-  { value: 'trehaus', label: 'Trehaus' },
-  { value: 'the-terraces-condominium', label: 'The Terraces Condominium' },
-  { value: 'udini-square', label: 'UDINI Square' },
-  { value: 'vertiq-boutique-outlets', label: 'Vertiq Boutique Outlets' },
+  { value: 'parc-esta', label: 'Parc Esta' },
+  { value: 'archipelago', label: 'Archipelago' },
+  { value: 'the-mezzo', label: 'The Mezzo' },
+  { value: 'viva-vista', label: 'Viva Vista' },
+  { value: 'river-place', label: 'River Place' },
+  { value: 'shelford-23', label: 'Shelford 23' },
 ];
 
 const Done = () => {
@@ -66,7 +65,7 @@ function Page() {
   const [status, setStatus] = useState<TStatus>('INIT');
   const [leadRegister, setLeadRegister] = useAtom(PROJECT_LEAD_INFO);
   const [emailWithName, setLeadEmailWithName] = useAtom(PROJECT_LEAD_EMAIL_WITH_NAME);
-  const [project, setProject] = useState<TProjectType | null>(null);
+  const [project, setProject] = useState<TPropertyName | null>(null);
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -97,7 +96,7 @@ function Page() {
                     <Select
                       options={leadTypeOptions}
                       isMulti={false}
-                      onChange={(props) => { if (props) { setProject(props?.value as unknown as TProjectType); } }}
+                      onChange={(props) => { if (props) { setProject(props?.value as unknown as TPropertyName); } }}
                       placeholder="Select Project"
                       className={styles.selecter}
                       styles={leadTypeStyles} />
