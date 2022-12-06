@@ -80,6 +80,7 @@ export interface LeadResult {
 }
 
 export interface LookALikeLeadResult {
+  name: string,
   seed_email: string,
   seed_mobile: string,
   lookalike_email: string,

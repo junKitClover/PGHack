@@ -56,6 +56,7 @@ export const prettyDataSet = (data: Result): Array<LeadDisplayData> => {
 export const prettyLookALikeDataSet = (data: LookALikeResult): Array<LeadDisplayData> => {
   if (data.temp_sam_us_ARES_lookalike_temp.length > 0) {
     return data.temp_sam_us_ARES_lookalike_temp.map(({
+      name,
       lead_qualification_category,
       lookalike_email,
       lookalike_mobile,
@@ -78,6 +79,7 @@ export const prettyLookALikeDataSet = (data: LookALikeResult): Array<LeadDisplay
       pref_config_2,
       pref_config_3,
     }: LookALikeLeadResult): LeadDisplayData => ({
+      name,
       country: 'sg',
       leadQualification: lead_qualification_category,
       email: lookalike_email,

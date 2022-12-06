@@ -40,6 +40,7 @@ const Page = ({ params: { projectName } }: any) => {
 
     if (leadType === 'DIRECT') {
       setIsLoading(true);
+      setAllLeadInfo([]);
       fetch('https://propertyguru.hasura.app/api/rest/getProfileByEmails', {
         method: 'POST',
         cache: 'no-cache',
@@ -55,6 +56,7 @@ const Page = ({ params: { projectName } }: any) => {
         });
     } else if(leadType === "INDIRECT") {
       setIsLoading(true);
+      setAllLeadInfo([]);
       fetch('https://propertyguru.hasura.app/api/rest/getLookAlikes', {
         method: 'POST',
         cache: 'no-cache',
@@ -83,7 +85,7 @@ const Page = ({ params: { projectName } }: any) => {
           }
           return true;
         }).map((prop, i) => {
-          return <LeadCard {...prop} key={i} name={projectEmailWithName[prop.email] || 'No Name'}/>;
+          return <LeadCard {... { name:projectEmailWithName[prop.email] || 'No Name' ,...prop} } key={i} projectName={projectName}/>;
         })}
       </Grid>
       <Visible visible={allLeadInfo.length === 0 && !isLoading}>

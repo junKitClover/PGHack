@@ -134,9 +134,10 @@ export default function TitleAndFilter() {
           </Box>
         </Stack>
       </Box>
-      <Box border rounded className={styles.fullSize} paddingBlock={8} paddingInline={2}>
+      <Box border rounded className={styles.fullSize} >
         <Visible visible={uploadedData.length > 0}>
-          <PreviewTable data={uploadedData} name={emailWithName} />
+          <Text paddingBlock={8}>Preview for the top 5 record</Text>
+          <PreviewTable data={uploadedData.slice(0,5)} name={emailWithName} />
         </Visible>
         
           <Visible visible={uploadedData.length === 0} isAutoWidth>

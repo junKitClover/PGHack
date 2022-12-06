@@ -10,6 +10,7 @@ import { LeadDisplayData } from "../../type/LeadType";
 
 type TLeadScore = "Hot" | "Warm" | "Cold";
 
+
 interface ColorProps {
   background: TColor;
   color: TTextColor;
@@ -17,7 +18,8 @@ interface ColorProps {
 
 interface LeadCardProps extends LeadDisplayData {
   name: string,
-  shouldShowAllAtFirst?: boolean
+  shouldShowAllAtFirst?: boolean,
+  projectName?: string
 }
 
 const LeadCard = ({
@@ -33,9 +35,13 @@ const LeadCard = ({
   topSearchProperties,
   topSearchRegion,
   interestNewProject,
+  projectName,
   shouldShowAllAtFirst = false
 }: LeadCardProps) => {
   const [showMore, setShowMore] = useState(shouldShowAllAtFirst);
+
+  const whatsappUrl = 'https://api.whatsapp.com/send?text=';
+  const whatsappMessage = `Hi I have an exciting news to share, ${projectName} is on sales now!`
 
   const showMoreHandler = () => {
     setShowMore((prev) => !prev);
@@ -90,7 +96,7 @@ const LeadCard = ({
               [styles.leadScore_cold]: leadQualification === "Cold",
             })}
           >
-            <Text color="white" size="xSmall">
+            <Text color="white" size="xSmall" weight="semiBold">
               {leadQualification}
             </Text>
           </div>
@@ -115,7 +121,7 @@ const LeadCard = ({
                 {topSearchProperties.filter(str => str !== '').join(', ')}
               </Text>
             </Flex>
-            <Visible visible={showMore}>
+            {showMore &&
             <Stack gap={4}>
               <Flex gap={2} direction={"column"}>
                 <Text as="span" type="label" color="secondaryFontColor">
@@ -150,7 +156,7 @@ const LeadCard = ({
                 </Text>
               </Flex>
             </Stack>
-            </Visible>
+            }
             <a
               type="text"
               onClick={showMoreHandler}
@@ -189,8 +195,8 @@ const LeadCard = ({
                   </a>
                 </Flex>
               </Stack>
-              <a className={styles.link}>
-                <svg width="24" height="24" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <a className={styles.link} href={whatsappUrl+whatsappMessage} rel="noreferrer" target="_blank">
+                <svg width="32" height="32" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <g filter="url(#filter0_d_1_7142)">
                     <path d="M2.18359 21.3522L3.526 16.4735C2.6981 15.0455 2.26253 13.4257 2.263 11.7666C2.26535 6.57549 6.50919 2.35217 11.7233 2.35217C14.254 2.35311 16.6296 3.33398 18.4151 5.1133C20.2016 6.89262 21.1845 9.25803 21.1836 11.7736C21.1812 16.9647 16.9374 21.1885 11.7233 21.1885C11.7238 21.1885 11.7228 21.1885 11.7233 21.1885H11.7191C10.1356 21.188 8.57989 20.7923 7.19848 20.0425L2.18359 21.3522Z" fill="url(#paint0_linear_1_7142)" />
                   </g>
