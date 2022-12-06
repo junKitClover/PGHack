@@ -78,6 +78,17 @@ export interface LeadResult {
   pref_config_3?: string,
 }
 
+export interface LookALikeLeadResult extends Omit<LeadResult,'contact_email' | 'contact_mobile'>{
+  seed_email: string,
+  seed_mobile: string,
+  lookalike_email: string,
+  lookalike_mobile: string,
+}
+
+export interface LookALikeResult{
+  temp_sam_us_ARES_lookalike_temp: Array<LookALikeLeadResult> ;
+}
+
 export interface Result {
   temp_sam_us_leads360_leads: Array<LeadResult>
 }

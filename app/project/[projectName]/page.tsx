@@ -8,8 +8,8 @@ import LeadCard from "app/components/LeadCard/LeadCard";
 import LeadCardShimmer from "./component/LeadCardShimmer/LeadCardShimmer";
 import { projectInfo } from "./data/project";
 import styles from "./page.module.scss";
-import { Result, LeadDisplayData } from "app/type/LeadType";
-import { prettyDataSet } from "app/helper/prettyDataSet";
+import { Result, LeadDisplayData, LookALikeResult } from "app/type/LeadType";
+import { prettyDataSet, prettyLookALikeDataSet } from "app/helper/prettyDataSet";
 
 interface ProjectNameProps {
   params: {
@@ -50,9 +50,21 @@ const Page = ({ params: { projectName } }: any) => {
           setAllLeadInfo(prettyDataSet(data));
           setIsLoading(false);
         });
-    } else {
+    } else if(leadType === "INDIRECT") {
       setIsLoading(true);
-      setAllLeadInfo([]);
+      fetch('https://propertyguru.hasura.app/api/rest/getLookAlikes', {
+        method: 'POST',
+        cache: 'no-cache',
+        headers: {
+          'x-hasura-admin-secret': 'Sfuro9op4sS5tmD98vlqcjEZirCddguhzg4WxNo3415CLsjqdK26jl6AzOAkwbWa',
+        },
+        body: JSON.stringify({ "seedEmail": thisProjectLead.map((({ email }) => (email))) })
+      })
+        .then((res) => res.json())
+        .then((data: LookALikeResult) => {
+          setAllLeadInfo(prettyLookALikeDataSet(data));
+          setIsLoading(false);
+        });
     }
   }, [projectLead, leadType])
 

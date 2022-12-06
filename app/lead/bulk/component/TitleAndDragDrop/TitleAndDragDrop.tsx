@@ -5,15 +5,10 @@ import { Button } from "component/molecules";
 import styles from './TitleAndDragDrop.module.scss';
 import { CSVLink } from "react-csv";
 import { Flex, Stack } from "component/organisms";
+import { LeadDisplayData } from 'app/type/LeadType';
 import { useState, ChangeEvent } from "react";
 import { parse } from 'papaparse';
 
-interface CSVData {
-  name: string,
-  phoneNumber: string,
-  email: string,
-  status?: string,
-}
 
 interface CSV<T> {
   data: Array<T>;
@@ -27,7 +22,7 @@ interface CSV<T> {
   }
 };
 interface PreviewTableProps {
-  data: Array<CSV<CSVData>>
+  data: Array<CSV<LeadDisplayData>>
 }
 
 const TableCell = ({ children, ...restProps }: TextBaseProps) => (<td><Text {...restProps}>{children}</Text></td>)
@@ -35,20 +30,18 @@ const TableCell = ({ children, ...restProps }: TextBaseProps) => (<td><Text {...
 const PreviewTable = ({ data }: PreviewTableProps) => (
   <table>
     <tr>
-      <TableCell paddingInline={2}>Name</TableCell>
-      <TableCell paddingInline={2}>Phone Number</TableCell>
       <TableCell paddingInline={2}>Email</TableCell>
+      <TableCell paddingInline={2}>Phone number</TableCell>
       <TableCell paddingInline={2}>Status</TableCell>
     </tr>
     <tr><td colSpan={4}><hr /></td></tr>
     {
       data.map((csvFile) => (
-        csvFile.data.map(({ name, phoneNumber, email }, index) =>
+        csvFile.data.map(({ email, phoneNumber }, index) =>
         (<>
           <tr key={index}>
-            <TableCell size="small" paddingInline={2}>{name}</TableCell>
-            <TableCell size="small" paddingInline={2}>{phoneNumber}</TableCell>
             <TableCell size="small" paddingInline={2}>{email}</TableCell>
+            <TableCell size="small" paddingInline={2}>{phoneNumber}</TableCell>
             <TableCell size="small" paddingInline={2}>Hot</TableCell>
           </tr>
           <tr><td colSpan={4}><hr /></td></tr>
@@ -62,11 +55,11 @@ const PreviewTable = ({ data }: PreviewTableProps) => (
 )
 
 interface PreviewTableProps {
-  data: Array<CSV<CSVData>>
+  data: Array<CSV<LeadDisplayData>>
 }
 
 export default function TitleAndFilter() {
-  const [uploadedFile, setUploadedFile] = useState<Array<CSV<CSVData>>>([]);
+  const [uploadedFile, setUploadedFile] = useState<Array<CSV<LeadDisplayData>>>([]);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const fileList = event.target.files || [];
@@ -76,8 +69,8 @@ export default function TitleAndFilter() {
       console.log('file => ', file);
       if (file.type === 'text/csv') {
         file.text().then((words: string) => {
-          const result = parse(words, { header: true }) as unknown as CSV<CSVData>;
-          const addStatus: CSV<CSVData> = {
+          const result = parse(words, { header: true }) as unknown as CSV<LeadDisplayData>;
+          const addStatus: CSV<LeadDisplayData> = {
             data: result.data.map((props) => ({ status: 'Hot', ...props})),
             meta:{
               ...result.meta,
@@ -99,7 +92,7 @@ return (
         <Text type="title">Bulk Lead</Text>
         <Box border rounded paddingBlock={8} paddingInline={4}>
           <Flex justifyContent="center" alignItem="center" direction="column" gap={8}>
-            <Text>Please upload a csv files, contain name, phoneNumber and email on the header</Text>
+            <Text>Please upload a csv files, contain email on the header</Text>
             <label className={styles.customFileUpload}>
               <input type="file" className={styles.fileInput} color="white" accept=".csv" onChange={handleChange} />
               <Flex justifyContent="spaceEvenly" alignItem="center" gap={4}>
@@ -125,7 +118,7 @@ return (
       <Visible visible={uploadedFile.length > 0} isAutoWidth>
         <CSVLink className={styles.download} data={[
           ...uploadedFile.map(({ meta: { fields } }) => (fields)),
-          ...uploadedFile.map(({ data }) => data.map(({ email, name, phoneNumber, status }) => ([name, phoneNumber, email, status]))).flat()
+          ...uploadedFile.map(({ data }) => data.map(({ email }) => ([email, status]))).flat()
         ]}><Button size="large" iconName="download">Download</Button></CSVLink>
       </Visible>
     </Flex>
