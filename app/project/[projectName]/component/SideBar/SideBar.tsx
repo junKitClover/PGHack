@@ -19,6 +19,13 @@ interface ProjectProps {
 
 const projectList: Array<ProjectProps> = [
   {
+    id: 0,
+    name: "Parc Clematis",
+    slug: "parc-clematis",
+    location: "Gelugor, Penang",
+    path: "/project/parc-clematis",
+  },
+  {
     id: 1,
     name: "Parc Esta",
     slug: "parc-esta",

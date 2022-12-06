@@ -1,6 +1,6 @@
 import { atom } from "jotai";
 
-export type TPropertyName = "parc-esta" | "archipelago" | "the-mezzo" | "viva-vista" | "river-place" | "shelford-23"
+export type TPropertyName = "parc-clematis" | "parc-esta" | "archipelago" | "the-mezzo" | "viva-vista" | "river-place" | "shelford-23"
 
 export type TLeadType = 'DIRECT' | 'INDIRECT';
 
@@ -17,6 +17,7 @@ export const PROJECT_IS_LOADING = atom(false);
 export const PROJECT_LEAD_INFO = atom<
   Record<TPropertyName, Array<RegisterInfor>>
 >({
+  "parc-clematis": [],
   "parc-esta": [],
   "archipelago": [],
   "the-mezzo": [],

@@ -38,6 +38,7 @@ const leadTypeStyles: StylesConfig<LeadProjectOption> = {
 };
 
 const leadTypeOptions: readonly LeadProjectOption[] = [
+  { value: 'parc-clematis', label: 'Parc Clematis' },
   { value: 'parc-esta', label: 'Parc Esta' },
   { value: 'archipelago', label: 'Archipelago' },
   { value: 'the-mezzo', label: 'The Mezzo' },

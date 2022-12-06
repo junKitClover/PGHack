@@ -7,6 +7,17 @@ interface ProjectInfor {
 }
 
 export const projectInfo: Record<TPropertyName, ProjectInfor> = {
+  "parc-clematis": {
+    detailList: [
+      { title: "Search Metrics", contain: "0.10" },
+      { title: "Target Budget", contain: "RM 500k - 800k" },
+      { title: "Type", contain: "Condo" },
+      { title: "Location", contain: "Gelugor, Penang" },
+      { title: "Numbers of Leads", contain: "15" },
+      { title: "Target Company", contain: "Sunway, Setia City" },
+    ],
+    name: "Parc Clematis",
+  },
   "parc-esta": {
     detailList: [
       { title: "Search Metrics", contain: "0.89" },
