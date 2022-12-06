@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Stack, Grid } from "component/organisms";
+import { Stack, Grid, Flex } from "component/organisms";
+import { Text, Visible } from "component/atoms";
 import { PROJECT_NAME, PROJECT_LEAD_QUALITY, PROJECT_LEAD_INFO, PROJECT_LEAD_TYPE, PROJECT_LEAD_EMAIL_WITH_NAME } from "state/projectState";
 import { useAtom } from "jotai";
 import LeadCard from "app/components/LeadCard/LeadCard";
@@ -73,16 +74,21 @@ const Page = ({ params: { projectName } }: any) => {
   return (
     <Stack gap={4}>
       <Grid gap={[3, 5, 6]} paddingBlock={5} col={[1, 2, 2]} className={styles.container}>
-        {allLeadInfo.filter(({ leadQualification }) => {
+        {
+          isLoading && ([1,2]).map((item, i)=> (<LeadCardShimmer key={i} />))
+        }
+        { allLeadInfo.filter(({ leadQualification }) => {
           if (projectFilterLeadQuality.length > 0) {
             return projectFilterLeadQuality.indexOf(leadQualification) >= 0;
           }
           return true;
         }).map((prop, i) => {
-          if (isLoading) return <LeadCardShimmer key={i} />;
           return <LeadCard {...prop} key={i} name={projectEmailWithName[prop.email] || 'No Name'}/>;
         })}
       </Grid>
+      <Visible visible={allLeadInfo.length === 0 && !isLoading}>
+       <Flex justifyContent="center" alignItem="center" className={styles.emptyResult}><Text>No record found</Text></Flex>
+      </Visible>
     </Stack>
   );
 };

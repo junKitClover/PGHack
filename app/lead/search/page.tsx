@@ -21,7 +21,7 @@ const Status = () => {
     );
   }
   if(leadSearchResult.length > 0){
-    return (<>{leadSearchResult.map((lead, i) => (<LeadCard key={i} {...lead} name={name}/>))}</>);
+    return (<>{leadSearchResult.map((lead, i) => (<LeadCard key={i} {...lead} name={name} shouldShowAllAtFirst/>))}</>);
   }
   return (
     <Flex justifyContent="center" alignItem="center" className={styles.fullSize}>

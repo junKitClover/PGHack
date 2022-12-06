@@ -15,8 +15,9 @@ interface ColorProps {
   color: TTextColor;
 }
 
-interface LeadCardProps extends LeadDisplayData{
-  name: string
+interface LeadCardProps extends LeadDisplayData {
+  name: string,
+  shouldShowAllAtFirst?: boolean
 }
 
 const LeadCard = ({
@@ -31,8 +32,14 @@ const LeadCard = ({
   topSearchDistricts,
   topSearchProperties,
   topSearchRegion,
-  interestNewProject
+  interestNewProject,
+  shouldShowAllAtFirst = false
 }: LeadCardProps) => {
+  const [showMore, setShowMore] = useState(shouldShowAllAtFirst);
+
+  const showMoreHandler = () => {
+    setShowMore((prev) => !prev);
+  };
   return (
     <Box
       border
@@ -108,38 +115,54 @@ const LeadCard = ({
                 {topSearchProperties.filter(str => str !== '').join(', ')}
               </Text>
             </Flex>
-            <Flex gap={2} direction={"column"}>
-              <Text as="span" type="label" color="secondaryFontColor">
-                Top search districts
-              </Text>
-              <Text as="span" type="labelValue">
-                {topSearchDistricts.filter(str => str !== '').join(', ')}
-              </Text>
-            </Flex>
-            <Flex gap={2} direction={"column"}>
-              <Text as="span" type="label" color="secondaryFontColor">
-                Top search regions
-              </Text>
-              <Text as="span" type="labelValue">
-                {topSearchRegion.filter(str => str !== '').join(', ')}
-              </Text>
-            </Flex>
-            <Flex gap={2} direction={"column"}>
-              <Text as="span" type="label" color="secondaryFontColor">
-                Configuration Preferences
-              </Text>
-              <Text as="span" type="labelValue">
-                {prefConfig.filter(str => str !== '').join(', ')}
-              </Text>
-            </Flex>
-            <Flex gap={2} direction={"column"}>
-              <Text as="span" type="label" color="secondaryFontColor">
-                Preferences budget range
-              </Text>
-              <Text as="span" type="labelValue">
-                {prefPrice.filter(str => str !== '').join(', ')}
-              </Text>
-            </Flex>
+            <Visible visible={showMore}>
+            <Stack gap={4}>
+              <Flex gap={2} direction={"column"}>
+                <Text as="span" type="label" color="secondaryFontColor">
+                  Top search districts
+                </Text>
+                <Text as="span" type="labelValue">
+                  {topSearchDistricts.filter(str => str !== '').join(', ')}
+                </Text>
+              </Flex>
+              <Flex gap={2} direction={"column"}>
+                <Text as="span" type="label" color="secondaryFontColor">
+                  Top search regions
+                </Text>
+                <Text as="span" type="labelValue">
+                  {topSearchRegion.filter(str => str !== '').join(', ')}
+                </Text>
+              </Flex>
+              <Flex gap={2} direction={"column"}>
+                <Text as="span" type="label" color="secondaryFontColor">
+                  Configuration Preferences
+                </Text>
+                <Text as="span" type="labelValue">
+                  {prefConfig.filter(str => str !== '').join(', ')}
+                </Text>
+              </Flex>
+              <Flex gap={2} direction={"column"}>
+                <Text as="span" type="label" color="secondaryFontColor">
+                  Preferences budget range
+                </Text>
+                <Text as="span" type="labelValue">
+                  {prefPrice.filter(str => str !== '').join(', ')}
+                </Text>
+              </Flex>
+            </Stack>
+            </Visible>
+            <a
+              type="text"
+              onClick={showMoreHandler}
+              className={styles.link}
+            >
+              <Flex gap={2} alignItem="center">
+                <Text as="span" type="label" color="error">
+                  {showMore ? "Show Less" : "Show More"}
+                </Text>
+                <Icon iconName="expand_more" size="xSmall" color="error" className={showMore ? styles.showMoreIcon : styles.showLessIcon} />
+              </Flex>
+            </a>
             <hr className={styles.line} />
             <Flex justifyContent="spaceBetween" alignItem="center">
               <Stack gap={2}>
