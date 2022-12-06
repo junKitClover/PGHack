@@ -34,6 +34,7 @@ const Page = ({ params: { projectName } }: any) => {
 
   useEffect(() => {
     const thisProjectLead = projectLead[projectName as unknown as TProjectType];
+    console.log(leadType, thisProjectLead.map((({ email }) => (email))));
 
     if (leadType === 'DIRECT') {
       setIsLoading(true);
