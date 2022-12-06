@@ -1,7 +1,4 @@
 import { Flex } from "component/organisms";
-import { Box } from "component/atoms";
-import { Button } from "component/molecules";
-import { Text } from "component/atoms";
 import styles from './navBar.module.scss';
 import Link from "next/link";
 
