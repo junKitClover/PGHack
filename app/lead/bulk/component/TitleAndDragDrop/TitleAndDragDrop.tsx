@@ -30,7 +30,7 @@ interface PreviewTableProps {
 const TableCell = ({ children, ...restProps }: TextBaseProps) => (<td className={styles.tableCell}><Text {...restProps}>{children}</Text></td>)
 
 const PreviewTable = ({ data, name }: PreviewTableProps) => (
-  <table>
+  <table className={styles.table}>
     <tr>
       <TableCell paddingInline={2}>Name</TableCell>
       <TableCell paddingInline={2}>Email</TableCell>
@@ -136,7 +136,7 @@ export default function TitleAndFilter() {
       </Box>
       <Box border rounded className={styles.fullSize} >
         <Visible visible={uploadedData.length > 0}>
-          <Text paddingBlock={8}>Preview for the top 5 record</Text>
+          <Text paddingBlock={8} paddingLeft={5}>Preview for the top 5 record</Text>
           <PreviewTable data={uploadedData.slice(0,5)} name={emailWithName} />
         </Visible>
         

@@ -2,7 +2,7 @@
 
 import { Text } from "component/atoms";
 import { Flex, Stack } from "component/organisms";
-import { LEAD_SEARCH_LOADING, LEAD_SEARCH_RESULT, LEAD_USER_NAME } from "state/leadStated";
+import { LEAD_SEARCH_LOADING, LEAD_SEARCH_RESULT, LEAD_USER_NAME, LEAD_PAGE } from "state/leadStated";
 import { useAtom } from "jotai";
 import TitleAndSearch from "./component/TitleAndSearch/TitleAndSearch";
 import LeadCard from "../../components/LeadCard/LeadCard";
@@ -12,6 +12,9 @@ const Status = () => {
   const [isLoading] = useAtom(LEAD_SEARCH_LOADING);
   const [leadSearchResult] = useAtom(LEAD_SEARCH_RESULT);
   const [name] = useAtom(LEAD_USER_NAME);
+
+  const [, setLeadPage] = useAtom(LEAD_PAGE);
+  setLeadPage('Search Lead');
 
   if(isLoading){
     return (
