@@ -3,6 +3,7 @@ export type Styles = {
   'download': string;
   'fileInput': string;
   'fullSize': string;
+  'tableCell': string;
 };
 
 export type ClassNames = keyof Styles;

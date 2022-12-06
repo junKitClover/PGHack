@@ -1,4 +1,5 @@
 export interface LeadDisplayData {
+  name?:string;
   country: string,
   leadQualification: string,
   email: string,

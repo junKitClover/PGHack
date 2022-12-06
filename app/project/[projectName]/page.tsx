@@ -69,7 +69,7 @@ const Page = ({ params: { projectName } }: any) => {
           setIsLoading(false);
         });
     }
-  }, [projectLead, leadType])
+  }, [projectLead, projectName, leadType])
 
   return (
     <Stack gap={4}>
