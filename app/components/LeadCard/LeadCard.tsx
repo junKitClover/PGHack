@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { Stack, Flex } from "component/organisms";
 import { TColor, TTextColor } from "styles/Color";
 import styles from "./LeadCard.module.scss";
+import Image from "next/image";
 import classnames from "classnames";
 import { LeadDisplayData } from "../../type/LeadType";
 
@@ -105,12 +106,15 @@ const LeadCard = ({
       <Flex direction={"column"} paddingTop={5} backgroundColor="white" className={styles.borderBottomRound}>
         <Flex direction={"column"} gap={2}>
           <Stack gap={4}>
-            <Flex gap={2} direction={["column", , "row"]}>
+            <Flex gap={2} direction={"row"}>
               <Text as="span" type="label" color="secondaryFontColor">
                 From
               </Text>
+              <Box border>
+                {country === 'sg' ? <Image width={36} height={20} alt="Singapore" src="/singaporeflag.png"/> : <Image width={36} height={20} alt="Thailand" src="/thai flag.png"/> }
+              </Box>
               <Text as="span" type="labelValue">
-                {country}
+                {country === 'sg' ? 'Singapore' : 'Thailand'}
               </Text>
             </Flex>
             <Flex gap={2} direction={"column"}>
