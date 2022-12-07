@@ -48,7 +48,7 @@ const PreviewTable = ({ data, name }: PreviewTableProps) => (
     </tr>
     <tr><td colSpan={9}><hr /></td></tr>
     {
-      data.map(({ email, leadQualification, lastLogin, topSearchDistricts, topSearchProperties, topSearchRegion,prefPrice,prefConfig }, index) => (
+      data.map(({ email, leadQualification, lastLogin, topSearchDistricts, topSearchProperties, topSearchRegion, prefPrice, prefConfig }, index) => (
         (<>
           <tr key={index}>
             <TableCell size="small" paddingInline={2}>{name[email]}</TableCell>
@@ -77,43 +77,43 @@ interface CSVTable {
 
 export default function TitleAndFilter() {
 
-interface LeadProjectOption {
-  readonly value: string;
-  readonly label: string;
-}
+  interface LeadProjectOption {
+    readonly value: string;
+    readonly label: string;
+  }
 
-const leadTypeStyles: StylesConfig<LeadProjectOption> = {
-  control: (styles) => ({
-    ...styles,
-    backgroundColor: 'white',
-    border: '1px solid #CCC',
-    borderRadius: '8px',
-    minHeight: '48px',
-    paddingBlock: '12px',
-    paddingInline: '4px'
-  }),
-  option: (styles) => {
-    return {
+  const leadTypeStyles: StylesConfig<LeadProjectOption> = {
+    control: (styles) => ({
       ...styles,
-    };
-  },
-  input: (styles) => ({ ...styles }),
-  placeholder: (styles) => ({ ...styles }),
-  singleValue: (styles) => ({ ...styles }),
-  multiValue: (styles) => ({ ...styles }),
-  dropdownIndicator: (styles) => ({ ...styles, display: 'none' }),
-  indicatorSeparator: (styles) => ({ ...styles, display: 'none' }),
-};
+      backgroundColor: 'white',
+      border: '1px solid #CCC',
+      borderRadius: '8px',
+      minHeight: '48px',
+      paddingBlock: '12px',
+      paddingInline: '4px'
+    }),
+    option: (styles) => {
+      return {
+        ...styles,
+      };
+    },
+    input: (styles) => ({ ...styles }),
+    placeholder: (styles) => ({ ...styles }),
+    singleValue: (styles) => ({ ...styles }),
+    multiValue: (styles) => ({ ...styles }),
+    dropdownIndicator: (styles) => ({ ...styles, display: 'none' }),
+    indicatorSeparator: (styles) => ({ ...styles, display: 'none' }),
+  };
 
-const leadTypeOptions: readonly LeadProjectOption[] = [
-  { value: 'parc-clematis', label: 'Parc Clematis' },
-  { value: 'parc-esta', label: 'Parc Esta' },
-  { value: 'archipelago', label: 'Archipelago' },
-  { value: 'the-mezzo', label: 'The Mezzo' },
-  { value: 'viva-vista', label: 'Viva Vista' },
-  { value: 'river-place', label: 'River Place' },
-  { value: 'shelford-23', label: 'Shelford 23' },
-];
+  const leadTypeOptions: readonly LeadProjectOption[] = [
+    { value: 'parc-clematis', label: 'Parc Clematis' },
+    { value: 'parc-esta', label: 'Parc Esta' },
+    { value: 'archipelago', label: 'Archipelago' },
+    { value: 'the-mezzo', label: 'The Mezzo' },
+    { value: 'viva-vista', label: 'Viva Vista' },
+    { value: 'river-place', label: 'River Place' },
+    { value: 'shelford-23', label: 'Shelford 23' },
+  ];
   const [csvRecord, setCSVRecord] = useState<Array<CSVTable>>([]);
   const [submitted, setSubmitted] = useState<boolean>(false);
   const [uploadedData, setUploadedData] = useState<Array<LeadDisplayData>>([]);
@@ -121,7 +121,7 @@ const leadTypeOptions: readonly LeadProjectOption[] = [
   const [emailWithName, setEmailWithName] = useState<Record<string, string>>({});
   const [project, setProject] = useState<TPropertyName | null>(null);
   const [leadRegister, setLeadRegister] = useAtom(PROJECT_LEAD_INFO);
-  const [leademailWithName, setLeadEmailWithName] = useAtom(PROJECT_LEAD_EMAIL_WITH_NAME);
+  const [leadEmailWithName, setLeadEmailWithName] = useAtom(PROJECT_LEAD_EMAIL_WITH_NAME);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setIsLoading(true);
@@ -162,9 +162,9 @@ const leadTypeOptions: readonly LeadProjectOption[] = [
   };
 
   const onImport = () => {
-    if(project){
-      setLeadRegister({ ...leadRegister, [project]: [...leadRegister[project], ...uploadedData.map(({email,name})=>({email,name}))] });
-      setLeadEmailWithName({ ...emailWithName, ...emailWithName });
+    if (project) {
+      setLeadRegister({ ...leadRegister, [project]: [...leadRegister[project], ...uploadedData.map(({ email, name }) => ({ email, name }))] });
+      setLeadEmailWithName({ ...leadEmailWithName, ...emailWithName });
       setSubmitted(true);
     }
   }
@@ -203,36 +203,36 @@ const leadTypeOptions: readonly LeadProjectOption[] = [
           }
           {
             submitted && <Box border rounded paddingBlock={8} paddingInline={4}>
-            <Flex justifyContent="spaceEvenly" alignItem="center" direction="column" gap={8}>
-              <Icon iconName="check_circle" size="xLarge" color="success"/>
-              <Text weight="semiBold">Imported to project {leadTypeOptions.find(({value})=>value===project)?.label}</Text>
-              <Link href={`/project/${project}`}><Button>Go to project</Button></Link>
-            </Flex>
-          </Box>
+              <Flex justifyContent="spaceEvenly" alignItem="center" direction="column" gap={8}>
+                <Icon iconName="check_circle" size="xLarge" color="success" />
+                <Text weight="semiBold">Imported to project {leadTypeOptions.find(({ value }) => value === project)?.label}</Text>
+                <Link href={`/project/${project}`}><Button>Go to project</Button></Link>
+              </Flex>
+            </Box>
           }
         </Stack>
       </Box>
       <Box border rounded className={styles.fullSize} >
         <Visible visible={uploadedData.length > 0}>
           <Text paddingBlock={8} paddingLeft={5}>Preview for the top 5 record</Text>
-          <PreviewTable data={uploadedData.slice(0,5)} name={emailWithName} />
+          <PreviewTable data={uploadedData.slice(0, 5)} name={emailWithName} />
         </Visible>
-        
-          <Visible visible={uploadedData.length === 0} isAutoWidth>
-            <Flex justifyContent="center">
-              <Text color="white">Waiting CSV to upload</Text>
-            </Flex>
-          </Visible>
+
+        <Visible visible={uploadedData.length === 0} isAutoWidth>
+          <Flex justifyContent="center">
+            <Text color="white">Waiting CSV to upload</Text>
+          </Flex>
+        </Visible>
       </Box>
-       <Flex justifyContent="center" marginBottom={4}>
+      <Flex justifyContent="center" marginBottom={4}>
         <Visible visible={uploadedData.length > 0} isAutoWidth>
           <CSVLink className={styles.download} data={[
-            ['Name', 'Email', 'Qualification','Last Login','Top Search Property','Top Search District','Top Search Region','Prefer Price','Prefer Setup'],
-            ...uploadedData.map(({ email, leadQualification, lastLogin, topSearchDistricts, topSearchProperties, topSearchRegion, prefPrice, prefConfig })=>
-            ([emailWithName[email],email, leadQualification,lastLogin, topSearchDistricts, topSearchProperties, topSearchRegion, prefPrice, prefConfig ]))
+            ['Name', 'Email', 'Qualification', 'Last Login', 'Top Search Property', 'Top Search District', 'Top Search Region', 'Prefer Price', 'Prefer Setup'],
+            ...uploadedData.map(({ email, leadQualification, lastLogin, topSearchDistricts, topSearchProperties, topSearchRegion, prefPrice, prefConfig }) =>
+              ([emailWithName[email], email, leadQualification, lastLogin, topSearchDistricts, topSearchProperties, topSearchRegion, prefPrice, prefConfig]))
           ]}><Button size="large" iconName="download">Download</Button></CSVLink>
         </Visible>
-      </Flex> 
+      </Flex>
     </Stack>
   );
 }

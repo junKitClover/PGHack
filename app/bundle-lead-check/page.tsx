@@ -87,13 +87,13 @@ function Page() {
         <Box backgroundColor="greyLighter" rounded padding={[2, 3, 6]}>
           <Stack gap={3}>
             <Flex justifyContent="spaceBetween">
-              <Text>{uploadedFile.length > 0 ? 'Preview Top 10 Uploaded Record' : 'No csv upload yet'}</Text>
+              <Text>{uploadedFile.length > 0 ? 'Preview Top 5 Uploaded Record' : 'No csv upload yet'}</Text>
               <Visible visible={uploadedFile.length > 0}>
                 <Button iconName='download' />
               </Visible>
             </Flex>
             <Visible visible={uploadedFile.length > 0}>
-              <PreviewTable data={uploadedFile.slice(0,10)} />
+              <PreviewTable data={uploadedFile.slice(0,5)} />
             </Visible>
           </Stack>
         </Box>

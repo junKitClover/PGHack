@@ -237,7 +237,6 @@ const LeadCard = ({
               </a>
             </Flex>
           </Stack>
-
         </Flex>
       </Flex>
     </Box>

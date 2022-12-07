@@ -1,6 +1,8 @@
 export type Styles = {
   'filterBox': string;
+  'fullSize': string;
   'secondBox': string;
+  'selecter': string;
   'textInput': string;
 };
 
