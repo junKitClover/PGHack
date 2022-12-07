@@ -176,7 +176,7 @@ export default function TitleAndFilter() {
           <Text type="title">Bulk Lead</Text>
           <Box border rounded paddingBlock={8} paddingInline={4}>
             <Flex justifyContent="center" alignItem="center" direction="column" gap={8}>
-              <Text>Please upload a csv files, contain email on the header</Text>
+              <Text>Please upload a csv file which contains email and name on the header</Text>
               <label className={styles.customFileUpload}>
                 <input type="file" className={styles.fileInput} color="white" accept=".csv" onChange={handleChange} />
                 <Flex justifyContent="spaceEvenly" alignItem="center" gap={4}>
