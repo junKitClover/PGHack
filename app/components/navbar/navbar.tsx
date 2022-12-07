@@ -7,7 +7,7 @@ const menuList = [
   {name: 'Submission Form', path: '/submit-lead'},
   {name: 'Lead 360', path: '/project/parc-clematis'},
   {name: 'Lead Qualification', path: '/lead/search'},
-  {name: 'Consume Anywhere', path: '/lead/consume-everyway'},
+  {name: 'Consume Anywhere', path: '/consume-everyway'},
 ]
 
 const NavBar = () => (
