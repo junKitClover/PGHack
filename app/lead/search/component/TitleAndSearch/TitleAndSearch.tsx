@@ -206,9 +206,6 @@ export default function TitleAndFilter() {
                     <input name="LeadEmail" type="text" placeholder="Enter Email" className={styles.textInput} required />
                     {invalidEmail && <Text type="tooltips" color="error">** Invalid Email</Text>}
                   </Box>
-                  <Box className={classNames(styles.filterBox, styles.secondBox)}>
-                    <input name="LeadPhoneNumber" type="number" placeholder="Enter Phone Number" className={styles.textInput} />
-                  </Box>
                   <Box className={classNames(styles.filterBox)}>
                     <Button>Search</Button>
                   </Box>

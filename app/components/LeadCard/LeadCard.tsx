@@ -47,6 +47,11 @@ const LeadCard = ({
   const showMoreHandler = () => {
     setShowMore((prev) => !prev);
   };
+
+  const today = new Date();
+  const lastLoginDate = new Date(lastLogin);
+  const Difference_In_Time = today.getTime() - lastLoginDate.getTime();
+  const Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
   return (
     <Box
       border
@@ -75,7 +80,7 @@ const LeadCard = ({
                 size="xSmall"
                 color="secondaryFontColor"
               >
-                {lastLogin}
+                {Math.trunc(Difference_In_Days)} days ago
               </Text>
             </Flex>
           </Stack>
@@ -107,56 +112,56 @@ const LeadCard = ({
         <Flex direction={"column"} gap={2}>
           <Stack gap={4}>
             <Flex gap={2} direction={"row"}>
-              <Text as="span" type="label" color="secondaryFontColor">
-                From
+              <Text as="span" type="label" color="black">
+                Nationality
               </Text>
-              <Box border>
+              {/* <Box border>
                 {country === 'sg' ? <Image width={36} height={20} alt="Singapore" src="/singaporeflag.png"/> : <Image width={36} height={20} alt="Thailand" src="/thai flag.png"/> }
-              </Box>
+              </Box> */}
               <Text as="span" type="labelValue">
                 {country === 'sg' ? 'Singapore' : 'Thailand'}
               </Text>
             </Flex>
             <Flex gap={2} direction={"column"}>
-              <Text as="span" type="label" color="secondaryFontColor">
+              <Text as="span" type="label" color="black">
                 Top search property
               </Text>
               <Text as="span" type="labelValue">
-                {topSearchProperties.filter(str => str !== '').join(', ')}
+                {topSearchProperties.filter(str => str !== '').slice(0,2).join(', ')}
               </Text>
             </Flex>
             {showMore &&
             <Stack gap={4}>
               <Flex gap={2} direction={"column"}>
-                <Text as="span" type="label" color="secondaryFontColor">
+                <Text as="span" type="label" color="black">
                   Top search districts
                 </Text>
                 <Text as="span" type="labelValue">
-                  {topSearchDistricts.filter(str => str !== '').join(', ')}
+                  {topSearchDistricts.filter(str => str !== '').slice(0,2).join(', ')}
                 </Text>
               </Flex>
-              <Flex gap={2} direction={"column"}>
-                <Text as="span" type="label" color="secondaryFontColor">
+              {/* <Flex gap={2} direction={"column"}>
+                <Text as="span" type="label" color="black">
                   Top search regions
                 </Text>
                 <Text as="span" type="labelValue">
-                  {topSearchRegion.filter(str => str !== '').join(', ')}
+                  {topSearchRegion.filter(str => str !== '').slice(0,2).join(', ')}
                 </Text>
-              </Flex>
+              </Flex> */}
               <Flex gap={2} direction={"column"}>
-                <Text as="span" type="label" color="secondaryFontColor">
-                  Configuration Preferences
+                <Text as="span" type="label" color="black">
+                  Configuration preference
                 </Text>
                 <Text as="span" type="labelValue">
-                  {prefConfig.filter(str => str !== '').join(', ')}
+                  {prefConfig.filter(str => str !== '').slice(0,1).join(', ')}
                 </Text>
               </Flex>
               <Flex gap={2} direction={"column"}>
-                <Text as="span" type="label" color="secondaryFontColor">
+                <Text as="span" type="label" color="black">
                   Preferences budget range
                 </Text>
                 <Text as="span" type="labelValue">
-                  {prefPrice.filter(str => str !== '').join(', ')}
+                  {prefPrice.filter(str => str !== '').slice(0,1).join(', ')}
                 </Text>
               </Flex>
             </Stack>
@@ -178,22 +183,22 @@ const LeadCard = ({
               <Visible visible={[false, true]}>
                 <Stack gap={2}>
                   <Flex gap={1}>
-                    <Icon iconName="call" color="secondaryFontColor" size="xSmall" />
+                    <Icon iconName="call" color="black" size="xSmall" />
                     <a href={`tel:${phoneNumber}`} className={styles.link}>
                       <Text
                         size="xSmall"
-                        color="fontColor"
+                        color="black"
                       >
                         {phoneNumber}
                       </Text>
                     </a>
                   </Flex>
                   <Flex gap={1}>
-                    <Icon iconName="mail" color="secondaryFontColor" size="xSmall" />
+                    <Icon iconName="mail" color="black" size="xSmall" />
                     <a href={`mailto:${email}`} className={styles.link}>
                       <Text
                         size="xSmall"
-                        color="fontColor"
+                        color="black"
                       >
                         {email}
                       </Text>
