@@ -3,8 +3,11 @@
 import { Box, Icon, Text, TextBaseProps, Visible } from "component/atoms";
 import { Button } from "component/molecules";
 import styles from './TitleAndDragDrop.module.scss';
+import Select, { StylesConfig } from 'react-select';
 import { CSVLink } from "react-csv";
 import { Flex, Stack } from "component/organisms";
+import { TPropertyName, PROJECT_LEAD_INFO, PROJECT_LEAD_EMAIL_WITH_NAME } from 'state/projectState';
+import { useAtom } from "jotai";
 import { LeadDisplayData, Result } from 'app/type/LeadType';
 import { useState, ChangeEvent } from "react";
 import { parse } from 'papaparse';
@@ -72,10 +75,51 @@ interface CSVTable {
 }
 
 export default function TitleAndFilter() {
+
+interface LeadProjectOption {
+  readonly value: string;
+  readonly label: string;
+}
+
+const leadTypeStyles: StylesConfig<LeadProjectOption> = {
+  control: (styles) => ({
+    ...styles,
+    backgroundColor: 'white',
+    border: '1px solid #CCC',
+    borderRadius: '8px',
+    minHeight: '48px',
+    paddingBlock: '12px',
+    paddingInline: '4px'
+  }),
+  option: (styles) => {
+    return {
+      ...styles,
+    };
+  },
+  input: (styles) => ({ ...styles }),
+  placeholder: (styles) => ({ ...styles }),
+  singleValue: (styles) => ({ ...styles }),
+  multiValue: (styles) => ({ ...styles }),
+  dropdownIndicator: (styles) => ({ ...styles, display: 'none' }),
+  indicatorSeparator: (styles) => ({ ...styles, display: 'none' }),
+};
+
+const leadTypeOptions: readonly LeadProjectOption[] = [
+  { value: 'parc-clematis', label: 'Parc Clematis' },
+  { value: 'parc-esta', label: 'Parc Esta' },
+  { value: 'archipelago', label: 'Archipelago' },
+  { value: 'the-mezzo', label: 'The Mezzo' },
+  { value: 'viva-vista', label: 'Viva Vista' },
+  { value: 'river-place', label: 'River Place' },
+  { value: 'shelford-23', label: 'Shelford 23' },
+];
   const [csvRecord, setCSVRecord] = useState<Array<CSVTable>>([]);
   const [uploadedData, setUploadedData] = useState<Array<LeadDisplayData>>([]);
   const [loading, setIsLoading] = useState<boolean>(false);
   const [emailWithName, setEmailWithName] = useState<Record<string, string>>({});
+  const [project, setProject] = useState<TPropertyName | null>(null);
+  const [leadRegister, setLeadRegister] = useAtom(PROJECT_LEAD_INFO);
+  const [leademailWithName, setLeadEmailWithName] = useAtom(PROJECT_LEAD_EMAIL_WITH_NAME);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setIsLoading(true);
@@ -115,6 +159,13 @@ export default function TitleAndFilter() {
     }
   };
 
+  const onImport = () => {
+    if(project){
+      setLeadRegister({ ...leadRegister, [project]: [...leadRegister[project], ...uploadedData.map(({email,name})=>({email,name}))] });
+      setLeadEmailWithName({ ...emailWithName, ...emailWithName })
+    }
+  }
+
   return (
     <Stack gap={6}>
       <Box paddingBlock={4} paddingInline={[4, , 6]} border rounded marginTop={[4, 12]}>
@@ -132,6 +183,21 @@ export default function TitleAndFilter() {
               </label>
             </Flex>
           </Box>
+          {
+            uploadedData.length > 0 && <Box border rounded paddingBlock={8} paddingInline={4}>
+              <Flex justifyContent="spaceEvenly" alignItem="center" direction="column" gap={8}>
+                <Text>Select Project to import</Text>
+                <Select
+                  options={leadTypeOptions}
+                  isMulti={false}
+                  onChange={(props) => { if (props) { setProject(props?.value as unknown as TPropertyName); } }}
+                  placeholder="Select Project"
+                  className={styles.selecter}
+                  styles={leadTypeStyles} />
+                <Button onClick={onImport}>Import</Button>
+              </Flex>
+            </Box>
+          }
         </Stack>
       </Box>
       <Box border rounded className={styles.fullSize} >

@@ -3,6 +3,7 @@ export type Styles = {
   'download': string;
   'fileInput': string;
   'fullSize': string;
+  'selecter': string;
   'table': string;
   'tableCell': string;
 };
