@@ -12,6 +12,7 @@ import { LeadDisplayData, Result } from 'app/type/LeadType';
 import { useState, ChangeEvent } from "react";
 import { parse } from 'papaparse';
 import { prettyDataSet } from "app/helper/prettyDataSet";
+import Link from 'next/link';
 
 
 interface CSV<T> {
@@ -114,6 +115,7 @@ const leadTypeOptions: readonly LeadProjectOption[] = [
   { value: 'shelford-23', label: 'Shelford 23' },
 ];
   const [csvRecord, setCSVRecord] = useState<Array<CSVTable>>([]);
+  const [submitted, setSubmitted] = useState<boolean>(false);
   const [uploadedData, setUploadedData] = useState<Array<LeadDisplayData>>([]);
   const [loading, setIsLoading] = useState<boolean>(false);
   const [emailWithName, setEmailWithName] = useState<Record<string, string>>({});
@@ -162,7 +164,8 @@ const leadTypeOptions: readonly LeadProjectOption[] = [
   const onImport = () => {
     if(project){
       setLeadRegister({ ...leadRegister, [project]: [...leadRegister[project], ...uploadedData.map(({email,name})=>({email,name}))] });
-      setLeadEmailWithName({ ...emailWithName, ...emailWithName })
+      setLeadEmailWithName({ ...emailWithName, ...emailWithName });
+      setSubmitted(true);
     }
   }
 
@@ -184,9 +187,9 @@ const leadTypeOptions: readonly LeadProjectOption[] = [
             </Flex>
           </Box>
           {
-            uploadedData.length > 0 && <Box border rounded paddingBlock={8} paddingInline={4}>
+            (uploadedData.length > 0 && !submitted) && <Box border rounded paddingBlock={8} paddingInline={4}>
               <Flex justifyContent="spaceEvenly" alignItem="center" direction="column" gap={8}>
-                <Text>Select Project to import</Text>
+                <Text weight="semiBold">Total {uploadedData.length} records found</Text>
                 <Select
                   options={leadTypeOptions}
                   isMulti={false}
@@ -197,6 +200,15 @@ const leadTypeOptions: readonly LeadProjectOption[] = [
                 <Button onClick={onImport}>Import</Button>
               </Flex>
             </Box>
+          }
+          {
+            submitted && <Box border rounded paddingBlock={8} paddingInline={4}>
+            <Flex justifyContent="spaceEvenly" alignItem="center" direction="column" gap={8}>
+              <Icon iconName="check_circle" size="xLarge" color="success"/>
+              <Text weight="semiBold">Imported to project {leadTypeOptions.find(({value})=>value===project)?.label}</Text>
+              <Link href={`/project/${project}`}><Button>Go to project</Button></Link>
+            </Flex>
+          </Box>
           }
         </Stack>
       </Box>
