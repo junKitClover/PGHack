@@ -170,31 +170,43 @@ const LeadCard = ({
               </Flex>
             </a>
             <hr className={styles.line} />
-            <Flex justifyContent="spaceBetween" alignItem="center">
-              <Stack gap={2}>
-                <Flex gap={1}>
-                  <Icon iconName="call" color="secondaryFontColor" size="xSmall" />
-                  <a href={`tel:${phoneNumber}`} className={styles.link}>
-                    <Text
-                      size="xSmall"
-                      color="fontColor"
-                    >
-                      {phoneNumber}
-                    </Text>
-                  </a>
-                </Flex>
-                <Flex gap={1}>
-                  <Icon iconName="mail" color="secondaryFontColor" size="xSmall" />
-                  <a href={`mailto:${email}`} className={styles.link}>
-                    <Text
-                      size="xSmall"
-                      color="fontColor"
-                    >
-                      {email}
-                    </Text>
-                  </a>
-                </Flex>
-              </Stack>
+            <Flex justifyContent={["spaceEvenly","spaceBetween"]} alignItem="center">
+              <Visible visible={[false, true]}>
+                <Stack gap={2}>
+                  <Flex gap={1}>
+                    <Icon iconName="call" color="secondaryFontColor" size="xSmall" />
+                    <a href={`tel:${phoneNumber}`} className={styles.link}>
+                      <Text
+                        size="xSmall"
+                        color="fontColor"
+                      >
+                        {phoneNumber}
+                      </Text>
+                    </a>
+                  </Flex>
+                  <Flex gap={1}>
+                    <Icon iconName="mail" color="secondaryFontColor" size="xSmall" />
+                    <a href={`mailto:${email}`} className={styles.link}>
+                      <Text
+                        size="xSmall"
+                        color="fontColor"
+                      >
+                        {email}
+                      </Text>
+                    </a>
+                  </Flex>
+                </Stack>
+              </Visible>
+              <Visible visible={[true, false]}>
+                <a href={`tel:${phoneNumber}`} className={styles.link} >
+                  <Icon iconName="call" size="medium" color="primary"/>
+                </a>
+              </Visible>
+              <Visible visible={[true, false]}>
+                <a href={`mailto:${email}`} className={styles.link}>
+                  <Icon iconName="mail" size="medium" color="primary"/>
+                </a>
+              </Visible>
               <a className={styles.link} href={whatsappUrl+whatsappMessage} rel="noreferrer" target="_blank">
                 <svg width="32" height="32" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <g filter="url(#filter0_d_1_7142)">
