@@ -1,5 +1,5 @@
 import { ReactNode, HTMLAttributes } from 'react';
-import { generateSpaceListBaseOnCommonInterface, PaddingSemanticProps, MarginSemanticProps, GapProps, PaddingProps } from 'styles/Space';
+import { generateSpaceListBaseOnCommonInterface, PaddingSemanticProps, MarginSemanticProps, GapProps, PaddingProps, MarginProps } from 'styles/Space';
 import { TGeneralDevice } from 'types/device.d';
 import classnames from 'classnames';
 import styles from './Flex.module.scss';
@@ -13,7 +13,7 @@ export type TJustifyContent = TGeneralDevice<
 export type TAlignItem = TGeneralDevice<'center' | 'flexEnd' | 'flexStart' | 'stretch' | 'start' | 'end'>;
 export type TWrapper = 'wrap' | 'wrapReverse' | 'noWrap';
 
-export interface FlexProps extends HTMLAttributes<HTMLDivElement>, PaddingProps, MarginSemanticProps, GapProps {
+export interface FlexProps extends HTMLAttributes<HTMLDivElement>, PaddingProps, MarginProps, GapProps {
   children: ReactNode | ReactNode[];
   direction?: TDirection;
   justifyContent?: TJustifyContent;
@@ -83,6 +83,10 @@ export const Flex = ({
   margin,
   marginBlock,
   marginInline,
+  marginBottom,
+  marginLeft,
+  marginRight,
+  marginTop,
   gap,
   direction,
   justifyContent,
@@ -104,6 +108,10 @@ export const Flex = ({
     margin,
     marginBlock,
     marginInline,
+    marginBottom,
+    marginLeft,
+    marginRight,
+    marginTop,
     gap
   });
 

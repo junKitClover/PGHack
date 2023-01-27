@@ -20,17 +20,37 @@
   }
 }
 
+.interestedNewProject{
+  position: absolute;
+  top:50px;
+  right: -16px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  padding-inline: 16px;
+  padding-block: 4px;
+
+  &_strong{
+    background: linear-gradient(139.79deg, #002d80 7.09%, #0FB9BF 100%);
+  }
+  &_normal{
+    background: linear-gradient(139.79deg, #029ad6 7.09%, #0FB9BF 100%);
+  }
+  &_weak{
+    background: linear-gradient(139.79deg, #575758 7.09%, #0FB9BF 100%);
+  }
+}
+
 .cardBase {
   height: fit-content;
 }
 
 .container {
   position: relative;
-  min-width: 350px;
-  @include breakpoint.mobile{
-    max-width: 300px;
-    min-width: 250px;
-  }
+  // min-width: 350px;
+  // @include breakpoint.mobile{
+  //   max-width: 300px;
+  //   min-width: 250px;
+  // }
 }
 
 .borderTopRound {
@@ -48,6 +68,7 @@
 }
 
 .link{
+  color: black;
   text-decoration: none;
   :hover{
     cursor: pointer;

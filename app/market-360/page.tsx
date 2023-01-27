@@ -1,6 +1,7 @@
 'use client';
-import { useEffect, SyntheticEvent } from 'react';
-import styles from './page.module.scss';
+import { PageLayout, Flex } from 'component/organisms';
+import { Text } from 'component/atoms';
+import { SyntheticEvent } from 'react';
 
 function Page() {
   const onIframeLoad = (event: SyntheticEvent<HTMLIFrameElement, Event>) => {
@@ -11,7 +12,12 @@ function Page() {
   }
 
   return (
-    <iframe src="http://osg-nvidia-dgx1.guruestate.com:8111/Map.html" title="Market 360" className={styles.iframeMap} onLoad={onIframeLoad}/>
+    <PageLayout paddingTop={20}>
+      <Flex gap={8} alignItem="center" justifyContent="center" direction="column">
+        <Text size="medium">Sorry this page only available in desktop version, at this moment</Text>
+        <Text size="small" color="secondaryFontColor">Sorry for any inconvenience</Text>
+      </Flex>
+    </PageLayout>
   );
 }
 

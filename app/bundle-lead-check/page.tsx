@@ -10,8 +10,6 @@ import styles from './page.module.scss';
 import { Button } from 'component/molecules';
 
 interface CSVData {
-  name: string,
-  phoneNumber: string,
   email: string,
 }
 
@@ -36,19 +34,15 @@ const TableCell = ({ children, ...restProps }: TextBaseProps) => (<td><Text {...
 const PreviewTable = ({ data }: PreviewTableProps) => (
   <table>
     <tr>
-      <TableCell paddingInline={2}>Name</TableCell>
-      <TableCell paddingInline={2}>Phone Number</TableCell>
       <TableCell paddingInline={2}>Email</TableCell>
       <TableCell paddingInline={2}>Status</TableCell>
     </tr>
     <tr><td colSpan={4}><hr /></td></tr>
     {
       data.map((csvFile) => (
-        csvFile.data.map(({ name, phoneNumber, email }, index) =>
+        csvFile.data.map(({ email }, index) =>
         (<>
           <tr key={index}>
-            <TableCell size="small" paddingInline={2}>{name}</TableCell>
-            <TableCell size="small" paddingInline={2}>{phoneNumber}</TableCell>
             <TableCell size="small" paddingInline={2}>{email}</TableCell>
             <TableCell size="small" paddingInline={2}>Hot</TableCell>
           </tr>
@@ -93,13 +87,13 @@ function Page() {
         <Box backgroundColor="greyLighter" rounded padding={[2, 3, 6]}>
           <Stack gap={3}>
             <Flex justifyContent="spaceBetween">
-              <Text>{uploadedFile.length > 0 ? 'Preview Top 10 Uploaded Record' : 'No csv upload yet'}</Text>
+              <Text>{uploadedFile.length > 0 ? 'Preview Top 5 Uploaded Record' : 'No csv upload yet'}</Text>
               <Visible visible={uploadedFile.length > 0}>
                 <Button iconName='download' />
               </Visible>
             </Flex>
             <Visible visible={uploadedFile.length > 0}>
-              <PreviewTable data={uploadedFile} />
+              <PreviewTable data={uploadedFile.slice(0,5)} />
             </Visible>
           </Stack>
         </Box>

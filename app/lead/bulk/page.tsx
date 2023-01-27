@@ -1,8 +1,15 @@
-import { Flex, Stack } from "component/organisms";
-import styles from "./page.modules.scss";
+"use client";
+
+import TitleAndDragDrop from "./component/TitleAndDragDrop/TitleAndDragDrop";
+import { LEAD_PAGE } from "state/leadStated";
+import { useAtom } from "jotai";
 
 const Page = () => {
-  return(<Flex alignItem='center' justifyContent="center" className={styles.fullSize}>this is a bulk page</Flex>);
+  const [, setLeadPage] = useAtom(LEAD_PAGE);
+  setLeadPage('Bulk Lead Validation');
+  return (
+      <TitleAndDragDrop />
+  );
 };
 
 export default Page;

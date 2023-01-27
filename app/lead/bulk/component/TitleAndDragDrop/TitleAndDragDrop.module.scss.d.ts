@@ -1,9 +1,11 @@
 export type Styles = {
-  'filterBox': string;
+  'customFileUpload': string;
+  'download': string;
+  'fileInput': string;
   'fullSize': string;
-  'secondBox': string;
   'selecter': string;
-  'textInput': string;
+  'table': string;
+  'tableCell': string;
 };
 
 export type ClassNames = keyof Styles;

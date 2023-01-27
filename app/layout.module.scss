@@ -1,8 +1,17 @@
 .body {
   margin: 0px;
   background-color: #f5f6fa;
+  padding-bottom: 40px;;
 }
 
 .content {
   min-height: calc(100vh - 180px);
+}
+
+.mobileWidth {
+  width: 100%;
+}
+
+.link {
+  text-decoration: none;
 }

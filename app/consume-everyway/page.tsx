@@ -1,3 +1,5 @@
+'use client';
+
 import { Flex, Grid, PageLayout, Stack } from 'component/organisms';
 import { Box, Text } from 'component/atoms';
 import Image from 'next/image';
@@ -67,7 +69,7 @@ function Page() {
               </pre>
             </Text>
           </Box>
-          <Flex justifyContent="center" alignItem="center" padding={6} gap={[8,12]} direction="column">
+          <Flex justifyContent="center" alignItem="center" padding={6} gap={12} direction="column">
             <Text color="informationDarker" size="xxLarge" weight="thin">Sample of JSON response </Text>
             <Text type="subtitle">Sample of result retrun when API been called </Text>
           </Flex>

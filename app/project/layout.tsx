@@ -1,8 +1,8 @@
 "use client";
 
-import SideBar from "./component/SideBar/SideBar";
-import { Grid, Flex, PageLayout } from "component/organisms";
-import TitleAndFilter from "./component/TitleAndFilter/TitleAndFilter";
+import SideBar from "./[projectName]/component/SideBar/SideBar";
+import { Flex, PageLayout } from "component/organisms";
+import TitleAndFilter from "./[projectName]/component/TitleAndFilter/TitleAndFilter";
 import styles from './layout.module.scss';
 
 export default function RootLayout({
